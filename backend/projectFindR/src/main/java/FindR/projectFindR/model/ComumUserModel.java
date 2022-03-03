@@ -7,15 +7,27 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class ComumUserModel extends PersonModel {
+public class ComumUserModel extends PersonModel implements Classificavel{
     boolean typeUser;
+    boolean statusOnline;
 
     public ComumUserModel(String name,
                           String lastName,
                           String cpf,
-                          String emailUserComum,
-                          String senhaUserComum) {
-        super(name, lastName, cpf, emailUserComum, senhaUserComum);
-        this.typeUser = typeUser;
+                          String emailUser,
+                          String senhaUser) {
+        super(name, lastName, cpf, emailUser, senhaUser);
+    }
+
+    @Override
+    public boolean setTypeUser() {
+        setTypeUser(false);
+        return false;
+    }
+
+    @Override
+    public boolean setStatusUser() {
+        setStatusOnline(false);
+        return false;
     }
 }

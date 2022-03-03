@@ -5,24 +5,20 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @ToString
-public class TaskModel implements IMonetariavel {
+public class TaskModel {
     private String nome;
     private String descricao;
-    private double price;
+    private List<ComumUserModel> devs;
 
-    public TaskModel(String nome, String descricao) {
+    public TaskModel(String nome, String descricao, double price) {
         this.nome = nome;
         this.descricao = descricao;
-        this.price = price;
-    }
-
-
-    @Override
-    public Double menetizacao() {
-        setPrice(0.00);
-        return price;
+        this.devs = new ArrayList<>();
     }
 }

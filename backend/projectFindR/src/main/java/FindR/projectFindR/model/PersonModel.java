@@ -13,7 +13,7 @@ public abstract class PersonModel {
     private String name;
     private String lastName;
     final String cpf;
-    private String emailUserComum;
-    private String senhaUserComum;
+    private String emailUser;
+    private String senhaUser;
 
  }

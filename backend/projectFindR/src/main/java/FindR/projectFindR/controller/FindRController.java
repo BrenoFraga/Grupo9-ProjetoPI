@@ -9,93 +9,123 @@ import java.util.List;
 @RestController
 @RequestMapping("/FindR")
 public class FindRController {
-    List<PersonModel> users = new ArrayList<>();
-    List<DevsModel> equipes = new ArrayList<>();
+    List<ComumUserModel> users = new ArrayList<>();
+    List<ManegerUserModel> managers = new ArrayList<>();
     List<TaskModel> tasks = new ArrayList<>();
 
+    //GET  USERS, MANAGERS AND TASKS
     @GetMapping("/tasks")
     public List<TaskModel> viewTasks() {
         return tasks;
     }
 
-    @GetMapping("/groups")
-    public List<DevsModel> viewGroups() {
-        return equipes;
-    }
-
     @GetMapping("/user")
-    public List<PersonModel> viewUsers() {
+    public List<ComumUserModel> viewUsers() {
         return users;
     }
 
-    @GetMapping("/devs/group/{indiceGroup}/payment")
-    public void getpaymentGroup(@PathVariable int indiceGroup){
-        int contador = 0;
-        for (DevsModel group: equipes
-             ) {
-            if (equipes.get(indiceGroup) == null){
-                System.out.println("Equipe inexistente");
-            }
-        }
+    @GetMapping("/manager")
+    public List<ManegerUserModel> viewManagers() {
+        return managers;
     }
 
+    //LOGIN AND LOGOFF
+    @GetMapping("user/{email}/{senha}/login")
+    public String userLogin(@PathVariable String email, @PathVariable String senha) {
+        for (ComumUserModel comumUser : users
+        ) {
+            if (comumUser.getEmailUser().equals(email) &&
+                    comumUser.getSenhaUser().equals(senha)) {
+                comumUser.setStatusOnline(true);
+                return "Login realizado com sucesso";
+            }
+        }
+        return "Senha ou email incorreto";
+    }
+
+    @GetMapping("manager/{email}/{senha}/login")
+    public String managerLogin(@PathVariable String email, @PathVariable String senha) {
+        for (ManegerUserModel manager : managers
+        ) {
+            if (manager.getEmailUser().equals(email) &&
+                    manager.getSenhaUser().equals(senha)) {
+                manager.setStatusOnline(true);
+                return "Login realizado com sucesso";
+            }
+        }
+        return "Senha ou email incorreto";
+    }
+
+    @GetMapping("user/{email}/{senha}/logoff")
+    public String userLogoff(@PathVariable String email, @PathVariable String senha) {
+        for (ComumUserModel comumUser : users
+        ) {
+            if (comumUser.getEmailUser().equals(email) &&
+                    comumUser.getSenhaUser().equals(senha)) {
+                comumUser.setStatusUser();
+                return "Logoff realizado com sucesso";
+            }
+        }
+        return "Senha e email incorreto";
+    }
+
+    @GetMapping("manager/{email}/{senha}/logoff")
+    public String managerLogoff(@PathVariable String email, @PathVariable String senha) {
+        for (ManegerUserModel manager : managers
+        ) {
+            if (manager.getEmailUser().equals(email) &&
+                    manager.getSenhaUser().equals(senha)) {
+                manager.setStatusUser();
+                return "Logoff realizado com sucesso";
+            }
+        }
+        return "Senha e email incorreto";
+    }
+
+    //REGISTER USERS, MANAGERS AND TASKS
     @PostMapping("/user")
     public String addUserFindR(@RequestBody ComumUserModel comumUser) {
         users.add(comumUser);
+        comumUser.setTypeUser();
+        comumUser.setStatusUser();
         return "Usuario cadastrado com sucesso";
     }
 
     @PostMapping("/manager")
-    public void addUserManager(ManegerUserModel person) {
-        users.add(person);
+    public String addUserManager(@RequestBody ManegerUserModel managerUser) {
+        managers.add(managerUser);
+        managerUser.setTypeUser();
+        managerUser.setStatusUser();
+        return "Usuário administrador cadastrado com sucesso!";
     }
 
-    @PostMapping("manager/{indiceManager}/task/")
-    public String addTask(@RequestBody TaskModel task, @PathVariable int indiceManager) {
-        if (users.get(indiceManager) instanceof ManegerUserModel) {
-            tasks.add(task);
-        }else if (users.get(indiceManager) == null){
-            System.out.println("Usuário não encontrado");
-        }else{
-            System.out.println("O usuário não é um Administrador");
+    @PostMapping("/manager/{email}/{senha}/task/")
+    public String addTask(@RequestBody TaskModel task,
+                          @PathVariable String email,
+                          @PathVariable String senha) {
+        for (ManegerUserModel manager: managers
+             ) {
+            if (manager.getEmailUser().equals(email) && manager.getSenhaUser().equals(senha) ){
+                tasks.add(task);
+            }else {
+               return "Email ou senha incorreto";
+            }
         }
         return "Projeto postado com sucesso";
     }
 
-    @PostMapping("/dev/group/{name}")
-    public String addGroupDev(@PathVariable String name) {
-        DevsModel devsModel = new DevsModel(name);
-        devsModel.setNameGroup(name);
-        equipes.add(devsModel);
-
-        return devsModel + "Equipe cadastrada com sucesso";
-    }
-
-    @PostMapping("/user/dev/group/{indiceGroup}/{indiceDev}")
-    public String addUserToGroupDev(@PathVariable int indiceGroup, @PathVariable int indiceDev) {
-        for (DevsModel devs : equipes
+    //ADD USER TO TASK
+    @PostMapping("/task/{indiceTask}/dev/{indiceUser}")
+    public String addUserTask(@PathVariable int indiceTask, @PathVariable int indiceUser) {
+        for (PersonModel devs : users
         ) {
-            if (equipes.get(indiceGroup) == null) {
-                return "Equipe inexistente";
+            if (users.get(indiceUser) == null) {
+                return "Usuário inexistente";
             } else {
-                equipes.get(indiceGroup).getDevs().add(0, (ComumUserModel) users.get(indiceDev));
+                tasks.get(indiceTask).getDevs().add((ComumUserModel) users.get(indiceUser));
             }
         }
-
-        return "Desenvolvedor cadastrado com sucesso cadastrada com sucesso";
-    }
-
-    @PostMapping("/task/dev/group/{indiceGroup}/task/{indiceTask}")
-    public String addTaskGroup(@PathVariable int indiceGroup, @PathVariable int indiceTask) {
-        for (DevsModel devs : equipes
-        ) {
-            if (equipes.get(indiceGroup) == null) {
-                return "Equipe inexistente";
-            } else {
-                equipes.get(indiceGroup).getProjectsDoing().add(0, tasks.get(indiceTask));
-            }
-        }
-        return "Tarefa adicionada com sucesso!";
+        return "Desenvolvedor adicionado com sucesso!";
     }
 
 }
