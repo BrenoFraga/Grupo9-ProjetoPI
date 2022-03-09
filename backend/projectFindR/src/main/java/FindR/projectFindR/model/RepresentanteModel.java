@@ -7,15 +7,15 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class ManegerUserModel extends PersonModel implements Classificavel{
+public class RepresentanteModel extends PessoaModel {
     private boolean typeUser;
-    boolean statusOnline;
+    private boolean statusOnline;
 
-    public ManegerUserModel(String name,
-                            String lastName,
-                            String cpf,
-                            String emailUserComum,
-                            String senhaUserComum) {
+    public RepresentanteModel(String name,
+                              String lastName,
+                              String cpf,
+                              String emailUserComum,
+                              String senhaUserComum) {
         super(name, lastName, cpf, emailUserComum, senhaUserComum);
     }
 

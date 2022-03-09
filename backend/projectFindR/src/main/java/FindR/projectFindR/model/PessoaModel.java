@@ -9,11 +9,15 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @ToString
-public abstract class PersonModel {
+public abstract class PessoaModel {
+    final String cpf;
     private String name;
     private String lastName;
-    final String cpf;
     private String emailUser;
     private String senhaUser;
+
+
+    abstract boolean setTypeUser();
+    abstract boolean setStatusUser();
 
  }

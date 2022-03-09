@@ -10,12 +10,15 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class CompanyModel {
-    private List<ManegerUserModel> usersManeger;
+public class ContratanteModel {
+    private String nome;
+    private String cpf;
+    private String cnpj;
+    private List<RepresentanteModel> usersManeger;
     private List<TaskModel> projects;
 
 
-    public CompanyModel() {
+    public ContratanteModel() {
         this.projects = new ArrayList<>();
         this.usersManeger = new ArrayList<>();
     }
