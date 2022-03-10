@@ -10,13 +10,26 @@ import lombok.ToString;
 public class FreelancerModel extends PessoaModel {
     boolean typeUser;
     boolean statusOnline;
+    private int id_user_freelancer;
+    private String name_freelancer;
 
-    public FreelancerModel(String name,
-                           String lastName,
-                           String cpf,
-                           String emailUser,
-                           String senhaUser) {
-        super(name, lastName, cpf, emailUser, senhaUser);
+
+    public FreelancerModel(String email,
+                           String password,
+                           String cpf_cnpj,
+                           String phone_contact,
+                           String country,
+                           String state,
+                           String city,
+                           boolean typeUser,
+                           boolean statusOnline,
+                           int id_user_freelancer,
+                           String name_freelancer) {
+        super(email, password, cpf_cnpj, phone_contact, country, state, city);
+        this.typeUser = typeUser;
+        this.statusOnline = statusOnline;
+        this.id_user_freelancer = id_user_freelancer;
+        this.name_freelancer = name_freelancer;
     }
 
     @Override

@@ -11,11 +11,20 @@ import java.util.List;
 @Setter
 @ToString
 public class ContratanteModel {
-    private String nome;
-    private String cpf;
-    private String cnpj;
+    private int id_contactor;
+    private String name_contactor;
+//    private String email;
+//    private String password_contactor;
+//    private String cpf;
+//    private String cnpj;
+//    private String phone_contact;
+//    private String country;
+//    private String state;
+//    private String city;
+    private String administrator_name;
+    private int administrator;
     private List<RepresentanteModel> usersManeger;
-    private List<TaskModel> projects;
+    private List<ProjectModel> projects;
 
 
     public ContratanteModel() {
