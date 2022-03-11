@@ -1,0 +1,102 @@
+
+.cont_all{
+    width: 1500px;
+    height: 500px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+}
+.cont_title{
+    width: 1200px;
+    height: 90px;
+    
+    display: flex;
+    align-items: flex-start;
+    align-items: flex-end;
+}
+.cont_text{
+    width: 300px;
+    height: 60px;
+    
+}
+.equipe_findr{
+    font-size: 40px;
+    color: #EDEDED;
+    display: flex;
+    align-items: flex-end;
+    
+}
+
+.container1{
+    width: 1300px;
+    height: 400px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+.container_card{
+    width: 1300px;
+    height: 250px;
+    font-size: 40px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.card_view{
+    width: 200px;
+    height: 300px;
+    background-color: #EDEDED;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 2px 2px #EDEDED;
+}
+.img_container{
+    width: 100px;
+    height: 100px;
+    background-color: brown;
+    border-radius: 50%;
+    background-position: center; 
+    background-size: cover; 
+}
+.container_text{
+    width: 200px;
+    height: 130px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.container_name{
+    width: 150px;
+    height: 20px;
+    font-weight: bold;
+    color: #3333CC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container_description{
+    width: 180px;
+    height: 100px;
+    color: #232323;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: justify;
+    text-indent: 3px;
+    word-spacing: 1px;
+    
+}
+
+
