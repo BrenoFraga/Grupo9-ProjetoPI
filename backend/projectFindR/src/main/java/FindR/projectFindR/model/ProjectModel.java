@@ -18,6 +18,7 @@ public class ProjectModel {
     private String required_languages;
     private int quantity_profissionals;
     private int fk_contactor;
+    //CRIAR ATRIBUTO DO STATUS DO PROJETO
     private List<FreelancerModel> devs;
 
     public ProjectModel(String id_project_contactor,
@@ -34,6 +35,6 @@ public class ProjectModel {
         this.required_languages = required_languages;
         this.quantity_profissionals = quantity_profissionals;
         this.fk_contactor = fk_contactor;
-        this.devs = devs;
+        this.devs = new ArrayList<>();
     }
 }

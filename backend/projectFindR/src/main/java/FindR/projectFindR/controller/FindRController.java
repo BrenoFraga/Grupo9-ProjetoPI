@@ -36,8 +36,8 @@ public class FindRController {
                             @PathVariable String senha) {
         for (FreelancerModel comumUser : users
         ) {
-            if (comumUser.getEmailUser().equals(email) &&
-                    comumUser.getSenhaUser().equals(senha)) {
+            if (comumUser.getEmail().equals(email) &&
+                    comumUser.getPassword().equals(senha)) {
                 comumUser.setStatusOnline(true);
                 return "Login realizado com sucesso";
             }
@@ -50,8 +50,8 @@ public class FindRController {
                                @PathVariable String senha) {
         for (RepresentanteModel manager : managers
         ) {
-            if (manager.getEmailUser().equals(email) &&
-                    manager.getSenhaUser().equals(senha)) {
+            if (manager.getEmail().equals(email) &&
+                    manager.getPassword().equals(senha)) {
                 manager.setStatusOnline(true);
                 return "Login realizado com sucesso";
             }
@@ -65,8 +65,8 @@ public class FindRController {
                              @PathVariable String senha) {
         for (FreelancerModel comumUser : users
         ) {
-            if (comumUser.getEmailUser().equals(email) &&
-                    comumUser.getSenhaUser().equals(senha)) {
+            if (comumUser.getEmail().equals(email) &&
+                    comumUser.getPassword().equals(senha)) {
                 comumUser.setStatusUser();
                 return "Logoff realizado com sucesso";
             }
@@ -79,8 +79,8 @@ public class FindRController {
                                 @PathVariable String senha) {
         for (RepresentanteModel manager : managers
         ) {
-            if (manager.getEmailUser().equals(email) &&
-                    manager.getSenhaUser().equals(senha)) {
+            if (manager.getEmail().equals(email) &&
+                    manager.getPassword().equals(senha)) {
                 manager.setStatusUser();
                 return "Logoff realizado com sucesso";
             }
@@ -124,7 +124,7 @@ public class FindRController {
                 ) {
                     if (companys.equals(company)) {
                         company.getUsersManeger().add(manager);
-                        return "Representante cadastrado na empresa " + company.getNome() + "!";
+                        return "Representante cadastrado na empresa " + company.getAdministrator_name() + "!";
                     } else {
                         return "Empresa não encontrada";
                     }
@@ -145,7 +145,7 @@ public class FindRController {
                           @PathVariable String senha) {
         for (RepresentanteModel manager : managers
         ) {
-            if (manager.getEmailUser().equals(email) && manager.getSenhaUser().equals(senha)) {
+            if (manager.getEmail().equals(email) && manager.getPassword().equals(senha)) {
                 tasks.add(task);
                 companys.get(indiceCompany).getProjects().add(task);
 
@@ -177,7 +177,7 @@ public class FindRController {
                              @PathVariable String senha) {
         String frase = "";
         for (PessoaModel pessoa : users) {
-            if (pessoa.getEmailUser().equals(email) && pessoa.getSenhaUser().equals(senha)) {
+            if (pessoa.getEmail().equals(email) && pessoa.getPassword().equals(senha)) {
                 users.remove(pessoa);
                 frase = String.format("Usuario removido com sucesso");
             } else {
@@ -193,7 +193,7 @@ public class FindRController {
                                  @PathVariable String senha) {
         String frase = "";
         for (PessoaModel pessoa : managers) {
-            if (pessoa.getEmailUser().equals(email) && pessoa.getSenhaUser().equals(senha)) {
+            if (pessoa.getEmail().equals(email) && pessoa.getPassword().equals(senha)) {
                 managers.remove(pessoa);
                 frase = String.format("Usuario removido com sucesso");
             } else {
@@ -203,16 +203,13 @@ public class FindRController {
         return frase;
     }
 
-
-
     //DELETE CONTRATANTE
-
     @DeleteMapping("/maneger/{email}/{senha}")
     public String removerContratante(@PathVariable String email,
-                                     @PathVariable String senha){
+                                     @PathVariable String senha) {
         String frase = "";
         for (ContratanteModel contratante : companys) {
-            if (contratante.getEmailUser().equals(email) && contratante.getSenhaUser().equals(senha)) {
+            if (contratante.getEmail().equals(email) && contratante.getPassword().equals(senha)) {
                 managers.remove(contratante);
                 frase = String.format("Usuario removido com sucesso");
             } else {
@@ -227,12 +224,12 @@ public class FindRController {
     @DeleteMapping("/manager/{email}/{senha}/task/{indiceTask}")
     public String deleteTask(@PathVariable String email,
                              @PathVariable String senha,
-                             @PathVariable int indiceTask){
+                             @PathVariable int indiceTask) {
         String frase = "";
         for (RepresentanteModel manager : managers) {
-            if (manager.getEmailUser().equals(manager) && manager.getSenhaUser().equals(manager)) {
+            if (manager.getEmail().equals(manager) && manager.getPassword().equals(manager)) {
                 if (indiceTask <= tasks.size() - 1) {
-                    String tasknome = tasks.get(indiceTask).getNome();
+                    String tasknome = tasks.get(indiceTask).getName_project();
                     tasks.remove(indiceTask);
                     frase = String.format("Removendo a task %s", tasknome);
                 } else {

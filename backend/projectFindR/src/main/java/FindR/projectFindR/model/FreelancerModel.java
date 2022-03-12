@@ -8,8 +8,8 @@ import lombok.ToString;
 @Setter
 @ToString
 public class FreelancerModel extends PessoaModel {
-    boolean typeUser;
-    boolean statusOnline;
+    private boolean typeUser;
+    private boolean statusOnline;
     private int id_user_freelancer;
     private String name_freelancer;
 

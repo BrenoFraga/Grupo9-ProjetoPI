@@ -10,19 +10,16 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public abstract class PessoaModel {
-
+    private final String cpf_cnpj;
     private String email;
     private String password;
-    final String cpf_cnpj;
     private String phone_contact;
     private String country;
     private String state;
     private String city;
 
-
-
-
     abstract boolean setTypeUser();
+
     abstract boolean setStatusUser();
 
- }
+}

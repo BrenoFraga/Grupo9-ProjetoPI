@@ -11,12 +11,12 @@ public class RepresentanteModel extends PessoaModel {
     private boolean typeUser;
     private boolean statusOnline;
 
-    public RepresentanteModel(String name,
-                              String lastName,
-                              String cpf,
-                              String emailUserComum,
-                              String senhaUserComum) {
-        super(name, lastName, cpf, emailUserComum, senhaUserComum);
+    public RepresentanteModel(String cpf_cnpj, String email, String password,
+                              String phone_contact, String country, String state,
+                              String city, boolean typeUser, boolean statusOnline) {
+        super(cpf_cnpj, email, password, phone_contact, country, state, city);
+        this.typeUser = typeUser;
+        this.statusOnline = statusOnline;
     }
 
     @Override
