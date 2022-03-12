@@ -9,32 +9,24 @@ import java.util.List;
 @RestController
 @RequestMapping("/FindR")
 public class FindRController {
-    List<FreelancerModel> users = new ArrayList<>();
-    List<RepresentanteModel> managers = new ArrayList<>();
-    List<ContratanteModel> companys = new ArrayList<>();
-    List<ProjectModel> tasks = new ArrayList<>();
-
+    BancoController bd = new BancoController();
     //GET  USERS, MANAGERS AND TASKS
-    @GetMapping("/tasks")
-    public List<ProjectModel> viewTasks() {
-        return tasks;
-    }
 
     @GetMapping("/users")
     public List<FreelancerModel> viewUsers() {
-        return users;
+        return bd.users;
     }
 
     @GetMapping("/managers")
     public List<RepresentanteModel> viewManagers() {
-        return managers;
+        return bd.managers;
     }
 
     //LOGIN USER,MANAGER
     @GetMapping("user/{email}/{senha}/login")
     public String userLogin(@PathVariable String email,
                             @PathVariable String senha) {
-        for (FreelancerModel comumUser : users
+        for (FreelancerModel comumUser : bd.users
         ) {
             if (comumUser.getEmail().equals(email) &&
                     comumUser.getPassword().equals(senha)) {
@@ -48,7 +40,7 @@ public class FindRController {
     @GetMapping("manager/{email}/{senha}/login")
     public String managerLogin(@PathVariable String email,
                                @PathVariable String senha) {
-        for (RepresentanteModel manager : managers
+        for (RepresentanteModel manager : bd.managers
         ) {
             if (manager.getEmail().equals(email) &&
                     manager.getPassword().equals(senha)) {
@@ -63,7 +55,7 @@ public class FindRController {
     @GetMapping("user/{email}/{senha}/logoff")
     public String userLogoff(@PathVariable String email,
                              @PathVariable String senha) {
-        for (FreelancerModel comumUser : users
+        for (FreelancerModel comumUser : bd.users
         ) {
             if (comumUser.getEmail().equals(email) &&
                     comumUser.getPassword().equals(senha)) {
@@ -77,7 +69,7 @@ public class FindRController {
     @GetMapping("manager/{email}/{senha}/logoff")
     public String managerLogoff(@PathVariable String email,
                                 @PathVariable String senha) {
-        for (RepresentanteModel manager : managers
+        for (RepresentanteModel manager : bd.managers
         ) {
             if (manager.getEmail().equals(email) &&
                     manager.getPassword().equals(senha)) {
@@ -88,157 +80,73 @@ public class FindRController {
         return "Senha e email incorreto";
     }
 
-    //REGISTER COMPANY, USERS, MANAGERS AND TASKS
+    //REGISTER COMPANY, USERS, MANAGERS, TASKS AND ADD USER TO TASK
     @PostMapping("/user")
     public String addUserFindR(@RequestBody FreelancerModel comumUser) {
-        users.add(comumUser);
-        comumUser.setTypeUser();
-        comumUser.setStatusUser();
+        bd.addUserFindR(comumUser);
         return "Usuario cadastrado com sucesso";
     }
 
     @PostMapping("/company")
     public String addCompany(@RequestBody ContratanteModel company) {
-        companys.add(company);
+        bd.addCompany(company);
         return "Empresa cadastrada com sucesso";
     }
 
     @PostMapping("/company/{indiceCompany}/manager")
     public String addUserManager(@RequestBody RepresentanteModel managerUser,
                                  @PathVariable int indiceCompany) {
-        companys.get(indiceCompany).getUsersManeger().add(managerUser);
-        managers.add(managerUser);
-        managerUser.setTypeUser();
-        managerUser.setStatusUser();
-
+       bd.addUserManager(managerUser,indiceCompany);
         return "Usuário administrador cadastrado com sucesso!";
     }
 
     @PostMapping("/company/{indiceCompany}/manager/{indiceManager}")
     public String addManagerToCompany(@PathVariable int indiceCompany,
                                       @PathVariable int indiceManager) {
-        for (RepresentanteModel manager : managers
-        ) {
-            if (managers.equals(manager)) {
-                for (ContratanteModel company : companys
-                ) {
-                    if (companys.equals(company)) {
-                        company.getUsersManeger().add(manager);
-                        return "Representante cadastrado na empresa " + company.getAdministrator_name() + "!";
-                    } else {
-                        return "Empresa não encontrada";
-                    }
-                }
-            } else {
-                return "Usuário não encontrado";
-            }
-
-        }
-        return "M";
+      return bd.addManagerToCompany(indiceCompany,indiceManager);
     }
-
 
     @PostMapping("/company/{indiceCompany}/manager/{email}/{senha}/task/")
     public String addTask(@RequestBody ProjectModel task,
                           @PathVariable int indiceCompany,
                           @PathVariable String email,
                           @PathVariable String senha) {
-        for (RepresentanteModel manager : managers
-        ) {
-            if (manager.getEmail().equals(email) && manager.getPassword().equals(senha)) {
-                tasks.add(task);
-                companys.get(indiceCompany).getProjects().add(task);
-
-            } else {
-                return "Email ou senha incorreto";
-            }
-        }
-        return "Projeto postado com sucesso";
+        return bd.addTask(task,indiceCompany,email,senha);
     }
 
-    //ADD USER TO TASK
     @PostMapping("/task/{indiceTask}/dev/{indiceUser}")
     public String addUserTask(@PathVariable int indiceTask,
                               @PathVariable int indiceUser) {
-        for (PessoaModel devs : users
-        ) {
-            if (users.get(indiceUser) == null) {
-                return "Usuário inexistente";
-            } else {
-                tasks.get(indiceTask).getDevs().add((FreelancerModel) users.get(indiceUser));
-            }
-        }
-        return "Desenvolvedor adicionado com sucesso!";
+
+        return bd.addUserTask(indiceTask, indiceUser);
     }
 
     //DELETE USER
     @DeleteMapping("/user/{email}/{senha}")
     public String removeUser(@PathVariable String email,
                              @PathVariable String senha) {
-        String frase = "";
-        for (PessoaModel pessoa : users) {
-            if (pessoa.getEmail().equals(email) && pessoa.getPassword().equals(senha)) {
-                users.remove(pessoa);
-                frase = String.format("Usuario removido com sucesso");
-            } else {
-                frase = "Usuario não encontrado";
-            }
-        }
-        return frase;
+        return bd.removeUser(email, senha);
     }
 
     //DELETE REPRESENTANTE
     @DeleteMapping("/maneger/{email}/{senha}")
     public String removerManeger(@PathVariable String email,
                                  @PathVariable String senha) {
-        String frase = "";
-        for (PessoaModel pessoa : managers) {
-            if (pessoa.getEmail().equals(email) && pessoa.getPassword().equals(senha)) {
-                managers.remove(pessoa);
-                frase = String.format("Usuario removido com sucesso");
-            } else {
-                frase = "Usuario não encontrado";
-            }
-        }
-        return frase;
+        return bd.removerManeger(email, senha);
     }
 
     //DELETE CONTRATANTE
-    @DeleteMapping("/maneger/{email}/{senha}")
+    @DeleteMapping("/company/{email}/{senha}")
     public String removerContratante(@PathVariable String email,
                                      @PathVariable String senha) {
-        String frase = "";
-        for (ContratanteModel contratante : companys) {
-            if (contratante.getEmail().equals(email) && contratante.getPassword().equals(senha)) {
-                managers.remove(contratante);
-                frase = String.format("Usuario removido com sucesso");
-            } else {
-                frase = "Usuario não encontrado";
-            }
-        }
-        return frase;
+        return bd.removerContratante(email, senha);
     }
 
     //DELETE TASK
-
     @DeleteMapping("/manager/{email}/{senha}/task/{indiceTask}")
     public String deleteTask(@PathVariable String email,
                              @PathVariable String senha,
                              @PathVariable int indiceTask) {
-        String frase = "";
-        for (RepresentanteModel manager : managers) {
-            if (manager.getEmail().equals(manager) && manager.getPassword().equals(manager)) {
-                if (indiceTask <= tasks.size() - 1) {
-                    String tasknome = tasks.get(indiceTask).getName_project();
-                    tasks.remove(indiceTask);
-                    frase = String.format("Removendo a task %s", tasknome);
-                } else {
-                    frase = "Task não encontrada";
-                }
-            } else {
-                frase = "Usuário não encontrado";
-            }
-        }
-        return frase;
+        return bd.deleteTask(email, senha, indiceTask);
     }
 }

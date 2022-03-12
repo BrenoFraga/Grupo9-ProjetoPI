@@ -14,20 +14,8 @@ public class FreelancerModel extends PessoaModel {
     private String name_freelancer;
 
 
-    public FreelancerModel(String email,
-                           String password,
-                           String cpf_cnpj,
-                           String phone_contact,
-                           String country,
-                           String state,
-                           String city,
-                           boolean typeUser,
-                           boolean statusOnline,
-                           int id_user_freelancer,
-                           String name_freelancer) {
-        super(email, password, cpf_cnpj, phone_contact, country, state, city);
-        this.typeUser = typeUser;
-        this.statusOnline = statusOnline;
+    public FreelancerModel(String cpf_cnpj, String email, String password, String phone_contact, String country, String state, String city, boolean typeUser, boolean statusOnline, int id_user_freelancer, String name_freelancer) {
+        super(cpf_cnpj, email, password, phone_contact, country, state, city);
         this.id_user_freelancer = id_user_freelancer;
         this.name_freelancer = name_freelancer;
     }

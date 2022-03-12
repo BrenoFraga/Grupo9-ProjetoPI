@@ -8,9 +8,4 @@ public class RegisterModel {
     private String level_knowledge;
     private int fk_freelancer;
 
-
-
-
-
-
 }
