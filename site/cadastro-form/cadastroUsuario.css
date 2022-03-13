@@ -47,7 +47,7 @@
   width: 55%;
   height: 100vh;
   color: white;
-  background: url('imagens/conceito-pessoal-da-perspectiva-da-arquitetura-da-cidade-do-predio-de-escritorios-da-arquitetura-contemporanea_53876-42940.webp') no-repeat bottom center scroll;
+  background: url('imagens/imagem-coorporativa-usuário.webp') no-repeat bottom center scroll;
   background-position: 30% 45%;
   background-size: cover;
 }
@@ -88,6 +88,7 @@ textarea:focus, input:focus, select:focus {
     margin-left: 5%;
     border-radius: 30px;
     padding:10px;
+    padding-left: 20px;
     border: 0px solid #333333;
     box-shadow: 0 3px 3px rgb(163, 159, 159);
     font-family: Poppins;
@@ -100,6 +101,7 @@ textarea:focus, input:focus, select:focus {
     margin-right: 5%;
     border-radius: 30px;
     padding:10px;
+    padding-left: 20px;
     border: 0px solid #333333;
     box-shadow: 0 3px 3px rgb(163, 159, 159);
     font-family: Poppins;
@@ -151,7 +153,7 @@ input[type="checkbox"]{
     }
 }
 
-@media screen and (max-width: 390px){
+@media screen and (max-width: 400px){
     .wrap-input100{
         height: 100vh;
         position: absolute;
@@ -173,10 +175,6 @@ input[type="checkbox"]{
         margin-right: auto;
     }
 
-    .input-check-box{
-        
-    }
-
     input[type="checkbox"]{
         margin-left: 0px;
     }
@@ -189,7 +187,7 @@ input[type="checkbox"]{
     }
 
     .nome-empresa{
-        margin-top: 20%;
+        margin-top: 15%;
     }
 }
 

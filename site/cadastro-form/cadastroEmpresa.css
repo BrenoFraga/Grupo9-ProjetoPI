@@ -1,0 +1,193 @@
+/*EDEDED -> branco
+3333CC -> primária
+4B1EC8 -> secundária
+4B1EC8 -> terciária
+232323 -> preto
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,100&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.limiter {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+.container-login100 {
+    width: 100%;  
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+.titulo-empresa{
+    color: #EDEDED;
+    background-color: 0;
+}
+
+.login100-lg{
+    display: table;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 5%, rgba(0,212,255,0.12088585434173671) 100%);
+}
+
+.login100-more {
+  display: table;
+  width: 55%;
+  height: 100vh;
+  color: white;
+  background: url('imagens/imagem-coorporativa-empresa.webp') no-repeat bottom center scroll;
+  background-position: 30% 45%;
+  background-size: cover;
+}
+
+.wrap-input100{
+    width: 45%;
+    background-color: #EDEDED;
+}
+
+.wrap-input100 h2{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 5%;
+    text-transform: uppercase;
+    font-size: 39px;
+    color: #333333;
+    font-family: Poppins;
+}
+
+.linha-empresa{
+    background-color: #3333CC;
+    height: 3px;
+    width: 10%;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+textarea:focus, input:focus, select:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+} 
+
+.wrap-input100 .input-left{
+    margin-top: 7%;
+    margin-left: 5%;
+    border-radius: 30px;
+    padding:10px;
+    padding-left: 20px;
+    border: 0px solid #333333;
+    box-shadow: 0 3px 3px rgb(163, 159, 159);
+    font-family: Poppins;
+}
+
+
+.wrap-input100 .input-right{
+    margin-top: 7%;
+    float: right;
+    margin-right: 5%;
+    border-radius: 30px;
+    padding:10px;
+    padding-left: 20px;
+    border: 0px solid #333333;
+    box-shadow: 0 3px 3px rgb(163, 159, 159);
+    font-family: Poppins;
+}
+
+input[type="checkbox"]{
+    margin-top: 10%;
+    margin-left: 5%;
+    border: 2px solid #3333CC;
+    cursor: pointer;
+}
+
+.termoAcesso{
+    font-family:Poppins;
+    font-size: 12px;
+}
+
+.btn-cadastrar{
+    margin-top: 2%;
+    color: #EDEDED;
+    margin-left: 5%;
+    padding: 8px 50px;
+    background-color: #3333CC;
+    border-radius: 8px;
+    border: 1px solid #3333CC;
+    cursor: pointer;
+    font-family: Poppins;
+}
+
+.nome-empresa{
+  background-image: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise);
+  background-clip: text;
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent;
+  color: black;
+  float: right;
+  margin-right: 5%;
+  font-size: 40px;
+}
+
+
+@media screen and (max-width: 760px){
+    .login100-more{
+        display: none;
+    }
+
+    .wrap-input100{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .wrap-input100{
+        height: 100vh;
+        position: absolute;
+    }
+
+    .wrap-input100 .input-right{
+        margin-right: 0px;
+        margin-top: 15%;
+    }
+
+    .wrap-input100 .input-left{
+        margin-left: 0px;
+        margin-top: 15%;
+    }
+
+    .check-box{
+        margin-top: 5%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    input[type="checkbox"]{
+        margin-left: 0px;
+    }
+
+    .btn-cadastrar{
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10%;
+    }
+
+    .nome-empresa{
+        margin-top: 15%;
+    }
+}
+
