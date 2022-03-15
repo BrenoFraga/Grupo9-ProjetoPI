@@ -1,4 +1,4 @@
-package FindR.projectFindR.model;
+package com.projectfindr.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,17 +9,17 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @ToString
-public abstract class PessoaModel {
-    private final String cpf_cnpj;
+public abstract class User {
+    private String name;
     private String email;
     private String password;
-    private String phone_contact;
+    private String document;
+    private String phoneContact;
     private String country;
     private String state;
     private String city;
+    private boolean statusOnline;
 
-    abstract boolean setTypeUser();
-
-    abstract boolean setStatusUser();
+    public abstract boolean setStatusUser();
 
 }

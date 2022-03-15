@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.3</version>
+		<version>2.6.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>FindR</groupId>
-	<artifactId>projectFindR</artifactId>
+	<groupId>com</groupId>
+	<artifactId>project-findr</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>projectFindR</name>
-	<description>Plataforma de Freelancer</description>
+	<name>project-findr</name>
+	<description>FindR API</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

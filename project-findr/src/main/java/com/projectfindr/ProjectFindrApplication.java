@@ -1,13 +1,13 @@
-package FindR.projectFindR.services;
+package com.projectfindr;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProjectFindRApplication {
+public class ProjectFindrApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProjectFindRApplication.class, args);
+		SpringApplication.run(ProjectFindrApplication.class, args);
 	}
 
 }
