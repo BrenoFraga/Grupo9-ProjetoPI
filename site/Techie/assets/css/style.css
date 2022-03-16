@@ -569,6 +569,7 @@ section {
 .counts {
   background: linear-gradient(180deg, #5846f9 0%, #7b27d8 100%);
   color: #EDEDED;
+  margin-bottom: 5px;
 }
 .counts .counters span {
   font-size: 48px;
@@ -1423,4 +1424,85 @@ section {
   background: rgba(255, 255, 255, 0.2);
   color: #fff;
   text-decoration: none;
+}
+
+.tecnologia-container-divs{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.divs-tec{
+  background-color: #EDEDED;
+  margin-top: 5%;
+  width: 20%;
+  height: 50px;
+  margin-left: 2%;
+  box-shadow: 0px 3px rgba(105, 103, 103, 0.678);
+  border-radius: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.divs-tec img{
+  margin-right: 5%;
+  width: 20%;
+  height: 40px;
+}
+
+.tecnologia-container-divs-dois{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.divs-tec-dois{
+  background-color: #EDEDED;
+  width: 20%;
+  height: 50px;
+  margin-left: 2%;
+  box-shadow: 0px 3px rgba(105, 103, 103, 0.678);
+  border-radius: 20px;
+  margin-top: 5%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.divs-tec-dois img{
+  margin-right: 5%;
+  width: 20%;
+  height: 40px;
+}
+
+.tecnologia-container-divs-tres{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.divs-tec-tres{
+  background-color: #EDEDED;
+  width: 20%;
+  height: 50px;
+  margin-left: 2%;
+  box-shadow: 0px 3px rgba(105, 103, 103, 0.678);
+  border-radius: 20px;
+  margin-top: 5%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.divs-tec-tres img{
+  margin-right: 5%;
+  width: 20%;
+  height: 40px;
 }
