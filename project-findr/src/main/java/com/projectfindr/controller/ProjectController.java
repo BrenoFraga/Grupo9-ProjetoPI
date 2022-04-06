@@ -2,6 +2,7 @@ package com.projectfindr.controller;
 
 import com.projectfindr.model.Project;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,27 +14,31 @@ public class ProjectController {
     private BancoService bd;
 
     @PostMapping("/{email}/{password}")
-    public String addProjectCompany(@RequestBody Project project, @PathVariable String email, @PathVariable String password){
-        return bd.addProjectCompany(project, email, password);
+    public ResponseEntity addProjectCompany(@RequestBody Project project, @PathVariable String email, @PathVariable String password){
+        bd.addProjectCompany(project, email, password);
+        return ResponseEntity.status(201).build();
     }
 
     @PostMapping("/person/{email}/{password}")
-    public String addProjectContactorPerson(@RequestBody Project project, @PathVariable String email, @PathVariable String password){
-        return bd.addProjectContactorPerson(project, email, password);
+    public ResponseEntity addProjectContactorPerson(@RequestBody Project project, @PathVariable String email, @PathVariable String password){
+        bd.addProjectContactorPerson(project, email, password);
+        return ResponseEntity.status(201).build();
     }
 
     @GetMapping
-    public List<Project> getProjects(){
-        return bd.projects;
+    public ResponseEntity getProjects(){
+        return ResponseEntity.status(201).body(bd.projects);
     }
 
     @DeleteMapping("/{nameProject}/{email}/{password}")
-    public String deleteProject(@PathVariable String nameProject, @PathVariable String email, @PathVariable String password){
-        return bd.deleteProject(nameProject, email, password);
+    public ResponseEntity deleteProject(@PathVariable String nameProject, @PathVariable String email, @PathVariable String password){
+        bd.deleteProject(nameProject, email, password);
+        return ResponseEntity.status(201).build();
     }
 
     @PostMapping("/{email}/{password}/{nameProject}")
-    public String addUserFreelancerProject(@PathVariable String email, @PathVariable String password, @PathVariable String nameProject){
-        return bd.addUserFreelancerProject(email, password, nameProject);
+    public ResponseEntity addUserFreelancerProject(@PathVariable String email, @PathVariable String password, @PathVariable String nameProject){
+        bd.addUserFreelancerProject(email, password, nameProject);
+        return ResponseEntity.status(201).build();
     }
 }

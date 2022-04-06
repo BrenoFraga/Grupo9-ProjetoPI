@@ -20,8 +20,8 @@ public class CompanyController {
     }
 
     @GetMapping //verificar responseEntity
-    public List<UserContactorCompany> getCompany() {
-        return bd.contactorCompanies;
+    public ResponseEntity getCompany() {
+        return ResponseEntity.status(201).body(bd.contactorCompanies);
     }
 
     @DeleteMapping("/{email}/{password}")

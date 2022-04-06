@@ -21,8 +21,8 @@ public class ContactorPersonController {
     }
 
     @GetMapping //verificar responseEntity
-    public List<UserContactorPerson> getContactorPerson(){
-        return bd.contactorPersons;
+    public ResponseEntity getContactorPerson(){
+        return ResponseEntity.status(201).body(bd.contactorPersons);
     }
 
     @DeleteMapping("/{email}/{password}")

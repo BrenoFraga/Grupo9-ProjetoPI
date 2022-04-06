@@ -2,6 +2,7 @@ package com.projectfindr.controller;
 
 import com.projectfindr.model.UserFreelancer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,28 +14,31 @@ public class FreelancerController {
     private BancoService bd;
 
     @PostMapping
-    public String addUserFreelancer(@RequestBody UserFreelancer freelancer){
+    public ResponseEntity addUserFreelancer(@RequestBody UserFreelancer freelancer){
         bd.addUserFreelancer(freelancer);
-        return "Usuário cadastrado com sucesso!";
+        return ResponseEntity.status(201).build();
     }
 
     @GetMapping
-    public List<UserFreelancer> getFreelancer(){
-        return bd.freelancers;
+    public ResponseEntity getFreelancer(){
+        return ResponseEntity.status(201).body(bd.freelancers);
     }
 
     @DeleteMapping("/{email}/{password}")
-    public String deleteUserFreelancer(@PathVariable String email, @PathVariable String password){
-        return bd.deleteUserFreelancer(email, password);
+    public ResponseEntity deleteUserFreelancer(@PathVariable String email, @PathVariable String password){
+        bd.deleteUserFreelancer(email, password);
+        return ResponseEntity.status(201).build();
     }
 
     @PostMapping("/login/{email}/{password}")
-    public String setLoginFreelancer(@PathVariable String email, @PathVariable String password){
-        return bd.setLoginFreelancer(email, password);
+    public ResponseEntity setLoginFreelancer(@PathVariable String email, @PathVariable String password){
+        bd.setLoginFreelancer(email, password);
+        return ResponseEntity.status(201).build();
     }
 
     @PostMapping("/logoff/{email}/{password}")
-    public String setLogoffFreelancer(@PathVariable String email, @PathVariable String password){
-        return bd.setLogoffFreelancer(email, password);
+    public ResponseEntity setLogoffFreelancer(@PathVariable String email, @PathVariable String password){
+        bd.setLogoffFreelancer(email, password);
+        return ResponseEntity.status(201).build();
     }
 }
