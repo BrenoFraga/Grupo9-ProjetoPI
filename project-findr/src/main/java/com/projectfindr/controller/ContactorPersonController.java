@@ -3,6 +3,7 @@ package com.projectfindr.controller;
 import com.projectfindr.model.UserContactorCompany;
 import com.projectfindr.model.UserContactorPerson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,28 +15,31 @@ public class ContactorPersonController {
     private BancoService bd;
 
     @PostMapping
-    public String addUserContactorPerson(@RequestBody UserContactorPerson contactorPerson){
+    public ResponseEntity addUserContactorPerson(@RequestBody UserContactorPerson contactorPerson){
         bd.addUserContactorPerson(contactorPerson);
-        return "Contratante cadastrado com sucesso!";
+        return ResponseEntity.status(201).build();
     }
 
-    @GetMapping
+    @GetMapping //verificar responseEntity
     public List<UserContactorPerson> getContactorPerson(){
         return bd.contactorPersons;
     }
 
     @DeleteMapping("/{email}/{password}")
-    public String deleteUserContactorPerson(@PathVariable String email, @PathVariable String password){
-        return bd.deleteUserContactorPerson(email, password);
+    public ResponseEntity deleteUserContactorPerson(@PathVariable String email, @PathVariable String password){
+        bd.deleteUserContactorPerson(email, password);
+        return ResponseEntity.status(201).build();
     }
 
     @PostMapping("/login/{email}/{password}")
-    public String setLoginContactorPerson(@PathVariable String email, @PathVariable String password){
-        return bd.setLoginContactorPerson(email, password);
+    public ResponseEntity setLoginContactorPerson(@PathVariable String email, @PathVariable String password){
+        bd.setLoginContactorPerson(email, password);
+        return ResponseEntity.status(201).build();
     }
 
     @PostMapping("/logoff/{email}/{password}")
-    public String setLogoffContactorPerson(@PathVariable String email, @PathVariable String password){
-        return bd.setLogoffContactorPerson(email, password);
+    public ResponseEntity setLogoffContactorPerson(@PathVariable String email, @PathVariable String password){
+        bd.setLogoffContactorPerson(email, password);
+        return ResponseEntity.status(201).build();
     }
 }

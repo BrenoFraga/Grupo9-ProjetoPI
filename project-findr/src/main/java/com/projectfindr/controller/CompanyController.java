@@ -2,6 +2,7 @@ package com.projectfindr.controller;
 
 import com.projectfindr.model.UserContactorCompany;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,29 +14,32 @@ public class CompanyController {
     private BancoService bd;
 
     @PostMapping
-    public String addUserContactorCompany(@RequestBody UserContactorCompany company) {
+    public ResponseEntity addUserContactorCompany(@RequestBody UserContactorCompany company) {
         bd.addUserContactorCompany(company);
-        return "Empresa cadastrada com sucesso!";
+        return ResponseEntity.status(201).build();
     }
 
-    @GetMapping
+    @GetMapping //verificar responseEntity
     public List<UserContactorCompany> getCompany() {
         return bd.contactorCompanies;
     }
 
     @DeleteMapping("/{email}/{password}")
-    public String deleteUserContactorCompany(@PathVariable String email, @PathVariable String password) {
-        return bd.deleteUserContactorCompany(email, password);
+    public ResponseEntity deleteUserContactorCompany(@PathVariable String email, @PathVariable String password) {
+         bd.deleteUserContactorCompany(email, password);
+        return ResponseEntity.status(201).build();
     }
 
     @PostMapping("/login/{email}/{password}")
-    public String setLoginCompany(@PathVariable String email, @PathVariable String password) {
-        return bd.setLoginCompany(email, password);
+    public ResponseEntity setLoginCompany(@PathVariable String email, @PathVariable String password) {
+        bd.setLoginCompany(email, password);
+        return ResponseEntity.status(201).build();
     }
 
     @PostMapping("/logoff/{email}/{password}")
-    public String setLogoffCompany(@PathVariable String email, @PathVariable String password) {
-        return bd.setLogoffCompany(email, password);
+    public ResponseEntity setLogoffCompany(@PathVariable String email, @PathVariable String password) {
+        bd.setLogoffCompany(email, password);
+        return ResponseEntity.status(201).build();
     }
 }
 
