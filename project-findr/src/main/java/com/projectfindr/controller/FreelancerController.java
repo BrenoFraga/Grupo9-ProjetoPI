@@ -1,5 +1,6 @@
 package com.projectfindr.controller;
 
+import com.projectfindr.model.Project;
 import com.projectfindr.model.UserFreelancer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +40,12 @@ public class FreelancerController {
     @PostMapping("/logoff/{email}/{password}")
     public ResponseEntity setLogoffFreelancer(@PathVariable String email, @PathVariable String password){
         bd.setLogoffFreelancer(email, password);
+        return ResponseEntity.status(201).build();
+    }
+
+    @GetMapping("/history/{user}")
+    public ResponseEntity getUserHistory(@PathVariable String user){
+        bd.getUserHistory(user);
         return ResponseEntity.status(201).build();
     }
 }

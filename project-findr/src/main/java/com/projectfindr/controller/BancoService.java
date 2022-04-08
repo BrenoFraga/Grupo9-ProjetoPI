@@ -302,4 +302,26 @@ public class BancoService {
             return "Projeto não encontrado";
         }
     }
+
+    public String getUserHistory(String nomeUser){
+        nomeUser = "";
+        String nomeProjetoUser = "";
+        String[] historicoUser = new String[projects.size()];
+        Boolean userExists = false;
+        for (int i = 0; i < projects.size(); i++) {
+            if(projects.get(i).getProfissionals().contains(nomeUser)){
+                userExists = true;
+                if(userExists){
+                    for (Project p:projects) {
+                        if(p.getProfissionals().contains(nomeUser)){
+                            nomeProjetoUser = projects.get(i).getNameProject();
+                            historicoUser[i] = nomeProjetoUser;
+                            return "Histórico do usuário atualizado!";
+                        }
+                    }
+                }
+            }
+        }
+        return "Usuário e/ou projeto não encontrado(s)";
+    }
 }
