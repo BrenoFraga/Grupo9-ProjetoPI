@@ -2,6 +2,7 @@ package findr.projectfindr.controller;
 
 import findr.projectfindr.model.UserFreelancer;
 import findr.projectfindr.repository.FreelancerRepository;
+import findr.projectfindr.repository.SpecialtyRepository;
 import findr.projectfindr.resposta.LoginResposta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,33 +16,62 @@ public class FreelancerController {
 
     @Autowired
     private FreelancerRepository bd;
+    @Autowired
+    private SpecialtyRepository specialty;
 
     @PostMapping
     public ResponseEntity addUserFreelancer(@RequestBody @Valid UserFreelancer freelancer) {
-        bd.save(freelancer);
-        return ResponseEntity.status(200).build();
+        try {
+            bd.save(freelancer);
+        }catch (Exception e){
+            return ResponseEntity.status(406).build();
+        }
+        return ResponseEntity.status(201).build();
     }
 
     @GetMapping
     public ResponseEntity getFreelancer() {
+        if (bd.findAll().isEmpty()){
+            return ResponseEntity.status(204).body(bd.findAll());
+        }
         return ResponseEntity.status(200).body(bd.findAll());
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity deleteFreelancer(@PathVariable Long id) {
-        bd.deleteById(id);
-        return ResponseEntity.status(201).build();
+        if (bd.existsById(id)){
+            bd.deleteById(id);
+            return ResponseEntity.status(200).body(bd.findAll());
+        }
+        return ResponseEntity.status(404).build();
     }
 
-    @GetMapping("/login")
-    public ResponseEntity getFreelancerLogin(@RequestBody LoginResposta login) {
-        bd.findByEmailAndPassword(login.getEmail(), login.getPassword());
-        return ResponseEntity.status(200).build();
+    @PostMapping("/login")
+    public ResponseEntity setLoginFreelancer(@RequestBody LoginResposta login) {
+        if (!bd.findByEmailAndPassword(login.getEmail(), login.getPassword()).isEmpty()){
+            bd.atualizarOnline(login.getEmail(), login.getPassword(), true);
+            return ResponseEntity.status(201).build();
+        }
+        return ResponseEntity.status(401).build();
     }
 
-    @GetMapping("/logoff")
-    public ResponseEntity getFreelancerLogoff(@RequestBody LoginResposta logoff) {
-        return ResponseEntity.status(200).body(bd.findByEmailAndPassword(logoff.getEmail(), logoff.getPassword()));
+    @PostMapping("/logoff")
+    public ResponseEntity setLogoffFreelancer(@RequestBody LoginResposta logoff) {
+        if (!bd.findByEmailAndPassword(logoff.getEmail(), logoff.getPassword()).isEmpty()){
+            bd.atualizarOnline(logoff.getEmail(), logoff.getPassword(), false);
+            return ResponseEntity.status(201).build();
+        }
+        return ResponseEntity.status(401).build();
+    }
+
+    @GetMapping("/specialtys/{idFreelancer}")
+    public ResponseEntity mySpecialtys(@PathVariable Integer idFreelancer){
+        if (specialty.findByFkFreelancer(idFreelancer).isEmpty()){
+            return ResponseEntity.status(204).build();
+        }else if (!bd.existsById(idFreelancer.longValue())){
+            return ResponseEntity.status(404).build();
+        }
+        return ResponseEntity.status(200).body(specialty.findByFkFreelancer(idFreelancer));
     }
 }
 

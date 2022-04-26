@@ -2,6 +2,7 @@ package findr.projectfindr.controller;
 
 import findr.projectfindr.model.Contactor;
 import findr.projectfindr.repository.ContactorRepository;
+import findr.projectfindr.repository.ProjectRepository;
 import findr.projectfindr.resposta.LoginResposta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,32 +14,58 @@ public class ContactorPersonController {
     @Autowired
     private ContactorRepository bd;
 
+    @Autowired
+    private ProjectRepository projects;
+
     @PostMapping
-    public ResponseEntity addUserContactorCompany(@RequestBody Contactor company) {
-        bd.save(company);
+    public ResponseEntity addUserContactorPerson(@RequestBody Contactor company) {
+        try {
+            bd.save(company);
+        }catch (Exception e){
+            return ResponseEntity.status(406).build();
+        }
         return ResponseEntity.status(200).build();
     }
 
     @GetMapping //verificar responseEntity
-    public ResponseEntity getCompany() {
+    public ResponseEntity getPerson() {
+        if (bd.findAll().isEmpty()){
+            return ResponseEntity.status(204).body(bd.findAll());
+        }
         return ResponseEntity.status(200).body(bd.findAll());
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteUserContactorCompany(@PathVariable Long id) {
-        bd.deleteById(id);
-        return ResponseEntity.status(200).build();
+    public ResponseEntity deleteUserContactorPerson(@PathVariable Long id) {
+        if (bd.existsById(id)){
+            bd.deleteById(id);
+            return ResponseEntity.status(200).body(bd.findAll());
+        }
+        return ResponseEntity.status(204).build();
     }
 
     @PostMapping("/login")
-    public ResponseEntity setLoginCompany(@RequestBody LoginResposta login) {
-        bd.findByEmailAndPassword(login.getEmail(), login.getPassword());
-        return ResponseEntity.status(200).build();
+    public ResponseEntity setLoginPerson(@RequestBody LoginResposta login) {
+        if (!bd.findByEmailAndPassword(login.getEmail(), login.getPassword()).isEmpty()){
+            return ResponseEntity.status(200).build();
+        }
+        return ResponseEntity.status(204).build();
     }
 
     @PostMapping("/logoff")
-    public ResponseEntity setLogoffCompany(@RequestBody LoginResposta logoff) {
-        bd.findByEmailAndPassword(logoff.getEmail(), logoff.getPassword());
-        return ResponseEntity.status(200).build();
+    public ResponseEntity setLogoffPerson(@RequestBody LoginResposta logoff) {
+        if (!bd.findByEmailAndPassword(logoff.getEmail(), logoff.getPassword()).isEmpty()){
+            return ResponseEntity.status(200).build();
+        }
+        return ResponseEntity.status(204).build();
+    }
+
+    @GetMapping("/projects/{idCompany}")
+    public ResponseEntity myProjects(@PathVariable Integer idCompany){
+        if (projects.findByFkContactor(idCompany).isEmpty()){
+            return ResponseEntity.status(204).build();
+        }
+        return ResponseEntity.status(200).body(projects.findByFkContactor(idCompany));
     }
 }
+

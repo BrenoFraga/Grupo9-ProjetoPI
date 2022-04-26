@@ -14,24 +14,37 @@ public class SpecialtyController {
 
     @PostMapping
     public ResponseEntity addSpecialty(@RequestBody SpecialtyModel specialty){
-        bd.save(specialty);
+        try {
+            bd.save(specialty);
+        }catch (Exception e){
+            return ResponseEntity.status(406).build();
+        }
         return ResponseEntity.status(200).build();
     }
 
     @GetMapping
     public ResponseEntity getSpecialty(){
+        if (bd.findAll().isEmpty()){
+            return ResponseEntity.status(204).body(bd.findAll());
+        }
         return ResponseEntity.status(200).body(bd.findAll());
     }
 
 
     @GetMapping("/{technology}")
     public ResponseEntity getTecnologias(@PathVariable String technology){
+        if (bd.findByTechnologyUsed(technology).isEmpty()){
+            return ResponseEntity.status(204).build();
+        }
         return ResponseEntity.status(200).body(bd.findByTechnologyUsed(technology));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity deleteSpecialty(@PathVariable Long id){
-        bd.deleteById(id);
-        return ResponseEntity.status(200).build();
+        if (bd.existsById(id)){
+            bd.deleteById(id);
+            return ResponseEntity.status(200).body(bd.findAll());
+        }
+        return ResponseEntity.status(204).build();
     }
 }

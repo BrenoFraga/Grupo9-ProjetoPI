@@ -27,6 +27,19 @@ public abstract class User {
 
     private String city;
 
+    public User(String name, String email, String password, String phoneContact, String country, String state, String city) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.phoneContact = phoneContact;
+        this.country = country;
+        this.state = state;
+        this.city = city;
+    }
+
+    protected User() {
+    }
+
     public String getName() {
         return name;
     }

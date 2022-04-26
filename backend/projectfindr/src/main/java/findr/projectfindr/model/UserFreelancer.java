@@ -17,9 +17,24 @@ public class UserFreelancer extends User{
 
     private String avaliableTime;
 
+    private Boolean online = false;
+
     private Integer fkStatusFreelancer;
 
     private Integer fkPlanFreelancer;
+
+    public UserFreelancer() {
+    }
+
+    public UserFreelancer(String name, String email, String password, String phoneContact, String country, String state, String city, Long idUserFreelancer, String cpf, String avaliableTime, Integer fkStatusFreelancer, Integer fkPlanFreelancer) {
+        super(name, email, password, phoneContact, country, state, city);
+        this.idUserFreelancer = idUserFreelancer;
+        this.cpf = cpf;
+        this.avaliableTime = avaliableTime;
+        this.online = false;
+        this.fkStatusFreelancer = fkStatusFreelancer;
+        this.fkPlanFreelancer = fkPlanFreelancer;
+    }
 
     public Long getIdUserFreelancer() {
         return idUserFreelancer;
@@ -60,4 +75,14 @@ public class UserFreelancer extends User{
     public void setFkPlanFreelancer(Integer fkPlanFreelancer) {
         this.fkPlanFreelancer = fkPlanFreelancer;
     }
+
+    public Boolean getOnline() {
+        return online;
+    }
+
+    public void setOnline(Boolean online) {
+        this.online = online;
+    }
+
+
 }

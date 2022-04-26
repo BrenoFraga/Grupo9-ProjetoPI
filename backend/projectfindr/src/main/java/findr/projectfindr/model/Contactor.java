@@ -15,9 +15,23 @@ public class Contactor extends User {
 
     private String document;
 
+    private Boolean online = false;
+
     private Integer fkStatusContactor;
 
     private Integer fkPlanContactor;
+
+    public Contactor() {
+    }
+
+    public Contactor(String name, String email, String password, String phoneContact, String country, String state, String city, Long idContactor, String document, Integer fkStatusContactor, Integer fkPlanContactor) {
+        super(name, email, password, phoneContact, country, state, city);
+        this.idContactor = idContactor;
+        this.document = document;
+        this.online = false;
+        this.fkStatusContactor = fkStatusContactor;
+        this.fkPlanContactor = fkPlanContactor;
+    }
 
     public Long getIdContactor() {
         return idContactor;
@@ -49,5 +63,13 @@ public class Contactor extends User {
 
     public void setFkPlanContactor(Integer fkPlanContactor) {
         this.fkPlanContactor = fkPlanContactor;
+    }
+
+    public Boolean getOnline() {
+        return online;
+    }
+
+    public void setOnline(Boolean online) {
+        this.online = online;
     }
 }
