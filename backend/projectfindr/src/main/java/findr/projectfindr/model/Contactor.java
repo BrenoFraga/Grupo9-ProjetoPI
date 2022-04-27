@@ -1,10 +1,14 @@
 package findr.projectfindr.model;
 
 
+import org.hibernate.validator.constraints.br.CNPJ;
+import org.hibernate.validator.constraints.br.CPF;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Contactor extends User {
@@ -13,12 +17,18 @@ public class Contactor extends User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idContactor;
 
+    @CPF
+    @CNPJ
+    @NotNull
     private String document;
 
+    @NotNull
     private Boolean online = false;
 
+    @NotNull
     private Integer fkStatusContactor;
 
+    @NotNull
     private Integer fkPlanContactor;
 
     public Contactor() {
@@ -71,5 +81,16 @@ public class Contactor extends User {
 
     public void setOnline(Boolean online) {
         this.online = online;
+    }
+
+    @Override
+    public String toString() {
+        return  "idContactor=" + idContactor +","+
+                super.toString()+
+                ", document='" + document + '\'' +
+                ", online=" + online +
+                ", fkStatusContactor=" + fkStatusContactor +
+                ", fkPlanContactor=" + fkPlanContactor +
+                '}';
     }
 }

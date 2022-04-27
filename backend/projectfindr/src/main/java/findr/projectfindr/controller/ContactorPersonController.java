@@ -24,7 +24,7 @@ public class ContactorPersonController {
         }catch (Exception e){
             return ResponseEntity.status(406).build();
         }
-        return ResponseEntity.status(200).build();
+        return ResponseEntity.status(201).build();
     }
 
     @GetMapping //verificar responseEntity
@@ -47,14 +47,16 @@ public class ContactorPersonController {
     @PostMapping("/login")
     public ResponseEntity setLoginPerson(@RequestBody LoginResposta login) {
         if (!bd.findByEmailAndPassword(login.getEmail(), login.getPassword()).isEmpty()){
+            bd.atualizarOnline(login.getEmail(), login.getPassword(), true);
             return ResponseEntity.status(200).build();
         }
         return ResponseEntity.status(204).build();
     }
 
-    @PostMapping("/logoff")
+    @DeleteMapping("/logoff")
     public ResponseEntity setLogoffPerson(@RequestBody LoginResposta logoff) {
         if (!bd.findByEmailAndPassword(logoff.getEmail(), logoff.getPassword()).isEmpty()){
+            bd.atualizarOnline(logoff.getEmail(), logoff.getPassword(), false);
             return ResponseEntity.status(200).build();
         }
         return ResponseEntity.status(204).build();

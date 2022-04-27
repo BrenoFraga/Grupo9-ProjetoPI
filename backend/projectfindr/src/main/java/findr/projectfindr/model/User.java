@@ -95,4 +95,15 @@ public abstract class User {
     public void setCity(String city) {
         this.city = city;
     }
+
+    @Override
+    public String toString() {
+        return  "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneContact='" + phoneContact + '\'' +
+                ", country='" + country + '\'' +
+                ", state='" + state + '\'' +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }

@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+
 public class ProjectModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -78,5 +79,18 @@ public class ProjectModel {
 
     public void setFkContactor(Integer fkContactor) {
         this.fkContactor = fkContactor;
+    }
+
+    @Override
+    public String toString() {
+        return "ProjectModel{" +
+                "idProjectContactor=" + idProjectContactor +
+                ", nameProject='" + nameProject + '\'' +
+                ", descriptionProject='" + descriptionProject + '\'' +
+                ", requiredArea='" + requiredArea + '\'' +
+                ", requiredLanguages='" + requiredLanguages + '\'' +
+                ", quantityProfissionals=" + quantityProfissionals +
+                ", fkContactor=" + fkContactor +
+                '}';
     }
 }

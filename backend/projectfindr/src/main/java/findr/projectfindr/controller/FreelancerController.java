@@ -55,7 +55,7 @@ public class FreelancerController {
         return ResponseEntity.status(401).build();
     }
 
-    @PostMapping("/logoff")
+    @DeleteMapping ("/logoff")
     public ResponseEntity setLogoffFreelancer(@RequestBody LoginResposta logoff) {
         if (!bd.findByEmailAndPassword(logoff.getEmail(), logoff.getPassword()).isEmpty()){
             bd.atualizarOnline(logoff.getEmail(), logoff.getPassword(), false);

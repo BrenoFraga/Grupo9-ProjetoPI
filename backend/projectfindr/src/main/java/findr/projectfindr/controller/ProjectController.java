@@ -22,7 +22,7 @@ public class ProjectController {
         }catch (Exception e){
             return ResponseEntity.status(406).build();
         }
-        return ResponseEntity.status(200).build();
+        return ResponseEntity.status(201).build();
     }
 
     @GetMapping
