@@ -3,7 +3,7 @@ package findr.projectfindr.controller;
 import findr.projectfindr.model.UserFreelancer;
 import findr.projectfindr.repository.FreelancerRepository;
 import findr.projectfindr.repository.SpecialtyRepository;
-import findr.projectfindr.resposta.LoginResposta;
+import findr.projectfindr.request.LoginRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -47,7 +47,7 @@ public class FreelancerController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity setLoginFreelancer(@RequestBody LoginResposta login) {
+    public ResponseEntity setLoginFreelancer(@RequestBody LoginRequest login) {
         if (!bd.findByEmailAndPassword(login.getEmail(), login.getPassword()).isEmpty()){
             bd.atualizarOnline(login.getEmail(), login.getPassword(), true);
             return ResponseEntity.status(201).build();
@@ -56,7 +56,7 @@ public class FreelancerController {
     }
 
     @DeleteMapping ("/logoff")
-    public ResponseEntity setLogoffFreelancer(@RequestBody LoginResposta logoff) {
+    public ResponseEntity setLogoffFreelancer(@RequestBody LoginRequest logoff) {
         if (!bd.findByEmailAndPassword(logoff.getEmail(), logoff.getPassword()).isEmpty()){
             bd.atualizarOnline(logoff.getEmail(), logoff.getPassword(), false);
             return ResponseEntity.status(201).build();

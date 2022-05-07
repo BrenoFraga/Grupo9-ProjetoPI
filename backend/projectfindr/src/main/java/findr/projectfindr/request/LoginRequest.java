@@ -1,13 +1,13 @@
-package findr.projectfindr.resposta;
+package findr.projectfindr.request;
 
 import javax.validation.constraints.Email;
 
-public class LoginResposta {
+public class LoginRequest {
     @Email
     private String email;
     private String password;
 
-    public LoginResposta(String email, String password) {
+    public LoginRequest(String email, String password) {
         this.email = email;
         this.password = password;
     }

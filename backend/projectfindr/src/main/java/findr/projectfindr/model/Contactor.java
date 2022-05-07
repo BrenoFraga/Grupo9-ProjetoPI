@@ -17,18 +17,18 @@ public class Contactor extends User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idContactor;
 
-    @CPF
-    @CNPJ
-    @NotNull
+    //@CPF
+   // @CNPJ
+    //NotNull
     private String document;
 
-    @NotNull
+    //@NotNull
     private Boolean online = false;
 
-    @NotNull
+    //@NotNull
     private Integer fkStatusContactor;
 
-    @NotNull
+   // @NotNull
     private Integer fkPlanContactor;
 
     public Contactor() {
