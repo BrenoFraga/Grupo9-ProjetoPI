@@ -60,34 +60,6 @@ public class CompanyController {
     }
 
 
-    /*//feito - validar
-    @PostMapping("/login")
-    public ResponseEntity setLoginCompany(@RequestBody LoginRequest login) {
-
-            Contactor contactorAtual = bd.showByEmailAndPass(login.getEmail(), login.getPassword());
-
-        if (contactorAtual != null){
-            this.idContactor = contactorAtual.getIdContactor();
-            this.online = contactorAtual.getOnline();
-            this.senha = login.getPassword();
-
-           bd.atualizarOnline(this.idContactor, true);
-
-            return ResponseEntity.status(200).build();
-        }
-
-        return ResponseEntity.status(204).build();
-    }
-
-    //feito - validar
-    @PostMapping("/logoff")
-    public ResponseEntity setLogoffCompany(@RequestBody LoginRequest logoff) {
-        if (this.online){
-            bd.atualizarOnline(this.idContactor, false);
-            return ResponseEntity.status(200).build();
-        }
-        return ResponseEntity.status(204).build();
-    }*/
 
 
     //feito - validar
