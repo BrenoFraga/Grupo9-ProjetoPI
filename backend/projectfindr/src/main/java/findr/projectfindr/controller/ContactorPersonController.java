@@ -25,7 +25,13 @@ public class ContactorPersonController {
     private Boolean online;
     private String senha;
 
+    public Long getIdContactor() {
+        return idContactor;
+    }
 
+    public Boolean getOnline() {
+        return online;
+    }
 
     @PostMapping
     public ResponseEntity addUserContactorPerson(@RequestBody Contactor company) {
@@ -79,7 +85,8 @@ public class ContactorPersonController {
     @PostMapping("/logoff")
     public ResponseEntity setLogoffCompany(@RequestBody LoginRequest logoff) {
         if (this.online){
-            bd.atualizarOnline(this.idContactor, false);
+            this.online = false;
+            bd.atualizarOnline(this.idContactor, this.online);
             return ResponseEntity.status(200).build();
         }
         return ResponseEntity.status(204).build();
@@ -87,7 +94,7 @@ public class ContactorPersonController {
 
 
     //feito-validar
-    @GetMapping("/projects/{idCompany}")
+    @GetMapping("/projects/")
     public ResponseEntity myProjects(){
         List<ProjectModel> projetos = bd.showAllProjectsContactor(this.idContactor);
         if (projetos.isEmpty()){

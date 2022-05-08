@@ -12,6 +12,14 @@ public class SpecialtyController {
     @Autowired
     private SpecialtyRepository bd;
 
+    FreelancerController freelancerAtual = new FreelancerController();
+
+    public FreelancerController getFreelancerAtual() {
+        return  freelancerAtual;
+    }
+    // fk do freelancer para fazer a manipulação dos dados
+    private Long fkFreelancer = getFreelancerAtual().getIdFreelancer();
+
     @PostMapping
     public ResponseEntity addSpecialty(@RequestBody SpecialtyModel specialty){
         try {

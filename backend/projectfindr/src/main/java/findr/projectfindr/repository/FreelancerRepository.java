@@ -1,6 +1,8 @@
 package findr.projectfindr.repository;
 
 
+import findr.projectfindr.model.Contactor;
+import findr.projectfindr.model.SpecialtyModel;
 import findr.projectfindr.model.UserFreelancer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -18,6 +20,14 @@ public interface FreelancerRepository extends JpaRepository<UserFreelancer,Long>
 
     @Transactional
     @Modifying
-    @Query("update UserFreelancer s set s.online = ?3 where s.email = ?1 and s.password = ?2")
-    void atualizarOnline(String email, String password, Boolean online);
+    @Query("update UserFreelancer s set s.online = ?2 where s.idUserFreelancer = ?1 ")
+    void atualizarOnline(Long idFreelancer, Boolean online);
+
+    @Transactional
+    @Query("select s from SpecialtyModel s where s.fkFreelancer = ?1")
+    List<SpecialtyModel> showAllSpecialty(Long fkFreelancer);
+
+    @Transactional
+    @Query("select f from UserFreelancer f where f.email = ?1 and f.password = ?2")
+    UserFreelancer showByEmailAndPass(String email, String password);
 }
