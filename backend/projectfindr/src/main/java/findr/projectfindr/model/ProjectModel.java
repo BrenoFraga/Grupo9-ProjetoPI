@@ -23,7 +23,6 @@ public class ProjectModel {
 
     private Integer quantityProfissionals;
 
-    private Integer fkContactor;
 
     public Long getIdProjectContactor() {
         return idProjectContactor;
@@ -73,14 +72,6 @@ public class ProjectModel {
         this.quantityProfissionals = quantityProfissionals;
     }
 
-    public Integer getFkContactor() {
-        return fkContactor;
-    }
-
-    public void setFkContactor(Integer fkContactor) {
-        this.fkContactor = fkContactor;
-    }
-
     @Override
     public String toString() {
         return "ProjectModel{" +
@@ -90,7 +81,6 @@ public class ProjectModel {
                 ", requiredArea='" + requiredArea + '\'' +
                 ", requiredLanguages='" + requiredLanguages + '\'' +
                 ", quantityProfissionals=" + quantityProfissionals +
-                ", fkContactor=" + fkContactor +
-                '}';
+                "'}'";
     }
 }

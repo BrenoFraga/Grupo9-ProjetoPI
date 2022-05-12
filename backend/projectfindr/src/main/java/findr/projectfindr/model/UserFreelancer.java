@@ -1,10 +1,7 @@
 package findr.projectfindr.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class UserFreelancer extends User{
@@ -19,9 +16,8 @@ public class UserFreelancer extends User{
 
     private Boolean online = false;
 
-    private Integer fkStatusFreelancer;
-
-    private Integer fkPlanFreelancer;
+    @ManyToOne
+    private SpecialtyModel specialtyModel;
 
     public UserFreelancer() {
     }
@@ -32,8 +28,10 @@ public class UserFreelancer extends User{
         this.cpf = cpf;
         this.avaliableTime = avaliableTime;
         this.online = false;
-        this.fkStatusFreelancer = fkStatusFreelancer;
-        this.fkPlanFreelancer = fkPlanFreelancer;
+    }
+
+    public SpecialtyModel getSpecialtyModel() {
+        return specialtyModel;
     }
 
     public Long getIdUserFreelancer() {
@@ -60,22 +58,6 @@ public class UserFreelancer extends User{
         this.avaliableTime = avaliableTime;
     }
 
-    public Integer getFkStatusFreelancer() {
-        return fkStatusFreelancer;
-    }
-
-    public void setFkStatusFreelancer(Integer fkStatusFreelancer) {
-        this.fkStatusFreelancer = fkStatusFreelancer;
-    }
-
-    public Integer getFkPlanFreelancer() {
-        return fkPlanFreelancer;
-    }
-
-    public void setFkPlanFreelancer(Integer fkPlanFreelancer) {
-        this.fkPlanFreelancer = fkPlanFreelancer;
-    }
-
     public Boolean getOnline() {
         return online;
     }
@@ -83,6 +65,5 @@ public class UserFreelancer extends User{
     public void setOnline(Boolean online) {
         this.online = online;
     }
-
 
 }

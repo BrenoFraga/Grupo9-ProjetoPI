@@ -4,10 +4,7 @@ package findr.projectfindr.model;
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -26,10 +23,8 @@ public class Contactor extends User {
     private Boolean online = false;
 
     //@NotNull
-    private Integer fkStatusContactor;
-
-   // @NotNull
-    private Integer fkPlanContactor;
+    @ManyToOne
+    private ProjectModel projectModel;
 
     public Contactor() {
     }
@@ -39,8 +34,10 @@ public class Contactor extends User {
         this.idContactor = idContactor;
         this.document = document;
         this.online = false;
-        this.fkStatusContactor = fkStatusContactor;
-        this.fkPlanContactor = fkPlanContactor;
+    }
+
+    public ProjectModel getProjectModel() {
+        return projectModel;
     }
 
     public Long getIdContactor() {
@@ -59,22 +56,6 @@ public class Contactor extends User {
         this.document = document;
     }
 
-    public Integer getFkStatusContactor() {
-        return fkStatusContactor;
-    }
-
-    public void setFkStatusContactor(Integer fkStatusContactor) {
-        this.fkStatusContactor = fkStatusContactor;
-    }
-
-    public Integer getFkPlanContactor() {
-        return fkPlanContactor;
-    }
-
-    public void setFkPlanContactor(Integer fkPlanContactor) {
-        this.fkPlanContactor = fkPlanContactor;
-    }
-
     public Boolean getOnline() {
         return online;
     }
@@ -89,8 +70,6 @@ public class Contactor extends User {
                 super.toString()+
                 ", document='" + document + '\'' +
                 ", online=" + online +
-                ", fkStatusContactor=" + fkStatusContactor +
-                ", fkPlanContactor=" + fkPlanContactor +
-                '}';
+                "'}'";
     }
 }

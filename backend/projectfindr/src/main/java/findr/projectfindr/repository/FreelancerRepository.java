@@ -23,9 +23,9 @@ public interface FreelancerRepository extends JpaRepository<UserFreelancer,Long>
     @Query("update UserFreelancer s set s.online = ?2 where s.idUserFreelancer = ?1 ")
     void atualizarOnline(Long idFreelancer, Boolean online);
 
-    @Transactional
-    @Query("select s from SpecialtyModel s where s.fkFreelancer = ?1")
-    List<SpecialtyModel> showAllSpecialty(Long fkFreelancer);
+//    @Transactional
+//    @Query("select s from SpecialtyModel s where s.fkFreelancer = ?1")
+//    List<SpecialtyModel> showAllSpecialty(Long fkFreelancer);
 
     @Transactional
     @Query("select f from UserFreelancer f where f.email = ?1 and f.password = ?2")

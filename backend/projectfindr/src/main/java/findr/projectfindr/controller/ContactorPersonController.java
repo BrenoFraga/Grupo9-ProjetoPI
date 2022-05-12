@@ -94,13 +94,13 @@ public class ContactorPersonController {
 
 
     //feito-validar
-    @GetMapping("/projects/")
-    public ResponseEntity myProjects(){
-        List<ProjectModel> projetos = bd.showAllProjectsContactor(this.idContactor);
-        if (projetos.isEmpty()){
-            return ResponseEntity.status(204).build();
-        }
-        return ResponseEntity.status(200).body(projetos);
-    }
+//    @GetMapping("/projects/")
+//    public ResponseEntity myProjects(){
+//        List<ProjectModel> projetos = bd.showAllProjectsContactor(this.idContactor);
+//        if (projetos.isEmpty()){
+//            return ResponseEntity.status(204).build();
+//        }
+//        return ResponseEntity.status(200).body(projetos);
+//    }
 }
 

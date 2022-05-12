@@ -99,14 +99,14 @@ public class FreelancerController {
 
 
     //feito - validar
-    @GetMapping("/specialtys/")
-    public ResponseEntity mySpecialtys(){
-        List<SpecialtyModel> especialidades = bd.showAllSpecialty(this.idFreelancer);
-        if (especialidades.isEmpty()){
-            return ResponseEntity.status(204).build();
-        }
-        return ResponseEntity.status(200).body(especialidades);
-    }
+//    @GetMapping("/specialtys/")
+//    public ResponseEntity mySpecialtys(){
+//        List<SpecialtyModel> especialidades = bd.showAllSpecialty(this.idFreelancer);
+//        if (especialidades.isEmpty()){
+//            return ResponseEntity.status(204).build();
+//        }
+//        return ResponseEntity.status(200).body(especialidades);
+//    }
 }
 
 

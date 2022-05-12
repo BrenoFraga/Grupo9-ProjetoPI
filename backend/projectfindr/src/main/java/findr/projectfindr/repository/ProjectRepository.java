@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ProjectRepository extends JpaRepository<ProjectModel, Long> {
 
-    List<ProjectModel> findByFkContactor(Integer idContactor);
+//    List<ProjectModel> findByFkContactor(Integer idContactor);
 }

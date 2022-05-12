@@ -13,7 +13,7 @@ public class SpecialtyModel {
     private String occupationArea;
     private String technologyUsed;
     private String levelKnowledge;
-    private Integer fkFreelancer;
+
 
     public Long getIdSpecialty() {
         return idSpecialty;
@@ -47,11 +47,4 @@ public class SpecialtyModel {
         this.levelKnowledge = levelKnowledge;
     }
 
-    public Integer getFkFreelancer() {
-        return fkFreelancer;
-    }
-
-    public void setFkFreelancer(Integer fkFreelancer) {
-        this.fkFreelancer = fkFreelancer;
-    }
 }
