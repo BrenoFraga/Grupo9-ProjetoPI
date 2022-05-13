@@ -20,14 +20,6 @@ public class CompanyController {
     @Autowired
     private ProjectRepository projects;
 
-    //Ao fazer login o serviço vai atribuir a essas variáveis os valores necessários,
-    // então para usar em outros lugares vai ficar mais facil
-    private Long idContactor;
-    private Boolean online;
-    private String senha;
-
-
-
     //verificar esse método
     @PostMapping
     public ResponseEntity addUserContactorCompany(@RequestBody Contactor company) {
@@ -50,25 +42,22 @@ public class CompanyController {
 
 
     //feito - validar
-    @DeleteMapping("/{password}")
-    public ResponseEntity deleteUserContactorCompany(@PathVariable String password) {
-        if (password.equals(this.senha)){
-            bd.deleteById(this.idContactor);
-            return ResponseEntity.status(200).body(bd.findAll());
-        }
-        return ResponseEntity.status(204).build();
-    }
-
-
-
+//    @DeleteMapping("/{password}")
+//    public ResponseEntity deleteUserContactorCompany(@PathVariable String password) {
+//        if (password.equals(this.senha)){
+//            bd.deleteById(this.idContactor);
+//            return ResponseEntity.status(200).body(bd.findAll());
+//        }
+//        return ResponseEntity.status(204).build();
+//    }
 
     //feito - validar
-//   @GetMapping("/projects")
-//   public ResponseEntity myProjects(){
-//       List<ProjectModel> projetos = bd.showAllProjectsContactor(this.idContactor);
-//        if (projetos.isEmpty()){
-//            return ResponseEntity.status(204).build();
-//        }
-//        return ResponseEntity.status(200).body(projetos);
-//   }
+   @GetMapping("/projects/idConctator")
+   public ResponseEntity myProjects(@PathVariable long idContactor){
+       List<ProjectModel> projetos = bd.showAllProjectsContactor(idContactor);
+        if (projetos.isEmpty()){
+            return ResponseEntity.status(204).build();
+        }
+        return ResponseEntity.status(200).body(projetos);
+   }
 }

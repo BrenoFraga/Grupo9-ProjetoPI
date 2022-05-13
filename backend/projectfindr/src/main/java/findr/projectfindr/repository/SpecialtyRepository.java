@@ -9,6 +9,6 @@ public interface SpecialtyRepository extends JpaRepository<SpecialtyModel, Long>
 
     List<SpecialtyModel> findByTechnologyUsed(String technologyUsed);
 
-//    List<SpecialtyModel> findByFkFreelancer(Integer fkFreelancer);
+    List<SpecialtyModel> findByUserFreelancer(Integer fkFreelancer);
 
 }

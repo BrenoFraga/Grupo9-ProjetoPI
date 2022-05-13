@@ -22,9 +22,6 @@ public class Contactor extends User {
     //@NotNull
     private Boolean online = false;
 
-    //@NotNull
-    @ManyToOne
-    private ProjectModel projectModel;
 
     public Contactor() {
     }
@@ -34,10 +31,6 @@ public class Contactor extends User {
         this.idContactor = idContactor;
         this.document = document;
         this.online = false;
-    }
-
-    public ProjectModel getProjectModel() {
-        return projectModel;
     }
 
     public Long getIdContactor() {

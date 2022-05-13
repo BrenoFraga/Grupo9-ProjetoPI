@@ -1,10 +1,7 @@
 package findr.projectfindr.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 
@@ -23,6 +20,12 @@ public class ProjectModel {
 
     private Integer quantityProfissionals;
 
+    @ManyToOne
+    private Contactor contactor;
+
+    public Contactor getContactor() {
+        return contactor;
+    }
 
     public Long getIdProjectContactor() {
         return idProjectContactor;

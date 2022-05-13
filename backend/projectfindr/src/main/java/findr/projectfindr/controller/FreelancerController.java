@@ -22,21 +22,6 @@ public class FreelancerController {
     @Autowired
     private SpecialtyRepository specialty;
 
-    private Long idFreelancer;
-    private Boolean online;
-    private int fkStatusFreelancer;
-    private int fkPlanFreelancer;
-    private String senha;
-
-
-    public Long getIdFreelancer() {
-        return idFreelancer;
-    }
-
-    public Boolean getOnline() {
-        return online;
-    }
-
     @PostMapping
     public ResponseEntity addUserFreelancer(@RequestBody @Valid UserFreelancer freelancer) {
         try {
@@ -73,11 +58,7 @@ public class FreelancerController {
         UserFreelancer freelancerAtual = bd.showByEmailAndPass(login.getEmail(), login.getPassword());
 
         if (freelancerAtual != null){
-            this.idFreelancer = freelancerAtual.getIdUserFreelancer();
-            this.online = freelancerAtual.getOnline();
-            this.senha = login.getPassword();
-
-            bd.atualizarOnline(this.idFreelancer, this.online);
+            bd.atualizarOnline(freelancerAtual.getIdUserFreelancer(), true);
 
             return ResponseEntity.status(200).build();
         }else{
@@ -86,27 +67,24 @@ public class FreelancerController {
     }
 
     //feito - validar
-    @DeleteMapping ("/logoff")
-    public ResponseEntity setLogoffFreelancer(@RequestBody LoginRequest logoff) {
-            if(this.online) {
-                this.online = false;
-                bd.atualizarOnline(this.idFreelancer, this.online);
-                return ResponseEntity.status(201).build();
-            }
-        return ResponseEntity.status(204).build();
-
-    }
-
-
-    //feito - validar
-//    @GetMapping("/specialtys/")
-//    public ResponseEntity mySpecialtys(){
-//        List<SpecialtyModel> especialidades = bd.showAllSpecialty(this.idFreelancer);
-//        if (especialidades.isEmpty()){
-//            return ResponseEntity.status(204).build();
-//        }
-//        return ResponseEntity.status(200).body(especialidades);
+//    @DeleteMapping ("/logoff/{idFreelancer")
+//    public ResponseEntity setLogoffFreelancer(@PathVariable long idFreelancer) {
+//        bd.atualizarOnline(idFreelancer, false);
+//        return ResponseEntity.status(201).build();
 //    }
+
+
+//    feito - validar
+    @GetMapping("/specialtys/{idFreelancer}")
+    public ResponseEntity mySpecialtys(
+            @PathVariable long idFreelancer
+    ){
+        List<SpecialtyModel> especialidades = bd.showAllSpecialty(idFreelancer);
+        if (especialidades.isEmpty()){
+            return ResponseEntity.status(204).build();
+        }
+        return ResponseEntity.status(200).body(especialidades);
+    }
 }
 
 

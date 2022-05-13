@@ -28,8 +28,8 @@ public interface ContactorRepository extends JpaRepository<Contactor,Long> {
 
 
     //trazer todos os projetos de um Contactor
-//    @Transactional
-//    @Query("select p from ProjectModel p where p.fkContactor = ?1")
-//    List<ProjectModel> showAllProjectsContactor(Long fkContactor);
+    @Transactional
+    @Query("select p from ProjectModel p where p.contactor.idContactor = ?1")
+    List<ProjectModel> showAllProjectsContactor(Long fkContactor);
 
 }

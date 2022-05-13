@@ -16,9 +16,6 @@ public class UserFreelancer extends User{
 
     private Boolean online = false;
 
-    @ManyToOne
-    private SpecialtyModel specialtyModel;
-
     public UserFreelancer() {
     }
 
@@ -30,9 +27,6 @@ public class UserFreelancer extends User{
         this.online = false;
     }
 
-    public SpecialtyModel getSpecialtyModel() {
-        return specialtyModel;
-    }
 
     public Long getIdUserFreelancer() {
         return idUserFreelancer;

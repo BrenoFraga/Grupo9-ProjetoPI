@@ -1,9 +1,6 @@
 package findr.projectfindr.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class SpecialtyModel {
@@ -14,7 +11,12 @@ public class SpecialtyModel {
     private String technologyUsed;
     private String levelKnowledge;
 
+    @ManyToOne
+    private UserFreelancer userFreelancer;
 
+    public UserFreelancer getUserFreelancer() {
+        return userFreelancer;
+    }
     public Long getIdSpecialty() {
         return idSpecialty;
     }
