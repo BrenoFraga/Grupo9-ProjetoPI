@@ -27,7 +27,9 @@ public abstract class User {
 
     private String city;
 
-    public User(String name, String email, String password, String phoneContact, String country, String state, String city) {
+    private String avaliableTime;
+
+    public User(String name, String email, String password, String phoneContact, String country, String state, String city, String avaliableTime) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -35,6 +37,7 @@ public abstract class User {
         this.country = country;
         this.state = state;
         this.city = city;
+        this.avaliableTime = avaliableTime;
     }
 
     protected User() {
@@ -96,14 +99,11 @@ public abstract class User {
         this.city = city;
     }
 
-    @Override
-    public String toString() {
-        return  "name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneContact='" + phoneContact + '\'' +
-                ", country='" + country + '\'' +
-                ", state='" + state + '\'' +
-                ", city='" + city + '\'' +
-                '}';
+    public String getAvaliableTime() {
+        return avaliableTime;
+    }
+
+    public void setAvaliableTime(String avaliableTime) {
+        this.avaliableTime = avaliableTime;
     }
 }

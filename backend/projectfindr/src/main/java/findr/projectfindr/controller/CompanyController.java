@@ -20,38 +20,7 @@ public class CompanyController {
     @Autowired
     private ProjectRepository projects;
 
-    //verificar esse método
-    @PostMapping
-    public ResponseEntity addUserContactorCompany(@RequestBody Contactor company) {
-        try {
-            bd.save(company);
-        }catch (Exception e){
-            return ResponseEntity.status(406).build();
-        }
-        return ResponseEntity.status(201).build();
-    }
 
-    //esse find all vai trazer o que ? e esse getCompany vai servir para que ?
-    @GetMapping //verificar responseEntity
-    public ResponseEntity getCompany() {
-        if (bd.findAll().isEmpty()){
-            return ResponseEntity.status(204).body(bd.findAll());
-        }
-        return ResponseEntity.status(200).body(bd.findAll());
-    }
-
-
-    //feito - validar
-//    @DeleteMapping("/{password}")
-//    public ResponseEntity deleteUserContactorCompany(@PathVariable String password) {
-//        if (password.equals(this.senha)){
-//            bd.deleteById(this.idContactor);
-//            return ResponseEntity.status(200).body(bd.findAll());
-//        }
-//        return ResponseEntity.status(204).build();
-//    }
-
-    //feito - validar
    @GetMapping("/projects/idConctator")
    public ResponseEntity myProjects(@PathVariable long idContactor){
        List<ProjectModel> projetos = bd.showAllProjectsContactor(idContactor);

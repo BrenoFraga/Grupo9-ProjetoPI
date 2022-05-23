@@ -15,10 +15,10 @@ public interface ContactorRepository extends JpaRepository<Contactor,Long> {
 
 
     //seta se o usuário tá online ou offline
-    @Transactional
-    @Modifying
-    @Query("update Contactor c set c.online = ?2 where c.idContactor = ?1")
-    void atualizarOnline(Long idContactor, Boolean online);
+   // @Transactional
+   //@Modifying
+   // @Query("update Contactor c set c.online = ?2 where c.idContactor = ?1")
+   // void atualizarOnline(Long idContactor, Boolean online);
 
 
     //trazer um unico contactor de acordo com o email e senha

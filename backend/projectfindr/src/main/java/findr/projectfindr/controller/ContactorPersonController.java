@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/person")
+@RequestMapping("/contactor")
 public class ContactorPersonController {
     @Autowired
     private ContactorRepository bd;
@@ -54,7 +54,6 @@ public class ContactorPersonController {
     public ResponseEntity setLoginCompany(@RequestBody LoginRequest login) {
         Contactor contactorAtual = bd.showByEmailAndPass(login.getEmail(), login.getPassword());
         if (contactorAtual != null){
-            bd.atualizarOnline(contactorAtual.getIdContactor(), true);
             return ResponseEntity.status(200).build();
         }else{
         return ResponseEntity.status(204).build();
@@ -62,13 +61,13 @@ public class ContactorPersonController {
     }
 
     //feito - validar
-    @PostMapping("/logoff/{idContactor}")
-    public ResponseEntity setLogoffCompany(
-            @PathVariable long idContactor
-    ) {
-            bd.atualizarOnline(idContactor, false);
-            return ResponseEntity.status(200).build();
-    }
+   // @PostMapping("/logoff/{idContactor}")
+   // public ResponseEntity setLogoffCompany(
+   //         @PathVariable long idContactor
+  //  ) {
+
+  //          return ResponseEntity.status(200).build();
+  //  }
 
 
     //feito-validar

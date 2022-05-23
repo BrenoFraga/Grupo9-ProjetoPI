@@ -19,18 +19,17 @@ public class Contactor extends User {
     //NotNull
     private String document;
 
-    //@NotNull
-    private Boolean online = false;
+
 
 
     public Contactor() {
     }
 
-    public Contactor(String name, String email, String password, String phoneContact, String country, String state, String city, Long idContactor, String document, Integer fkStatusContactor, Integer fkPlanContactor) {
-        super(name, email, password, phoneContact, country, state, city);
+    public Contactor(String name, String email, String password, String phoneContact, String country, String state, String city, String avaliableTime, Long idContactor, String document) {
+        super(name, email, password, phoneContact, country, state, city, avaliableTime);
         this.idContactor = idContactor;
         this.document = document;
-        this.online = false;
+
     }
 
     public Long getIdContactor() {
@@ -49,20 +48,5 @@ public class Contactor extends User {
         this.document = document;
     }
 
-    public Boolean getOnline() {
-        return online;
-    }
 
-    public void setOnline(Boolean online) {
-        this.online = online;
-    }
-
-    @Override
-    public String toString() {
-        return  "idContactor=" + idContactor +","+
-                super.toString()+
-                ", document='" + document + '\'' +
-                ", online=" + online +
-                "'}'";
-    }
 }

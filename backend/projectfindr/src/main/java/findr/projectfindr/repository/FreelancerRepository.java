@@ -18,10 +18,10 @@ public interface FreelancerRepository extends JpaRepository<UserFreelancer,Long>
 
     List<UserFreelancer> findByEmailAndPassword(String email, String password);
 
-    @Transactional
-    @Modifying
-    @Query("update UserFreelancer s set s.online = ?2 where s.idUserFreelancer = ?1 ")
-    void atualizarOnline(Long idFreelancer, Boolean online);
+   // @Transactional
+   // @Modifying
+   // @Query("update UserFreelancer s set s.online = ?2 where s.idUserFreelancer = ?1 ")
+   // void atualizarOnline(Long idFreelancer, Boolean online);
 
     @Transactional
     @Query("select s from SpecialtyModel s where s.userFreelancer.idUserFreelancer = ?1")

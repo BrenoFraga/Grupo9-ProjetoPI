@@ -4,28 +4,19 @@ package findr.projectfindr.model;
 import javax.persistence.*;
 
 @Entity
-
+@Table(name = "register_project_contacotr")
 public class ProjectModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProjectContactor;
-
     private String nameProject;
-
     private String descriptionProject;
-
     private String requiredArea;
-
     private String requiredLanguages;
-
     private Integer quantityProfissionals;
 
     @ManyToOne
     private Contactor contactor;
-
-    public Contactor getContactor() {
-        return contactor;
-    }
 
     public Long getIdProjectContactor() {
         return idProjectContactor;
@@ -75,15 +66,8 @@ public class ProjectModel {
         this.quantityProfissionals = quantityProfissionals;
     }
 
-    @Override
-    public String toString() {
-        return "ProjectModel{" +
-                "idProjectContactor=" + idProjectContactor +
-                ", nameProject='" + nameProject + '\'' +
-                ", descriptionProject='" + descriptionProject + '\'' +
-                ", requiredArea='" + requiredArea + '\'' +
-                ", requiredLanguages='" + requiredLanguages + '\'' +
-                ", quantityProfissionals=" + quantityProfissionals +
-                "'}'";
+    public Contactor getContactor() {
+        return contactor;
     }
+
 }

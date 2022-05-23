@@ -3,6 +3,7 @@ package findr.projectfindr.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "register_specialty_freelancer")
 public class SpecialtyModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

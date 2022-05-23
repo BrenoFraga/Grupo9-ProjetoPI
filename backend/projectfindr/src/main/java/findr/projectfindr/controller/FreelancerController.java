@@ -53,18 +53,18 @@ public class FreelancerController {
 
 
     //feito - validar
+
     @PostMapping("/login")
     public ResponseEntity setLoginFreelancer(@RequestBody LoginRequest login) {
         UserFreelancer freelancerAtual = bd.showByEmailAndPass(login.getEmail(), login.getPassword());
-
         if (freelancerAtual != null){
-            bd.atualizarOnline(freelancerAtual.getIdUserFreelancer(), true);
-
             return ResponseEntity.status(200).build();
         }else{
             return ResponseEntity.status(204).build();
         }
     }
+
+
 
     //feito - validar
 //    @DeleteMapping ("/logoff/{idFreelancer")
