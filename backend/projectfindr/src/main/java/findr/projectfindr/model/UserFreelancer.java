@@ -10,19 +10,21 @@ public class UserFreelancer extends User{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUserFreelancer;
 
-    private String cpf;
 
-    public UserFreelancer(String name, String email, String password, String phoneContact, String country, String state, String city, String avaliableTime, Long idUserFreelancer, String cpf) {
-        super(name, email, password, phoneContact, country, state, city, avaliableTime);
+    private long avaliableTime;
+
+    @ManyToOne
+    private Plans fkPlanFreelancer;
+
+    public UserFreelancer(String name, String email, String password, String cpf, String cnpj, String phoneContact, String country, String state, String city, Long idUserFreelancer, long avaliableTime, Plans fkPlanFreelancer) {
+        super(name, email, password, cpf, cnpj, phoneContact, country, state, city);
         this.idUserFreelancer = idUserFreelancer;
-        this.cpf = cpf;
+        this.avaliableTime = avaliableTime;
+        this.fkPlanFreelancer = fkPlanFreelancer;
     }
 
     public UserFreelancer() {
     }
-
-
-
 
     public Long getIdUserFreelancer() {
         return idUserFreelancer;
@@ -32,16 +34,21 @@ public class UserFreelancer extends User{
         this.idUserFreelancer = idUserFreelancer;
     }
 
-    public String getCpf() {
-        return cpf;
+
+
+    public long getAvaliableTime() {
+        return avaliableTime;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setAvaliableTime(long avaliableTime) {
+        this.avaliableTime = avaliableTime;
     }
 
+    public Plans getFkPlanFreelancer() {
+        return fkPlanFreelancer;
+    }
 
-
-
-
+    public void setFkPlanFreelancer(Plans fkPlanFreelancer) {
+        this.fkPlanFreelancer = fkPlanFreelancer;
+    }
 }

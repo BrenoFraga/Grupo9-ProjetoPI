@@ -17,19 +17,18 @@ public class Contactor extends User {
     //@CPF
    // @CNPJ
     //NotNull
-    private String document;
-
-
-
+    @ManyToOne
+    private Plans fkPlanContactor;
 
     public Contactor() {
+
+
     }
 
-    public Contactor(String name, String email, String password, String phoneContact, String country, String state, String city, String avaliableTime, Long idContactor, String document) {
-        super(name, email, password, phoneContact, country, state, city, avaliableTime);
+    public Contactor(String name, String email, String password, String cpf, String cnpj, String phoneContact, String country, String state, String city, Long idContactor, Plans fkPlanContactor) {
+        super(name, email, password, cpf, cnpj, phoneContact, country, state, city);
         this.idContactor = idContactor;
-        this.document = document;
-
+        this.fkPlanContactor = fkPlanContactor;
     }
 
     public Long getIdContactor() {
@@ -40,13 +39,11 @@ public class Contactor extends User {
         this.idContactor = idContactor;
     }
 
-    public String getDocument() {
-        return document;
+    public Plans getFkPlanContactor() {
+        return fkPlanContactor;
     }
 
-    public void setDocument(String document) {
-        this.document = document;
+    public void setFkPlanContactor(Plans fkPlanContactor) {
+        this.fkPlanContactor = fkPlanContactor;
     }
-
-
 }

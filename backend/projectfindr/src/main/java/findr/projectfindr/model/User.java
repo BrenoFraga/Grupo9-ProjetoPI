@@ -19,6 +19,9 @@ public abstract class User {
 
     private String password;
 
+    private String cpf;
+    private String cnpj;
+
     private String phoneContact;
 
     private String country;
@@ -27,17 +30,17 @@ public abstract class User {
 
     private String city;
 
-    private String avaliableTime;
 
-    public User(String name, String email, String password, String phoneContact, String country, String state, String city, String avaliableTime) {
+    public User(String name, String email, String password, String cpf, String cnpj, String phoneContact, String country, String state, String city) {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.cpf = cpf;
+        this.cnpj = cnpj;
         this.phoneContact = phoneContact;
         this.country = country;
         this.state = state;
         this.city = city;
-        this.avaliableTime = avaliableTime;
     }
 
     protected User() {
@@ -65,6 +68,22 @@ public abstract class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     public String getPhoneContact() {
@@ -97,13 +116,5 @@ public abstract class User {
 
     public void setCity(String city) {
         this.city = city;
-    }
-
-    public String getAvaliableTime() {
-        return avaliableTime;
-    }
-
-    public void setAvaliableTime(String avaliableTime) {
-        this.avaliableTime = avaliableTime;
     }
 }
