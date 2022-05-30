@@ -4,7 +4,7 @@ package findr.projectfindr.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "register_project_contacotr")
+@Table(name = "register_project_contactor")
 public class ProjectModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
