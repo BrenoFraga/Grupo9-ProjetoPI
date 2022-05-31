@@ -6,6 +6,7 @@ import findr.projectfindr.model.UserFreelancer;
 import findr.projectfindr.repository.FreelancerRepository;
 import findr.projectfindr.repository.SpecialtyRepository;
 import findr.projectfindr.request.LoginRequest;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,9 @@ public class FreelancerController {
     private SpecialtyRepository specialty;
 
     @PostMapping
+    @Operation(summary = "Cadastra novos freelancers",description =
+            "Irá cadastrar um novo freelancer informado no banco de dados",
+            tags = {"API freelancer"})
     public ResponseEntity addUserFreelancer(@RequestBody @Valid UserFreelancer freelancer) {
         try {
             bd.save(freelancer);
@@ -33,6 +37,9 @@ public class FreelancerController {
     }
 
     @GetMapping
+    @Operation(summary = "Consulta de novos freelancers",description =
+            "Irá consultar todos os freelancers que existem no bando de dados",
+            tags = {"API freelancer"})
     public ResponseEntity getFreelancer() {
         if (bd.findAll().isEmpty()){
             return ResponseEntity.status(204).body(bd.findAll());
@@ -43,6 +50,9 @@ public class FreelancerController {
 
     //rever esse
     @DeleteMapping("/{id}")
+    @Operation(summary = "Deleta por id",description =
+            "Irá deletar do banco de dados um freelancer de acordo com id",
+            tags = {"API freelancer"})
     public ResponseEntity deleteFreelancer(@PathVariable Long id) {
         if (bd.existsById(id)){
             bd.deleteById(id);
@@ -55,6 +65,9 @@ public class FreelancerController {
     //feito - validar
 
     @PostMapping("/login")
+    @Operation(summary = "Login de freelancer",description =
+            "Irá consultar um freelancer informado para realizar o login",
+            tags = {"API freelancer"})
     public ResponseEntity setLoginFreelancer(@RequestBody LoginRequest login) {
         UserFreelancer freelancerAtual = bd.findByEmailAndPassword(login.getEmail(), login.getPassword());
         if (freelancerAtual != null){
@@ -76,6 +89,9 @@ public class FreelancerController {
 
 //    feito - validar
     @GetMapping("/specialtys/{idFreelancer}")
+    @Operation(summary = "Consulta as especialidades de um freelancer",description =
+            "Irá consultar no banco de dados as especialidades de um freelancer especifico",
+            tags = {"API freelancer"})
     public ResponseEntity mySpecialtys(
             @PathVariable long idFreelancer
     ){
