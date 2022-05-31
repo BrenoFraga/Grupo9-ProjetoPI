@@ -3,6 +3,7 @@ package findr.projectfindr.controller;
 import findr.projectfindr.model.Plans;
 import findr.projectfindr.model.UserFreelancer;
 import findr.projectfindr.repository.PlanRepository;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,9 @@ public class PlanController {
     private PlanRepository repository;
 
     @GetMapping
+    @Operation(summary = "Consulta de planos disponiveis no banco de dados",description =
+            "Irá consultar os planos de usuários no banco de dados",
+            tags = {"API planos"})
     private ResponseEntity getPlans(){
         if (repository.findAll().isEmpty()){
             return ResponseEntity.status(204).body(repository.findAll());
@@ -24,6 +28,9 @@ public class PlanController {
     }
 
     @PostMapping
+    @Operation(summary = "Registrar planos no banco de dados",description =
+            "Irá registrar no banco de dados planos de usuários novos",
+            tags = {"API planos"})
     public ResponseEntity salvarPlan(@RequestBody Plans plan){
         try {
             repository.save(plan);

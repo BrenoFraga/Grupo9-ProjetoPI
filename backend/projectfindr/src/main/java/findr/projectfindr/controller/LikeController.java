@@ -2,6 +2,7 @@ package findr.projectfindr.controller;
 
 import findr.projectfindr.repository.LikeFreelancerRepository;
 import findr.projectfindr.repository.LikeProjectRepository;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +25,9 @@ public class LikeController {
     //get like project
     //post like contactor
     @GetMapping("/freelancer")
+    @Operation(summary = "Registros de 'likes' de freelancers",description =
+            "Irá consultar os likes recebidos pelos freelancers no banco de dados",
+            tags = {"API match"})
     public ResponseEntity getlikeFreelancer(){
         if (likeFreelancerRepository.findAll().isEmpty()){
             return ResponseEntity.status(204).body(likeFreelancerRepository.findAll());
@@ -32,6 +36,9 @@ public class LikeController {
     }
 
     @GetMapping("/project")
+    @Operation(summary = "Registros de 'likes' de projetos",description =
+            "Irá consultar os likes recebidos pelos projetos no banco de dados",
+            tags = {"API match"})
     public ResponseEntity getlikeProject(){
         if (likeProjectRepository.findAll().isEmpty()){
             return ResponseEntity.status(204).body(likeProjectRepository.findAll());

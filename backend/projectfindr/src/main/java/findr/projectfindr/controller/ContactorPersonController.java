@@ -5,9 +5,11 @@ import findr.projectfindr.model.ProjectModel;
 import findr.projectfindr.repository.ContactorRepository;
 import findr.projectfindr.repository.ProjectRepository;
 import findr.projectfindr.request.LoginRequest;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
@@ -21,6 +23,9 @@ public class ContactorPersonController {
     private ProjectRepository projects;
 
     @PostMapping
+    @Operation(summary = "Cadastra novos contratantes",description =
+            "Irá cadastrar um novo contratante informado no banco de dados",
+                tags = {"API contactor"})
     public ResponseEntity addUserContactorPerson(@RequestBody Contactor company) {
         try {
             bd.save(company);
@@ -31,6 +36,9 @@ public class ContactorPersonController {
     }
 
     @GetMapping //verificar responseEntity
+    @Operation(summary = "Consulta de contratantes",description =
+            "Irá trazer todos os contratantes cadastrados no banco de dados",
+            tags = {"API contactor"})
     public ResponseEntity getPerson() {
         if (!bd.findAll().isEmpty()){
             return ResponseEntity.status(200).body(bd.findAll());
@@ -51,6 +59,9 @@ public class ContactorPersonController {
 
     //feito - validar
     @PostMapping("/login")
+    @Operation(summary = "Login de contratantes",description =
+            "Consulta um unico usuário de acordo com o email e senha informados",
+            tags = {"API contactor"})
     public ResponseEntity setLoginCompany(@RequestBody LoginRequest login) {
         Contactor contactorAtual = bd.showByEmailAndPass(login.getEmail(), login.getPassword());
         if (contactorAtual != null){
@@ -72,6 +83,9 @@ public class ContactorPersonController {
 
     //feito-validar
     @GetMapping("/projects/{idContactor}")
+    @Operation(summary = "Cadastra novos de projetos",description =
+            "Irá cadastrar um novo projeto informado no banco de dados",
+            tags = {"API contactor"})
     public ResponseEntity myProjects(
             @PathVariable long idContactor
     ){
