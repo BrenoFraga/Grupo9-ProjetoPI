@@ -16,7 +16,7 @@ public interface FreelancerRepository extends JpaRepository<UserFreelancer,Long>
 //    @Query("select new com.projectfindr.resposta.LoginResposta(s.email, s.password) from UserFreelancer s")
 //    List<LoginResposta>listaLogin();
 
-    List<UserFreelancer> findByEmailAndPassword(String email, String password);
+    UserFreelancer findByEmailAndPassword(String email, String password);
 
    // @Transactional
    // @Modifying

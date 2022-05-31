@@ -56,11 +56,11 @@ public class FreelancerController {
 
     @PostMapping("/login")
     public ResponseEntity setLoginFreelancer(@RequestBody LoginRequest login) {
-        UserFreelancer freelancerAtual = bd.showByEmailAndPass(login.getEmail(), login.getPassword());
+        UserFreelancer freelancerAtual = bd.findByEmailAndPassword(login.getEmail(), login.getPassword());
         if (freelancerAtual != null){
             return ResponseEntity.status(200).build();
         }else{
-            return ResponseEntity.status(204).build();
+            return ResponseEntity.status(404).build();
         }
     }
 
