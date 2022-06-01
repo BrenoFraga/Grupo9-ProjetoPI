@@ -25,6 +25,9 @@ public class pkLikeFreelancer implements Serializable {
         this.fkContactor = fkContactor;
     }
 
+    public pkLikeFreelancer() {
+    }
+
     public UserFreelancer getFkFreelancer() {
         return fkFreelancer;
     }

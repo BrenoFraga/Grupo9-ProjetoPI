@@ -19,11 +19,10 @@ public class Contactor extends User {
    // @CNPJ
     //NotNull
     @ManyToOne
+    @JoinColumn(name = "fk_plan_contactor_id_plan")
     private Plans fkPlanContactor;
 
     public Contactor() {
-
-
     }
 
     public Contactor(String name, String email, String password, String cpf, String cnpj, String phoneContact, String country, String state, String city, Long idContactor, Plans fkPlanContactor) {

@@ -11,9 +11,13 @@ public class LikeProject extends Like {
     @EmbeddedId
     private pkLikeProject idLikeProject;
 
-    public LikeProject(Date dateHour, char evaluation, pkLikeProject idLikeProject) {
+    public LikeProject(Date dateHour, boolean evaluation, pkLikeProject idLikeProject) {
         super(dateHour, evaluation);
         this.idLikeProject = idLikeProject;
+    }
+
+    public LikeProject() {
+
     }
 
     public pkLikeProject getIdLikeProject() {

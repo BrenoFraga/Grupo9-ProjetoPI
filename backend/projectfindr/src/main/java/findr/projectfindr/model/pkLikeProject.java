@@ -33,6 +33,9 @@ public class pkLikeProject implements Serializable {
         this.fkProject = fkProject;
     }
 
+    public pkLikeProject() {
+    }
+
     public UserFreelancer getFkFreelancer() {
         return fkFreelancer;
     }

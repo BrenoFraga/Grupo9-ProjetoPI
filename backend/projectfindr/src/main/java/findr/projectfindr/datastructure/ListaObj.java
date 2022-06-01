@@ -1,9 +1,12 @@
 package findr.projectfindr.datastructure;
 
+import java.util.List;
+
 public class ListaObj <T> {
 
     private T[] vetor;
     private int nroElem;
+    private Object H;
 
     public ListaObj(int tamanho) {
         vetor = (T[]) new Object[tamanho];
@@ -37,7 +40,11 @@ public class ListaObj <T> {
         nroElem--;
         return true;
     }
-
+    public void exibe() {
+            for (int i = nroElem; i >= 0; i--) {
+                System.out.println(vetor[i]);
+            }
+    }
     public boolean removeElemento(T elementoARemover) {
         return removePeloIndice(busca(elementoARemover));
     }

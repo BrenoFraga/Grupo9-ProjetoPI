@@ -12,11 +12,14 @@ public abstract class Like {
 
     private Date dateHour;
 
-    private char evaluation;
+    private boolean evaluation;
 
-    public Like(Date dateHour, char evaluation) {
+    public Like(Date dateHour, boolean evaluation) {
         this.dateHour = dateHour;
         this.evaluation = evaluation;
+    }
+
+    protected Like() {
     }
 
     public Date getDateHour() {
@@ -27,11 +30,11 @@ public abstract class Like {
         this.dateHour = dateHour;
     }
 
-    public char getEvaluation() {
+    public boolean getEvaluation() {
         return evaluation;
     }
 
-    public void setEvaluation(char evaluation) {
+    public void setEvaluation(boolean evaluation) {
         this.evaluation = evaluation;
     }
 }

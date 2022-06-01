@@ -10,9 +10,13 @@ public class LikeFreelancer extends Like{
 @EmbeddedId
 private pkLikeFreelancer idLikeFreelancer;
 
-    public LikeFreelancer(Date dateHour, char evaluation, pkLikeFreelancer idLikeFreelancer) {
+    public LikeFreelancer(Date dateHour, boolean evaluation, pkLikeFreelancer idLikeFreelancer) {
         super(dateHour, evaluation);
         this.idLikeFreelancer = idLikeFreelancer;
+    }
+
+    public LikeFreelancer() {
+
     }
 
     public pkLikeFreelancer getIdLikeFreelancer() {

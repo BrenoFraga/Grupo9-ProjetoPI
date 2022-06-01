@@ -9,8 +9,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface LikeProjectRepository extends JpaRepository<LikeProject, pkLikeProject> {
-
-   // @Query("select a.fkContactor,a.fkFreelancer,b.fkContactor,b.fkFreelancer " +
-   //         "from LikeProject a inner join LikeFreelancer b on a.fkContactor = b.fkContactor and a.fkFreelancer = b.fkFreelancer")
-   // List<MatchResponse> trazerMatchFreelancer();
+    List<LikeProject> findByIdLikeProject_FkContactor_IdContactor(long c);
+    LikeProject findByIdLikeProject_FkContactor_IdContactorAndIdLikeProject_FkFreelancer_IdUserFreelancer(long c,long d);
 }

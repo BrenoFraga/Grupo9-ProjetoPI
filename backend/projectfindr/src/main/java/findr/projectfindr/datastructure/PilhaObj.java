@@ -1,5 +1,7 @@
 package findr.projectfindr.datastructure;
 
+import java.util.List;
+
 public class PilhaObj <T>{
 
     private T[] pilha;
@@ -36,6 +38,10 @@ public class PilhaObj <T>{
             return null;
         }
         return pilha[topo];
+    }
+
+    public T pegarPorElemento(int e){
+        return pilha[e];
     }
 
 }

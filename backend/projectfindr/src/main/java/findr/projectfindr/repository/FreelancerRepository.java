@@ -30,4 +30,7 @@ public interface FreelancerRepository extends JpaRepository<UserFreelancer,Long>
     @Transactional
     @Query("select f from UserFreelancer f where f.email = ?1 and f.password = ?2")
     UserFreelancer showByEmailAndPass(String email, String password);
+
+    UserFreelancer findByIdUserFreelancer(long f);
+
 }

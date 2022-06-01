@@ -32,4 +32,6 @@ public interface ContactorRepository extends JpaRepository<Contactor,Long> {
     @Query("select p from ProjectModel p where p.contactor.idContactor = ?1")
     List<ProjectModel> showAllProjectsContactor(Long fkContactor);
 
+    Contactor findByIdContactor(long f);
+
 }

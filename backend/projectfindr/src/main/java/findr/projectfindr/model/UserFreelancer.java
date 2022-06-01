@@ -14,6 +14,7 @@ public class UserFreelancer extends User{
     private long avaliableTime;
 
     @ManyToOne
+    @JoinColumn(name = "fk_plan_freelancer_id_plan")
     private Plans fkPlanFreelancer;
 
     public UserFreelancer(String name, String email, String password, String cpf, String cnpj, String phoneContact, String country, String state, String city, Long idUserFreelancer, long avaliableTime, Plans fkPlanFreelancer) {

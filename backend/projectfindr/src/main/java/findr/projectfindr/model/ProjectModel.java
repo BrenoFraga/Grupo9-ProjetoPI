@@ -16,6 +16,7 @@ public class ProjectModel {
     private Integer quantityProfissionals;
 
     @ManyToOne
+    @JoinColumn(name = "fk_contactor_id_contactor")
     private Contactor contactor;
 
     public Long getIdProjectContactor() {
