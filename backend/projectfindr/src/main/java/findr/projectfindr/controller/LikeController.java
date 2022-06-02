@@ -107,6 +107,9 @@ public class LikeController {
 
 
     @GetMapping("/get/project/{fkContactor}")
+    @Operation(summary = "Consulta de 'likes' de um projeto de um contratante",description =
+            "Irá buscar o like de projetos de um contratante especifico no banco de dados",
+            tags = {"API match"})
     public ResponseEntity getLikeProject(@PathVariable long fkContactor){
         List<LikeProject> lista = likeProjectRepository.findByIdLikeProject_FkContactor_IdContactor(fkContactor);
         return ResponseEntity.status(200).body(lista);
@@ -114,6 +117,9 @@ public class LikeController {
 
 
     @GetMapping("/get/freelancer/{fkFreelancer}")
+    @Operation(summary = "Consulta de 'likes' de um freelancer",description =
+            "Irá buscar o like de um freelancer especifico no banco de dados",
+            tags = {"API match"})
     public ResponseEntity getLikeFreelancer(@PathVariable long fkFreelancer){
         List<LikeFreelancer> lista = likeFreelancerRepository.findByIdLikeFreelancer_FkFreelancer_IdUserFreelancer(fkFreelancer);
         return ResponseEntity.status(200).body(lista);
@@ -125,6 +131,9 @@ public class LikeController {
     List<Match> exibicao = new ArrayList<>();
 
     @GetMapping("/match/{fkFreelancer}/{fkContactor}")
+    @Operation(summary = "Consulta se houve match de um usuário",description =
+            "Irá buscar checar se há registros iguais no banco para caracterizar o match",
+            tags = {"API match"})
     public ResponseEntity getMatchFreelancer(@PathVariable long fkFreelancer,@PathVariable long fkContactor){
         tamanho ++;
         LikeProject projetoSelecionado = likeProjectRepository.findByIdLikeProject_FkContactor_IdContactorAndIdLikeProject_FkFreelancer_IdUserFreelancer(fkContactor,fkFreelancer);
@@ -145,16 +154,5 @@ public class LikeController {
         }
         return ResponseEntity.status(204).build();
     }
-
-/*
-* para a apresentação lembrar: a pilha foi usada por uma questão de periodicidade já que o ultimo match sempre vai ficar no
-* topo da pilha
-* e a fila foi usada para notificação, já que o primeiro registro que entra é o primeiro que sai ou seja assim que o registro entrar
-* ele ja vai sair para notificar o usuário, claro que o banco também faz isso mas ja q tinha q usar lista eu usei :)
-*   *********não esquecer de explicar a logica para o pessoal*********
-* */
-
-
-
 
 }
