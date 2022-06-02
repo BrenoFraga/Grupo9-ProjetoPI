@@ -16,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/freelancer")
+@CrossOrigin
 public class FreelancerController {
 
     @Autowired
