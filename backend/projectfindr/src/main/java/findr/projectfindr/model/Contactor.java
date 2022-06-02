@@ -25,6 +25,10 @@ public class Contactor extends User {
     public Contactor() {
     }
 
+    public Contactor(String name, String email, String phoneContact, String country, String state, String city) {
+        super(name, email, phoneContact, country, state, city);
+    }
+
     public Contactor(String name, String email, String password, String cpf, String cnpj, String phoneContact, String country, String state, String city, Long idContactor, Plans fkPlanContactor) {
         super(name, email, password, cpf, cnpj, phoneContact, country, state, city);
         this.idContactor = idContactor;

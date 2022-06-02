@@ -19,6 +19,17 @@ public class ProjectModel {
     @JoinColumn(name = "fk_contactor_id_contactor")
     private Contactor contactor;
 
+    public ProjectModel(String nameProject, String descriptionProject, String requiredArea, String requiredLanguages, Integer quantityProfissionals) {
+        this.nameProject = nameProject;
+        this.descriptionProject = descriptionProject;
+        this.requiredArea = requiredArea;
+        this.requiredLanguages = requiredLanguages;
+        this.quantityProfissionals = quantityProfissionals;
+    }
+
+    public ProjectModel() {
+    }
+
     public Long getIdProjectContactor() {
         return idProjectContactor;
     }

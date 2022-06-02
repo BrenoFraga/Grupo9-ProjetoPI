@@ -43,7 +43,7 @@ public class ContactorPersonController {
         if (!bd.findAll().isEmpty()){
             return ResponseEntity.status(200).body(bd.findAll());
         }
-        return ResponseEntity.status(204).body(bd.findAll());
+        return ResponseEntity.status(204).build();
     }
 
 

@@ -43,6 +43,16 @@ public abstract class User {
         this.city = city;
     }
 
+    public User(String name, String email, String phoneContact, String country, String state, String city) {
+        this.name = name;
+        this.email = email;
+        this.phoneContact = phoneContact;
+        this.country = country;
+        this.state = state;
+        this.city = city;
+    }
+
+
     protected User() {
     }
 

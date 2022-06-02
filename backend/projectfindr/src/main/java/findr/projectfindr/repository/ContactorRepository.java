@@ -3,6 +3,7 @@ package findr.projectfindr.repository;
 import findr.projectfindr.model.Contactor;
 import findr.projectfindr.model.ProjectModel;
 import findr.projectfindr.request.LoginRequest;
+import findr.projectfindr.response.UserResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -33,5 +34,8 @@ public interface ContactorRepository extends JpaRepository<Contactor,Long> {
     List<ProjectModel> showAllProjectsContactor(Long fkContactor);
 
     Contactor findByIdContactor(long f);
+
+    @Query("select new findr.projectfindr.response.UserResponse(u.name, u.email, u.phoneContact, u.country, u.state, u.city) from Contactor u")
+    List<UserResponse> findAllUserResponse();
 
 }
