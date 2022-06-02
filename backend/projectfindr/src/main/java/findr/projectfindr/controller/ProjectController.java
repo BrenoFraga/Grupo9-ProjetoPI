@@ -65,12 +65,18 @@ public class ProjectController {
     }
 
     @GetMapping("/relatorio/ler")
+    @Operation(summary = "Leitura de arquivo csv",description =
+            "Irá ler os arquivos encontrados no banco",
+            tags = {"API arquivos"})
     public ResponseEntity getRelatorioLer(){
         leArquivoCsv("projetos");
         return ResponseEntity.status(200).build();
     }
 
     @GetMapping("/relatorio/gravar")
+    @Operation(summary = "Gravação de arquivo csv",description =
+            "Irá gravar registros em um arquivo",
+            tags = {"API arquivos"})
     public ResponseEntity getRelatorioGravar(){
 
         List<ProjectModel> todos =  bd.findAll();
@@ -90,6 +96,9 @@ public class ProjectController {
 
 
     @GetMapping("/documento/gravar")
+    @Operation(summary = "Gravação do documento de layout",description =
+            "Irá gravar arquivos de projetos e usuários em um arquivo",
+            tags = {"API arquivos"})
     public ResponseEntity getDocumentoLayoutGravar(){
         List<ProjectModel> projectModels = bd.findAll();
         ListaObj<ProjectModel> listaProjetos = new ListaObj(projectModels.size());
@@ -113,6 +122,9 @@ public class ProjectController {
     }
 
     @PostMapping(value = "/import-project", consumes = "multipart/form-data")
+    @Operation(summary = "Importação do documento de layout",description =
+            "Irá importar registros do documento de layout em um arquivo",
+            tags = {"API arquivos"})
     public ResponseEntity postNovoProjeto(
             @RequestBody MultipartFile newProject
     ){
