@@ -3,6 +3,9 @@ package findr.projectfindr.model;
 import findr.projectfindr.model.Contactor;
 import findr.projectfindr.model.ProjectModel;
 import findr.projectfindr.model.UserFreelancer;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -11,6 +14,7 @@ import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
 @Embeddable
+@Data
 public class pkLikeProject implements Serializable {
 
     @JoinColumn(name = "fk_freelancer_id_freelancer")
@@ -36,27 +40,4 @@ public class pkLikeProject implements Serializable {
     public pkLikeProject() {
     }
 
-    public UserFreelancer getFkFreelancer() {
-        return fkFreelancer;
-    }
-
-    public void setFkFreelancer(UserFreelancer fkFreelancer) {
-        this.fkFreelancer = fkFreelancer;
-    }
-
-    public Contactor getFkContactor() {
-        return fkContactor;
-    }
-
-    public void setFkContactor(Contactor fkContactor) {
-        this.fkContactor = fkContactor;
-    }
-
-    public ProjectModel getFkProject() {
-        return fkProject;
-    }
-
-    public void setFkProject(ProjectModel fkProject) {
-        this.fkProject = fkProject;
-    }
 }

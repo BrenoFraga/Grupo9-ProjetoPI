@@ -1,9 +1,16 @@
 package findr.projectfindr.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "register_specialty_freelancer")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class SpecialtyModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,39 +22,5 @@ public class SpecialtyModel {
     @ManyToOne
     private UserFreelancer userFreelancer;
 
-    public UserFreelancer getUserFreelancer() {
-        return userFreelancer;
-    }
-    public Long getIdSpecialty() {
-        return idSpecialty;
-    }
-
-    public void setIdSpecialty(Long idSpecialty) {
-        this.idSpecialty = idSpecialty;
-    }
-
-    public String getOccupationArea() {
-        return occupationArea;
-    }
-
-    public void setOccupationArea(String occupationArea) {
-        this.occupationArea = occupationArea;
-    }
-
-    public String getTechnologyUsed() {
-        return technologyUsed;
-    }
-
-    public void setTechnologyUsed(String technologyUsed) {
-        this.technologyUsed = technologyUsed;
-    }
-
-    public String getLevelKnowledge() {
-        return levelKnowledge;
-    }
-
-    public void setLevelKnowledge(String levelKnowledge) {
-        this.levelKnowledge = levelKnowledge;
-    }
 
 }

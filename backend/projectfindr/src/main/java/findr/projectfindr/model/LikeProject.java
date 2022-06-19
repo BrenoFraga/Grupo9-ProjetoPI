@@ -1,4 +1,8 @@
 package findr.projectfindr.model;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -6,6 +10,7 @@ import java.util.Date;
 
 
 @Entity
+@Data
 public class LikeProject extends Like {
 
     @EmbeddedId
@@ -18,13 +23,5 @@ public class LikeProject extends Like {
 
     public LikeProject() {
 
-    }
-
-    public pkLikeProject getIdLikeProject() {
-        return idLikeProject;
-    }
-
-    public void setIdLikeProject(pkLikeProject idLikeProject) {
-        this.idLikeProject = idLikeProject;
     }
 }

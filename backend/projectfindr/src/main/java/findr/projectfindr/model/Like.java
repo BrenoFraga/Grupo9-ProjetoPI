@@ -1,5 +1,9 @@
 package findr.projectfindr.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
@@ -8,6 +12,7 @@ import java.util.Date;
 
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.JOINED)
+@Data
 public abstract class Like {
 
     private Date dateHour;
@@ -21,20 +26,10 @@ public abstract class Like {
 
     protected Like() {
     }
-
-    public Date getDateHour() {
-        return dateHour;
-    }
-
-    public void setDateHour(Date dateHour) {
-        this.dateHour = dateHour;
-    }
-
+    
     public boolean getEvaluation() {
         return evaluation;
     }
 
-    public void setEvaluation(boolean evaluation) {
-        this.evaluation = evaluation;
-    }
+
 }

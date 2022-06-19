@@ -1,11 +1,16 @@
 package findr.projectfindr.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+@Data
 public class Plans {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,29 +25,5 @@ public class Plans {
     }
 
     public Plans() {
-    }
-
-    public long getIdPlan() {
-        return idPlan;
-    }
-
-    public void setIdPlan(long idPlan) {
-        this.idPlan = idPlan;
-    }
-
-    public String getPlanType() {
-        return planType;
-    }
-
-    public void setPlanType(String planType) {
-        this.planType = planType;
-    }
-
-    public int getQuantityClicks() {
-        return quantityClicks;
-    }
-
-    public void setQuantityClicks(int quantityClicks) {
-        this.quantityClicks = quantityClicks;
     }
 }
