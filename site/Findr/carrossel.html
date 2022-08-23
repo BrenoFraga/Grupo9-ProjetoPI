@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <title>Document</title>
+</head>
+
+
+<style>
+
+    .section-carrossel{
+        position: relative;
+        height: 500px;
+        width: 20%;
+        display: flex;
+        align-items: center;
+    }
+
+    .swiper{
+        width: 1300px;
+    }
+
+    .card{
+        position: relative;
+        border-radius: 20px;
+        margin: 20px 0;
+    }
+
+    .section-carrossel .card .image{
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+        padding: 10px;
+    }
+
+    .section-carrossel .card .image imd{
+        height: 100%;
+        width: 100%;
+        border-radius: 20px;
+        transition: all 0.4s;
+        opacity: 60%;
+    }
+
+    .image img {
+        width: 100px;
+        height: 100px;
+        background-color: brown;
+        border-radius: 50%;
+        background-position: center;
+        background-size: cover;
+    }
+
+    .image p {
+        width: 180px;
+        height: 100px;
+        color: #232323;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        text-indent: 3px;
+        word-spacing: 1px;
+        margin-top: 10px;
+    }
+</style>
+
+<body>
+
+    <section class="section-carrossel">
+
+        <div class="swiper myswiper container">
+            <div class="swiper-wrapper content">
+
+                <div class="swiper-slide card">
+                    <div class="card-content">
+                        <div class="image">
+                            <p>Breno Fraga</p>
+                            <img src="assets/img/WhatsApp Image 2021-12-23 at 01.53.39.jpeg" alt="">
+                            <p>Faz parte do time de desenvolvimento e ideação. Possui pensamento critico e raciocínio
+                                rápido.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide card">
+                    <div class="card-content">
+                        <div class="image">
+                            <p>Gabriel Contardi</p>
+                            <img src="assets/img/caraps.png" alt="">
+                            <p>Faz parte do time de desenvolvimento e front-end. Possui criatividade, agilidade e
+                                qualidade em entregas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide card">
+                    <div class="card-content">
+                        <div class="image">
+                            <p>Isabella Souza</p>
+                            <img src="assets/img/isa.jpeg" alt="">
+                            <p>Faz parte do time de dados e desenvolvimento. Possui boa retórica e pensamento rápido.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide card">
+                    <div class="card-content">
+                        <div class="image">
+                            <p>João Henrique</p>
+                            <img src="assets/img/jao.png" alt="">
+                            <p>Faz parte do time de desenvolvimento e ideação. Possui pensamento crítico e raciocínio rápido.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide card">
+                    <div class="card-content">
+                        <div class="image">
+                            <p>Petterson Viturino</p>
+                            <img src="assets/img/pet.jpeg" alt="">
+                            <p>Faz parte do time de desenvolvimento e back-end. Possui boa lógica de programação e pensamento crítico.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+
+    </section>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</body>
+
+</html>
+
+<script>
+
+
+    var swiper = new Swiper(" .myswiper", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        slidePerGroup: 1,
+        loop: true,
+        loopFillGroupWithBlank: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev"
+        }
+    })
+
+</script>

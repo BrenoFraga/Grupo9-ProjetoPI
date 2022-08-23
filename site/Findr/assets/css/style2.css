@@ -93,9 +93,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-text-align: center;
+    text-align: center;
     text-indent: 3px;
     word-spacing: 1px;
     margin-top: 10px;
+}
 
 
