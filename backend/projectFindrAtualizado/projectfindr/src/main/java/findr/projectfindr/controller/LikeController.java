@@ -1,9 +1,9 @@
 package findr.projectfindr.controller;
 
 import findr.projectfindr.datastructure.FilaObj;
-import findr.projectfindr.datastructure.ListaObj;
-import findr.projectfindr.datastructure.Match;
 import findr.projectfindr.datastructure.PilhaObj;
+import findr.projectfindr.matchControl.MatchGetControlFreelancer;
+import findr.projectfindr.matchControl.MatchGetControlProject;
 import findr.projectfindr.model.*;
 import findr.projectfindr.repository.*;
 import io.swagger.v3.oas.annotations.Operation;
@@ -34,6 +34,9 @@ public class LikeController {
     @Autowired
     private ProjectRepository projectRepository;
 
+    @Autowired
+    private MatchRepositoy matchRepositoy;
+
 
 
     @GetMapping("/freelancer")
@@ -42,10 +45,10 @@ public class LikeController {
             tags = {"API match"})
     public ResponseEntity getlikeFreelancer(){
         List<LikeProject> lista = likeProjectRepository.findAll();
-        if (likeFreelancerRepository.findAll().isEmpty()){
-            return ResponseEntity.status(204).body(likeFreelancerRepository.findAll());
+        if (lista.isEmpty()){
+            return ResponseEntity.status(204).build();
         }
-        return ResponseEntity.status(200).body(likeFreelancerRepository.findAll());
+        return ResponseEntity.status(200).body(lista);
     }
 
     @GetMapping("/project")
@@ -54,10 +57,10 @@ public class LikeController {
             tags = {"API match"})
     public ResponseEntity getlikeProject(){
         List<LikeFreelancer> lista = likeFreelancerRepository.findAll();
-        if (likeProjectRepository.findAll().isEmpty()){
-            return ResponseEntity.status(204).body(likeProjectRepository.findAll());
+        if (lista.isEmpty()){
+            return ResponseEntity.status(204).build();
         }
-        return ResponseEntity.status(200).body(likeProjectRepository.findAll());
+        return ResponseEntity.status(200).body(lista);
     }
 
 
@@ -70,17 +73,40 @@ public class LikeController {
     public ResponseEntity cadastrarLikeFreelancer(@PathVariable long fkFreelancer,
                                                   @PathVariable long fkContactor,
                                                   @PathVariable Boolean like){
-        try {
         Contactor c = contactorRepository.findByIdContactor(fkContactor);
         UserFreelancer f = freelancerRepository.findByIdUserFreelancer(fkFreelancer);
         pkLikeFreelancer pkf = new pkLikeFreelancer(f,c);
         Date dataLike = new Date();
-            LikeFreelancer lk = new LikeFreelancer(dataLike,like,pkf);
-            likeFreelancerRepository.save(lk);
+        LikeFreelancer lk = new LikeFreelancer(dataLike,like,pkf);
+        List<LikeFreelancer> listLp = likeFreelancerRepository.findAll();
+        Boolean temLike = false;
+        try {
+            if(!listLp.isEmpty()) {
+                for (int i = 0; i < listLp.size(); i++) {
+                    if (lk == listLp.get(i)) {
+                        temLike = true;
+                        break;
+                    } else {
+                        temLike = false;
+                    }
+                }
+                if (!temLike) {
+                    likeFreelancerRepository.save(lk);
+                }
+            }else{
+                likeFreelancerRepository.save(lk);
+            }
+
         }catch (Exception e){
             return ResponseEntity.status(406).build();
         }
-        return ResponseEntity.status(201).build();
+        MatchGetControlFreelancer m = new MatchGetControlFreelancer(likeProjectRepository.findAll(),lk);
+        if(m.getMatch() == null) {
+            return ResponseEntity.status(201).body(0);
+        }else{
+            matchRepositoy.save(m.getMatch());
+            return ResponseEntity.status(201).body("Temos um match");
+        }
     }
 
     @PostMapping("/project/{fkFreelancer}/{fkContactor}/{fkProject}/{like}")
@@ -91,18 +117,36 @@ public class LikeController {
                                                @PathVariable long fkContactor,
                                                @PathVariable long fkProject,
                                                @PathVariable Boolean like){
+        Contactor c = contactorRepository.findByIdContactor(fkContactor);
+        UserFreelancer f = freelancerRepository.findByIdUserFreelancer(fkFreelancer);
+        ProjectModel p = projectRepository.findByIdProjectContactor(fkProject);
+        Date dataLike = new Date();
+        pkLikeProject pkf = new pkLikeProject(f,c,p);
+        LikeProject lp = new LikeProject(dataLike,like,pkf);
+        List<LikeProject> listLp = likeProjectRepository.findAll();
         try {
-            Contactor c = contactorRepository.findByIdContactor(fkContactor);
-            UserFreelancer f = freelancerRepository.findByIdUserFreelancer(fkFreelancer);
-            ProjectModel p = projectRepository.findByIdProjectContactor(fkProject);
-            Date dataLike = new Date();
-            pkLikeProject pkf = new pkLikeProject(f,c,p);
-            LikeProject lp = new LikeProject(dataLike,like,pkf);
-            likeProjectRepository.save(lp);
+            Boolean temLike = false;
+            for(int i = 0; i < listLp.size();i++){
+                if(lp == listLp.get(i)){
+                    temLike = true;
+                    break;
+                }else{
+                    temLike = false;
+                }
+            }
+            if(!temLike){
+                likeProjectRepository.save(lp);
+            }
         }catch (Exception e){
             return ResponseEntity.status(406).build();
         }
-        return ResponseEntity.status(201).build();
+        MatchGetControlProject m = new MatchGetControlProject(likeFreelancerRepository.findAll(),lp);
+        if(m.getMatch() == null) {
+            return ResponseEntity.status(201).body(0);
+        }else{
+            matchRepositoy.save(m.getMatch());
+            return ResponseEntity.status(201).body("Temos um match");
+        }
     }
 
 
@@ -124,35 +168,4 @@ public class LikeController {
         List<LikeFreelancer> lista = likeFreelancerRepository.findByIdLikeFreelancer_FkFreelancer_IdUserFreelancer(fkFreelancer);
         return ResponseEntity.status(200).body(lista);
     }
-
-    int tamanho = 0;
-    PilhaObj<Match> matchs = new PilhaObj<>(tamanho);
-    FilaObj<Match> matchFilaObj = new FilaObj<>(tamanho);
-    List<Match> exibicao = new ArrayList<>();
-
-    @GetMapping("/match/{fkFreelancer}/{fkContactor}")
-    @Operation(summary = "Consulta se houve match de um usuário",description =
-            "Irá buscar checar se há registros iguais no banco para caracterizar o match",
-            tags = {"API match"})
-    public ResponseEntity getMatchFreelancer(@PathVariable long fkFreelancer,@PathVariable long fkContactor){
-        tamanho ++;
-        LikeProject projetoSelecionado = likeProjectRepository.findByIdLikeProject_FkContactor_IdContactorAndIdLikeProject_FkFreelancer_IdUserFreelancer(fkContactor,fkFreelancer);
-        LikeFreelancer freelancerSelecionado = likeFreelancerRepository.findByIdLikeFreelancer_FkFreelancer_IdUserFreelancerAndIdLikeFreelancer_FkContactor_IdContactor(fkFreelancer,fkContactor);
-        if(projetoSelecionado != null && freelancerSelecionado != null) {
-            if (projetoSelecionado.getIdLikeProject().getFkContactor() ==
-                            freelancerSelecionado.getIdLikeFreelancer().getFkContactor() &&
-                            projetoSelecionado.getIdLikeProject().getFkFreelancer() ==
-                            freelancerSelecionado.getIdLikeFreelancer().getFkFreelancer()) {
-                Match m = new Match(fkFreelancer, fkContactor);
-                if (projetoSelecionado.getEvaluation() == true && freelancerSelecionado.getEvaluation() == true) {
-                    matchs.push(m);
-                    matchFilaObj.insert(m);
-                    exibicao.add(m);
-                    return ResponseEntity.status(200).body(exibicao);
-                }
-            }
-        }
-        return ResponseEntity.status(204).build();
-    }
-
 }
