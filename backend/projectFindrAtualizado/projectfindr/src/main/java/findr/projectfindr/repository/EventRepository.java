@@ -1,4 +1,4 @@
 package findr.projectfindr.repository;
 
-public class EventRepository {
+public interface EventRepository {
 }
