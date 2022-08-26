@@ -10,6 +10,6 @@ import java.util.List;
 public interface MatchRepositoy extends JpaRepository<Match,pkMatch> {
 
     //List<LikeFreelancer> findByIdLikeFreelancer_FkFreelancer_IdUserFreelancer(long c);
-    List<Match> findByFkFreelancer(long c);
-    List<Match> findByFkContactor(long c);
+    List<Match> findByIdMatch_FkContactor_IdContactor(long c);
+    List<Match> findByIdMatch_fkFreelancer_IdUserFreelancer(long c);
 }

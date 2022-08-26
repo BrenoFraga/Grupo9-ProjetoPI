@@ -20,17 +20,17 @@ public class MatchController {
 
     @GetMapping("/freelancer/{fkFreelancer}")
     public ResponseEntity getMatchFreelancer(@PathVariable long fkFreelancer){
-        if(matchRepositoy.findByFkFreelancer(fkFreelancer).isEmpty()){
+        if(matchRepositoy.findByIdMatch_fkFreelancer_IdUserFreelancer(fkFreelancer).isEmpty()){
             return ResponseEntity.status(204).build();
         }
-        return ResponseEntity.status(200).body(matchRepositoy.findByFkFreelancer(fkFreelancer));
+        return ResponseEntity.status(200).body(matchRepositoy.findByIdMatch_fkFreelancer_IdUserFreelancer(fkFreelancer));
     }
 
     @GetMapping("/contactor/{fkContactor}")
     public ResponseEntity getMatchContactor(@PathVariable long fkContactor){
-        if(matchRepositoy.findByFkContactor(fkContactor).isEmpty()){
+        if(matchRepositoy.findByIdMatch_FkContactor_IdContactor(fkContactor).isEmpty()){
             return ResponseEntity.status(204).build();
         }
-        return ResponseEntity.status(200).body(matchRepositoy.findByFkContactor(fkContactor));
+        return ResponseEntity.status(200).body(matchRepositoy.findByIdMatch_FkContactor_IdContactor(fkContactor));
     }
 }
