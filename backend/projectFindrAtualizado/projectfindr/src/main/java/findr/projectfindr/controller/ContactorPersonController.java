@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 
 import java.util.List;
@@ -35,6 +36,27 @@ public class ContactorPersonController {
         return ResponseEntity.status(201).build();
     }
 
+    @PatchMapping(value = "/foto/{codigo}",consumes = "image/jpeg")
+    public ResponseEntity atualizarFoto(@PathVariable long codigo,@RequestBody byte[] novaFoto) {
+        try {
+            bd.atualizarFoto(codigo,novaFoto);
+        }catch (Exception e){
+            return ResponseEntity.status(406).build();
+        }
+        return ResponseEntity.status(201).build();
+    }
+
+
+    @GetMapping(value = "/foto/{codigo}", produces = "image/jpeg")
+    public ResponseEntity<byte[]> getFoto(@PathVariable long codigo) {
+
+        byte[] foto = bd.getFoto(codigo);
+        if (foto == null) {
+            return ResponseEntity.status(404).build();
+        }
+        return ResponseEntity.status(200).body(foto);
+    }
+
     @GetMapping //verificar responseEntity
     @Operation(summary = "Consulta de contratantes",description =
             "Irá trazer todos os contratantes cadastrados no banco de dados",
@@ -47,15 +69,15 @@ public class ContactorPersonController {
     }
 
 
-    //feito-validar
-//    @DeleteMapping("/{password}")
-//    public ResponseEntity deleteUserContactorCompany(@PathVariable String password) {
-//        if (password.equals(this.senha)){
-//            bd.deleteById(this.idContactor);
-//            return ResponseEntity.status(200).body(bd.findAll());
-//        }
-//        return ResponseEntity.status(204).build();
-//    }
+
+    @DeleteMapping("/{codigo}/{password}")
+    public ResponseEntity deleteUserContactorCompany(@PathVariable long codigo,@PathVariable String password) {
+        if (bd.getById(codigo).getPassword().equals(password)){
+            bd.deleteById(codigo);
+            return ResponseEntity.status(200).build();
+        }
+        return ResponseEntity.status(204).build();
+    }
 
     //feito - validar
     @PostMapping("/login")

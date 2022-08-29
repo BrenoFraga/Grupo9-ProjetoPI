@@ -28,6 +28,15 @@ public interface ContactorRepository extends JpaRepository<Contactor,Long> {
     Contactor showByEmailAndPass(String email, String password);
 
 
+    @Query("update Contactor c set c.image = ?2 where c.idContactor = ?1")
+    @Modifying
+    @Transactional
+    void atualizarFoto(Long codigo, byte[] novaFoto);
+
+    @Query("select c.image from Contactor c where c.idContactor = ?1")
+    byte[] getFoto(Long codigo);
+
+
     //trazer todos os projetos de um Contactor
     @Transactional
     @Query("select p from ProjectModel p where p.contactor.idContactor = ?1")

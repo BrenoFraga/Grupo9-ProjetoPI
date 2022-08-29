@@ -1,6 +1,7 @@
 package findr.projectfindr.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,6 +11,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "register_project_contactor")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProjectModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,17 +23,12 @@ public class ProjectModel {
     private String requiredLanguages;
     private Integer quantityProfissionals;
 
+    @JsonIgnore
+    @Column(length = 50_000_000)
+    private byte[] image;
+
     @ManyToOne
     @JoinColumn(name = "fk_contactor")
     private Contactor contactor;
 
-    public ProjectModel(String nameProject, String descriptionProject, String requiredArea, String requiredLanguages, Integer quantityProfissionals) {
-        this.nameProject = nameProject;
-        this.descriptionProject = descriptionProject;
-        this.requiredArea = requiredArea;
-        this.requiredLanguages = requiredLanguages;
-        this.quantityProfissionals = quantityProfissionals;
-    }
-    public ProjectModel() {
-    }
 }

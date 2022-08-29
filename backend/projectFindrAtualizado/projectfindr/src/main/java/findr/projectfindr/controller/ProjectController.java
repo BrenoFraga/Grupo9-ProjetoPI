@@ -80,93 +80,114 @@ public class ProjectController {
         return ResponseEntity.status(204).build();
     }
 
-    @GetMapping("/relatorio/ler")
-    @Operation(summary = "Leitura de arquivo csv",description =
-            "Irá ler os arquivos encontrados no banco",
-            tags = {"API arquivos"})
-    public ResponseEntity getRelatorioLer(){
-        gravadorLeitor.leArquivoCsv("projetos");
-        return ResponseEntity.status(200).build();
-    }
-
-    @GetMapping("/relatorio/gravar")
-    @Operation(summary = "Gravação de arquivo csv",description =
-            "Irá gravar registros em um arquivo",
-            tags = {"API arquivos"})
-    public ResponseEntity getRelatorioGravar(){
-
-        List<ProjectModel> todos =  bd.findAll();
-
-        ListaObj<ProjectModel> listaProjetos = new ListaObj(todos.size());
-
-        todos.forEach(elem -> {
-            listaProjetos.adiciona(elem);
-        });
-
-        return ResponseEntity
-                .status(200)
-                .header("content-type", "text/csv")
-                .header("content-disposition", "filename=\"relatorio.csv\"")
-                .body(gravadorLeitor.gravaArquivoCsv(listaProjetos, "projetos"));
-    }
-
-
-    @GetMapping("/documento/gravar")
-    @Operation(summary = "Gravação do documento de layout",description =
-            "Irá gravar arquivos de projetos e usuários em um arquivo",
-            tags = {"API arquivos"})
-    public ResponseEntity getDocumentoLayoutGravar(){
-        List<ProjectModel> projectModels = bd.findAll();
-        ListaObj<ProjectModel> listaProjetos = new ListaObj(projectModels.size());
-
-        projectModels.forEach(elem -> {
-            listaProjetos.adiciona(elem);
-        });
-
-        List<UserResponse> userResponses = contactorRepository.findAllUserResponse();
-        ListaObj<UserResponse> listaUsuarios = new ListaObj(userResponses.size());
-
-        userResponses.forEach(elem ->{
-            listaUsuarios.adiciona(elem);
-        });
-
-        return ResponseEntity
-                .status(200)
-                .header("content-type", "text/csv")
-                .header("content-disposition", "filename=\"documentoLayout.txt\"")
-                .body(gravadorLeitor.gravaArquivoTxt(listaUsuarios, listaProjetos,"documento"));
-    }
-
-    @PostMapping(value = "/import-project", consumes = "multipart/form-data")
-    @Operation(summary = "Importação do documento de layout",description =
-            "Irá importar registros do documento de layout em um arquivo",
-            tags = {"API arquivos"})
-    public ResponseEntity postNovoProjeto(
-            @RequestBody MultipartFile newProject
-    ){
-        String nomeArq = newProject.getResource().getFilename();
-        if (gravadorLeitor.lerArquivoTxt(nomeArq)){
-            return ResponseEntity.status(200).build();
-        }
-        return ResponseEntity.status(404).build();
-    }
-
-    public static void gravaRegistro(String registro, String nomeArq){
-        BufferedWriter saida = null;
-
-        try{
-            saida = new BufferedWriter(new FileWriter(nomeArq, true));
-        }
-        catch (IOException erro){
-            System.out.println("Erro ao abrir o arquivo: " + erro);
-        }
-
+    @PatchMapping(value = "/foto/{codigo}",consumes = "image/jpeg")
+    public ResponseEntity atualizarFoto(@PathVariable long codigo,@RequestBody byte[] novaFoto) {
         try {
-            saida.append(registro + "\n");
-            saida.close();
+            bd.atualizarFoto(codigo,novaFoto);
+        }catch (Exception e){
+            return ResponseEntity.status(406).build();
         }
-        catch (IOException erro){
-            System.out.println("Erro ao abrir o arquivo" + erro);
-        }
+        return ResponseEntity.status(201).build();
     }
+
+
+    @GetMapping(value = "/foto/{codigo}", produces = "image/jpeg")
+    public ResponseEntity<byte[]> getFoto(@PathVariable long codigo) {
+
+        byte[] foto = bd.getFoto(codigo);
+        if (foto == null) {
+            return ResponseEntity.status(404).build();
+        }
+        return ResponseEntity.status(200).body(foto);
+    }
+
+//    @GetMapping("/relatorio/ler")
+//    @Operation(summary = "Leitura de arquivo csv",description =
+//            "Irá ler os arquivos encontrados no banco",
+//            tags = {"API arquivos"})
+//    public ResponseEntity getRelatorioLer(){
+//        gravadorLeitor.leArquivoCsv("projetos");
+//        return ResponseEntity.status(200).build();
+//    }
+
+//    @GetMapping("/relatorio/gravar")
+//    @Operation(summary = "Gravação de arquivo csv",description =
+//            "Irá gravar registros em um arquivo",
+//            tags = {"API arquivos"})
+//    public ResponseEntity getRelatorioGravar(){
+//
+//        List<ProjectModel> todos =  bd.findAll();
+//
+//        ListaObj<ProjectModel> listaProjetos = new ListaObj(todos.size());
+//
+//        todos.forEach(elem -> {
+//            listaProjetos.adiciona(elem);
+//        });
+//
+//        return ResponseEntity
+//                .status(200)
+//                .header("content-type", "text/csv")
+//                .header("content-disposition", "filename=\"relatorio.csv\"")
+//                .body(gravadorLeitor.gravaArquivoCsv(listaProjetos, "projetos"));
+//    }
+
+
+//    @GetMapping("/documento/gravar")
+//    @Operation(summary = "Gravação do documento de layout",description =
+//            "Irá gravar arquivos de projetos e usuários em um arquivo",
+//            tags = {"API arquivos"})
+//    public ResponseEntity getDocumentoLayoutGravar(){
+//        List<ProjectModel> projectModels = bd.findAll();
+//        ListaObj<ProjectModel> listaProjetos = new ListaObj(projectModels.size());
+//
+//        projectModels.forEach(elem -> {
+//            listaProjetos.adiciona(elem);
+//        });
+//
+//        List<UserResponse> userResponses = contactorRepository.findAllUserResponse();
+//        ListaObj<UserResponse> listaUsuarios = new ListaObj(userResponses.size());
+//
+//        userResponses.forEach(elem ->{
+//            listaUsuarios.adiciona(elem);
+//        });
+//
+//        return ResponseEntity
+//                .status(200)
+//                .header("content-type", "text/csv")
+//                .header("content-disposition", "filename=\"documentoLayout.txt\"")
+//                .body(gravadorLeitor.gravaArquivoTxt(listaUsuarios, listaProjetos,"documento"));
+//    }
+
+//    @PostMapping(value = "/import-project", consumes = "multipart/form-data")
+//    @Operation(summary = "Importação do documento de layout",description =
+//            "Irá importar registros do documento de layout em um arquivo",
+//            tags = {"API arquivos"})
+//    public ResponseEntity postNovoProjeto(
+//            @RequestBody MultipartFile newProject
+//    ){
+//        String nomeArq = newProject.getResource().getFilename();
+//        if (gravadorLeitor.lerArquivoTxt(nomeArq)){
+//            return ResponseEntity.status(200).build();
+//        }
+//        return ResponseEntity.status(404).build();
+//    }
+
+//    public static void gravaRegistro(String registro, String nomeArq){
+//        BufferedWriter saida = null;
+//
+//        try{
+//            saida = new BufferedWriter(new FileWriter(nomeArq, true));
+//        }
+//        catch (IOException erro){
+//            System.out.println("Erro ao abrir o arquivo: " + erro);
+//        }
+//
+//        try {
+//            saida.append(registro + "\n");
+//            saida.close();
+//        }
+//        catch (IOException erro){
+//            System.out.println("Erro ao abrir o arquivo" + erro);
+//        }
+//    }
 }

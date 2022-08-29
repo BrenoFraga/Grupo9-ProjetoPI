@@ -27,6 +27,14 @@ public interface FreelancerRepository extends JpaRepository<UserFreelancer,Long>
     @Query("select s from SpecialtyModel s where s.userFreelancer.idUserFreelancer = ?1")
     List<SpecialtyModel> showAllSpecialty(Long fkFreelancer);
 
+    @Query("update UserFreelancer f set f.image = ?2 where f.idUserFreelancer = ?1")
+    @Modifying
+    @Transactional
+    void atualizarFoto(Long codigo, byte[] novaFoto);
+
+    @Query("select f.image from UserFreelancer f where f.idUserFreelancer = ?1")
+    byte[] getFoto(Long codigo);
+
     @Transactional
     @Query("select f from UserFreelancer f where f.email = ?1 and f.password = ?2")
     UserFreelancer showByEmailAndPass(String email, String password);

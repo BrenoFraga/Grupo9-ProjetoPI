@@ -102,6 +102,26 @@ public class FreelancerController {
         }
         return ResponseEntity.status(200).body(especialidades);
     }
+
+    @PatchMapping(value = "/foto/{codigo}",consumes = "image/jpeg")
+    public ResponseEntity atualizarFoto(@PathVariable long codigo,@RequestBody byte[] novaFoto) {
+        try {
+            bd.atualizarFoto(codigo,novaFoto);
+        }catch (Exception e){
+            return ResponseEntity.status(406).build();
+        }
+        return ResponseEntity.status(201).build();
+    }
+
+    @GetMapping(value = "/foto/{codigo}", produces = "image/jpeg")
+    public ResponseEntity<byte[]> getFoto(@PathVariable long codigo) {
+
+        byte[] foto = bd.getFoto(codigo);
+        if (foto == null) {
+            return ResponseEntity.status(404).build();
+        }
+        return ResponseEntity.status(200).body(foto);
+    }
 }
 
 
