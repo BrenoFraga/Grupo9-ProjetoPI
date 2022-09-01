@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 public class MatchGetControlFreelancer {
-    private List<LikeProject> likep;
+    private List<LikeProject>    likep;
     private LikeFreelancer likef;
 
     public MatchGetControlFreelancer(List<LikeProject> likep, LikeFreelancer likef) {
