@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/match")
 public class MatchController {
@@ -32,5 +34,11 @@ public class MatchController {
             return ResponseEntity.status(204).build();
         }
         return ResponseEntity.status(200).body(matchRepositoy.findByIdMatch_FkContactor_IdContactor(fkContactor));
+    }
+
+    @GetMapping("/projetos/{fkContactor}")
+    public ResponseEntity getMatchFreelancerSpecialty(@PathVariable long fkContactor){
+
+        return null;
     }
 }

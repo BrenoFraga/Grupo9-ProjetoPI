@@ -48,6 +48,16 @@ public class FreelancerController {
         return ResponseEntity.status(200).body(bd.findAll());
     }
 
+    @GetMapping("/perfil/{id}")
+    public ResponseEntity getPerfil(@PathVariable Long id){
+        if(bd.existsById(id)){
+            bd.showPerfilById(id);
+            return  ResponseEntity.status(200).body(bd.showPerfilById(id));
+        }
+        return ResponseEntity.status(404).build();
+    }
+
+
 
     //rever esse
     @DeleteMapping("/{id}")

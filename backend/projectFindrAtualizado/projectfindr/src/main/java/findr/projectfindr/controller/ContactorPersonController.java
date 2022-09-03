@@ -69,6 +69,15 @@ public class ContactorPersonController {
     }
 
 
+    @GetMapping("/perfil/{id}")
+    public ResponseEntity getPerfil(@PathVariable Long id){
+        if(bd.existsById(id)){
+            bd.showByIdPerfil(id);
+            return  ResponseEntity.status(200).body(bd.showByIdPerfil(id));
+        }
+        return ResponseEntity.status(404).build();
+    }
+
 
     @DeleteMapping("/{codigo}/{password}")
     public ResponseEntity deleteUserContactorCompany(@PathVariable long codigo,@PathVariable String password) {
@@ -79,7 +88,7 @@ public class ContactorPersonController {
         return ResponseEntity.status(204).build();
     }
 
-    //feito - validar
+
     @PostMapping("/login")
     @Operation(summary = "Login de contratantes",description =
             "Consulta um unico usuário de acordo com o email e senha informados",
@@ -93,17 +102,6 @@ public class ContactorPersonController {
         }
     }
 
-    //feito - validar
-   // @PostMapping("/logoff/{idContactor}")
-   // public ResponseEntity setLogoffCompany(
-   //         @PathVariable long idContactor
-  //  ) {
-
-  //          return ResponseEntity.status(200).build();
-  //  }
-
-
-    //feito-validar
     @GetMapping("/projects/{idContactor}")
     @Operation(summary = "Cadastra novos de projetos",description =
             "Irá cadastrar um novo projeto informado no banco de dados",
