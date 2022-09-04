@@ -16,11 +16,11 @@ public interface FreelancerRepository extends JpaRepository<UserFreelancer,Long>
     UserFreelancer findByEmailAndPassword(String email, String password);
 
     @Transactional
-    @Query("select s from SpecialtyModel s where s.userFreelancer.idUserFreelancer = ?1")
+    @Query("select s from SpecialtyModel s where s.fkFreelancer.idUserFreelancer = ?1")
     List<SpecialtyModel> showAllSpecialty(Long fkFreelancer);
 
     @Transactional
-        @Query(value = "select new findr.projectfindr.response.PerfilResponseFreelancer(u.name,u.image,u.city,u.state,u.email,j.technologyUsed) from UserFreelancer u inner join SpecialtyModel j on u.idUserFreelancer = j.userFreelancer.idUserFreelancer where u.idUserFreelancer = ?1")
+        @Query(value = "select new findr.projectfindr.response.PerfilResponseFreelancer(u.name,u.image,u.city,u.state,u.email,j.technologyUsed) from UserFreelancer u inner join SpecialtyModel j on u.idUserFreelancer = j.fkFreelancer.idUserFreelancer where u.idUserFreelancer = ?1")
     List<PerfilResponseFreelancer> showPerfilById(long id);
 
     @Query("update UserFreelancer f set f.image = ?2 where f.idUserFreelancer = ?1")

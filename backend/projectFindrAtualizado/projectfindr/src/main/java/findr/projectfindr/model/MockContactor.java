@@ -7,20 +7,17 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "register_specialty_freelancer")
+@Table(name = "mock_contactor")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SpecialtyModel {
+public class MockContactor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idSpecialty;
-    private String occupationArea;
+    @Column(name = "id_mock_contactor")
+    private Long idMockContactor;
+    private String name;
+
+
     private String technologyUsed;
-    private String levelKnowledge;
-
-    @ManyToOne
-    private UserFreelancer userFreelancer;
-
-
 }
