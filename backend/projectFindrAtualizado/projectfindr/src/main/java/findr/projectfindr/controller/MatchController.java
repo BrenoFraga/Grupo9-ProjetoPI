@@ -36,9 +36,19 @@ public class MatchController {
         return ResponseEntity.status(200).body(matchRepositoy.findByIdMatch_FkContactor_IdContactor(fkContactor));
     }
 
-    @GetMapping("/projetos/{fkContactor}")
-    public ResponseEntity getMatchFreelancerSpecialty(@PathVariable long fkContactor){
+    @GetMapping("/projetos/{fkFreelancer}")
+    public ResponseEntity getMatchFreelancerProject(@PathVariable long fkFreelancer){
+        if(!matchRepositoy.showMatchFreelancer(fkFreelancer).isEmpty()){
+            return ResponseEntity.status(200).body(matchRepositoy.showMatchFreelancer(fkFreelancer));
+        }
+        return ResponseEntity.status(204).build();
+    }
 
-        return null;
+    @GetMapping("/specialty/{fkContactor}")
+    public ResponseEntity getMatchContactorSpecialty(@PathVariable long fkContactor){
+        if(!matchRepositoy.showMatchContactor(fkContactor).isEmpty()){
+            return ResponseEntity.status(200).body(matchRepositoy.showMatchContactor(fkContactor));
+        }
+        return ResponseEntity.status(204).build();
     }
 }
