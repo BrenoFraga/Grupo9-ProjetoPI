@@ -74,7 +74,7 @@ public class LikeController {
                                                   @PathVariable long fkContactor,
                                                   @PathVariable Boolean like){
         Contactor c = contactorRepository.findByIdContactor(fkContactor);
-        UserFreelancer f = freelancerRepository.findByIdUserFreelancer(fkFreelancer);
+        UserFreelancer f = freelancerRepository.findByIdUserFreelancer  (fkFreelancer);
         pkLikeFreelancer pkf = new pkLikeFreelancer(f,c);
         Date dataLike = new Date();
         LikeFreelancer lk = new LikeFreelancer(dataLike,like,pkf);
