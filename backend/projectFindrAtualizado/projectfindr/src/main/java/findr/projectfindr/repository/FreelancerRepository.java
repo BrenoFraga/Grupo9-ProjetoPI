@@ -4,6 +4,7 @@ package findr.projectfindr.repository;
 import findr.projectfindr.model.Contactor;
 import findr.projectfindr.model.SpecialtyModel;
 import findr.projectfindr.model.UserFreelancer;
+import findr.projectfindr.response.PerfilResponseFreelancer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -11,21 +12,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public interface FreelancerRepository extends JpaRepository<UserFreelancer,Long> {
-
-//    @Query("select new com.projectfindr.resposta.LoginResposta(s.email, s.password) from UserFreelancer s")
-//    List<LoginResposta>listaLogin();
-
+public interface FreelancerRepository extends JpaRepository<UserFreelancer, Long> {
     UserFreelancer findByEmailAndPassword(String email, String password);
 
-   // @Transactional
-   // @Modifying
-   // @Query("update UserFreelancer s set s.online = ?2 where s.idUserFreelancer = ?1 ")
-   // void atualizarOnline(Long idFreelancer, Boolean online);
+    @Transactional
+    @Query("select s from SpecialtyModel s where s.fkFreelancer.idUserFreelancer = ?1")
+    List<SpecialtyModel> showAllSpecialty(Long fkFreelancer);
 
     @Transactional
-    @Query("select s from SpecialtyModel s where s.userFreelancer.idUserFreelancer = ?1")
-    List<SpecialtyModel> showAllSpecialty(Long fkFreelancer);
+    @Query(value = "select new findr.projectfindr.response.PerfilResponseFreelancer(u.name,u.image,u.city,u.state,u.email,j.technologyUsed) from UserFreelancer u inner join SpecialtyModel j on u.idUserFreelancer = j.fkFreelancer.idUserFreelancer where u.idUserFreelancer = ?1")
+    List<PerfilResponseFreelancer> showPerfilByEmail(String email);
 
     @Query("update UserFreelancer f set f.image = ?2 where f.idUserFreelancer = ?1")
     @Modifying
@@ -39,6 +35,9 @@ public interface FreelancerRepository extends JpaRepository<UserFreelancer,Long>
     @Query("select f from UserFreelancer f where f.email = ?1 and f.password = ?2")
     UserFreelancer showByEmailAndPass(String email, String password);
 
-    UserFreelancer findByIdUserFreelancer(long f);
+    UserFreelancer findByIdUserFreelancer(long id);
+
+    UserFreelancer findByEmail(String email);
+
 
 }

@@ -40,6 +40,13 @@ public class SpecialtyController {
     }
 
 
+    @GetMapping("/freelancer/{fkFreelancer}")
+    public ResponseEntity findSpecialtyById(@PathVariable long fkFreelancer){
+        if(!bd.findByFkFreelancer(fkFreelancer).isEmpty()){
+            return ResponseEntity.status(200).body(bd.findByFkFreelancer(fkFreelancer));
+        }
+        return ResponseEntity.status(204).build();
+    }
 
 
     @GetMapping("/{technology}")

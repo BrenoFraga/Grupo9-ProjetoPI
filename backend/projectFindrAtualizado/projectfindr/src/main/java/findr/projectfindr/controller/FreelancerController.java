@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -47,6 +48,38 @@ public class FreelancerController {
         }
         return ResponseEntity.status(200).body(bd.findAll());
     }
+
+    @GetMapping("/recursividade/{id}")
+    public ResponseEntity getRecursividade(long id){
+        UserFreelancer[] usr2 = bd.findAll().toArray(new UserFreelancer[0]);
+        List<UserFreelancer> usr = new ArrayList<>();
+        if(usr2.length != 0) {
+            usr.add(recursividade(usr2,0));
+            return ResponseEntity.status(200).body(usr2);
+
+        }
+
+        return ResponseEntity.status(404).build();
+    }
+
+    public static UserFreelancer recursividade(UserFreelancer[] u, int cont){
+        UserFreelancer a = null;
+        if(cont != u.length){
+            a = u[cont];
+            cont ++;
+            recursividade(u,cont);
+        }
+        return a;
+    }
+
+    @GetMapping("/perfil/{email}")
+    public ResponseEntity getPerfil(@PathVariable String email){
+        if(bd.findByEmail(email) != null){
+            return  ResponseEntity.status(200).body(bd.findByEmail(email));
+        }
+        return ResponseEntity.status(404).build();
+    }
+
 
 
     //rever esse

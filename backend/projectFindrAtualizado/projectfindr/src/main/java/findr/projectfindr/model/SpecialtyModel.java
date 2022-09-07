@@ -22,7 +22,7 @@ public class SpecialtyModel {
 
     @ManyToOne
     @JoinColumn(name = "fk_freelancer")
-    private UserFreelancer userFreelancer;
+    private UserFreelancer fkFreelancer;
 
 
 }
