@@ -21,6 +21,7 @@ public class ProjectModel {
     private String descriptionProject;
     private String requiredArea;
     private String requiredLanguages;
+    private String levelKnowledge;
     private Integer quantityProfissionals;
 
     @JsonIgnore
