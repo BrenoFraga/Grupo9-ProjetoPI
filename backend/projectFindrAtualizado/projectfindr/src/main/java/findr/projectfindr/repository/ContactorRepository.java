@@ -14,16 +14,6 @@ import java.util.List;
 
 public interface ContactorRepository extends JpaRepository<Contactor,Long> {
 
-
-
-    //seta se o usuário tá online ou offline
-   // @Transactional
-   //@Modifying
-   // @Query("update Contactor c set c.online = ?2 where c.idContactor = ?1")
-   // void atualizarOnline(Long idContactor, Boolean online);
-
-
-    //trazer um unico contactor de acordo com o email e senha
     @Transactional
     @Query("select c from Contactor c where c.email = ?1 and c.password = ?2")
     Contactor showByEmailAndPass(String email, String password);
@@ -40,7 +30,7 @@ public interface ContactorRepository extends JpaRepository<Contactor,Long> {
 
     //trazer todos os projetos de um Contactor
     @Transactional
-    @Query("select p from ProjectModel p where p.contactor.idContactor = ?1")
+    @Query("select p from ProjectModel p where p.fkContactor.idContactor = ?1")
     List<ProjectModel> showAllProjectsContactor(long fkContactor);
 
     Contactor findByIdContactor(long f);
@@ -50,7 +40,7 @@ public interface ContactorRepository extends JpaRepository<Contactor,Long> {
 
 
     @Transactional
-    @Query("select new findr.projectfindr.response.PerfilResponseContactorProject(c.name,c.image,c.city,c.state,c.email,p.nameProject) from Contactor c inner join ProjectModel p on c.idContactor = p.contactor.idContactor where c.idContactor = ?1")
+    @Query("select new findr.projectfindr.response.PerfilResponseContactorProject(c.name,c.image,c.city,c.state,c.email,p.nameProject) from Contactor c inner join ProjectModel p on c.idContactor = p.fkContactor.idContactor where c.idContactor = ?1")
     List<PerfilResponseContactorProject> showByIdPerfil(long id);
 
 }

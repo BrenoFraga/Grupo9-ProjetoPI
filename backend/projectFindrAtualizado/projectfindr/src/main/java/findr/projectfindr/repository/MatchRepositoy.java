@@ -17,14 +17,14 @@ public interface MatchRepositoy extends JpaRepository<Match,pkMatch> {
 
     @Transactional
     @Query("select new findr.projectfindr.response.MatchContactor(u.name, r.technologyUsed) from Match m " +
-            "inner join UserFreelancer u on m.idMatch.fkFreelancer.idUserFreelancer = u.idUserFreelancer " +
-            "inner join SpecialtyModel r on u.idUserFreelancer = r.fkFreelancer.idUserFreelancer " +
-            "where u.idUserFreelancer = ?1")
+            "inner join UserFreelancer u on  u.idUserFreelancer = ?1 AND m.idMatch.fkFreelancer.idUserFreelancer = u.idUserFreelancer " +
+            "inner join SpecialtyModel r on u.idUserFreelancer = r.fkFreelancer.idUserFreelancer "
+            )
     List<MatchContactor> showMatchContactor(long id);
 
     @Transactional
     @Query("select new findr.projectfindr.response.MatchFreelancer(u.name, o.nameProject) from Match m " +
-            "inner join Contactor u on u.idContactor = m.idMatch.fkContactor.idContactor " +
-            "inner join ProjectModel o on u.idContactor = o.contactor.idContactor")
+            "inner join Contactor u on u.idContactor = ?1 and u.idContactor = m.idMatch.fkContactor.idContactor " +
+            "inner join ProjectModel o on u.idContactor = o.fkContactor.idContactor")
     List<MatchFreelancer> showMatchFreelancer(long id);
 }

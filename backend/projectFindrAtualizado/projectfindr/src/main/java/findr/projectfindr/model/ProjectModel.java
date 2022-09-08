@@ -30,6 +30,6 @@ public class ProjectModel {
 
     @ManyToOne
     @JoinColumn(name = "fk_contactor")
-    private Contactor contactor;
+    private Contactor fkContactor;
 
 }

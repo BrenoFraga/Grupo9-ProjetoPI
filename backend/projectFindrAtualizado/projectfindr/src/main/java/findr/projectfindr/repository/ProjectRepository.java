@@ -10,7 +10,8 @@ import java.util.List;
 
 public interface ProjectRepository extends JpaRepository<ProjectModel, Long> {
 
-    List<ProjectModel> findByContactor(Integer idContactor);
+    List<ProjectModel> findByFkContactor_IdContactor(long idContactor);
+
     ProjectModel findByIdProjectContactor(long p);
 
     @Query("update ProjectModel p set p.image = ?2 where p.idProjectContactor = ?1")

@@ -4,6 +4,7 @@ import findr.projectfindr.repository.ContactorRepository;
 import findr.projectfindr.repository.FreelancerRepository;
 import findr.projectfindr.repository.MatchRepositoy;
 import findr.projectfindr.repository.ProjectRepository;
+import findr.projectfindr.response.MatchContactor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,12 @@ public class MatchController {
 
     @Autowired
     private MatchRepositoy matchRepositoy;
+
+    @Autowired
+    private FreelancerRepository freelancerRepository;
+
+    @Autowired
+    private ContactorRepository contactorRepository;
 
     @GetMapping("/freelancer/{fkFreelancer}")
     public ResponseEntity getMatchFreelancer(@PathVariable long fkFreelancer){
@@ -46,8 +53,13 @@ public class MatchController {
 
     @GetMapping("/specialty/{fkContactor}")
     public ResponseEntity getMatchContactorSpecialty(@PathVariable long fkContactor){
+
         if(!matchRepositoy.showMatchContactor(fkContactor).isEmpty()){
-            return ResponseEntity.status(200).body(matchRepositoy.showMatchContactor(fkContactor));
+                if(contactorRepository.existsById(fkContactor)) {
+                    List<MatchContactor> l = matchRepositoy.showMatchContactor(fkContactor);
+                    return ResponseEntity.status(200).body(l);
+                }
+
         }
         return ResponseEntity.status(204).build();
     }
