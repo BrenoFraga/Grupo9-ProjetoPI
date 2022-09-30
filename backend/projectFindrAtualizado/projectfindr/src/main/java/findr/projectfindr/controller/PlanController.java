@@ -23,7 +23,7 @@ public class PlanController {
             "Irá consultar os planos de usuários no banco de dados",
             tags = {"API planos"})
     @Cacheable("plans")
-    private ResponseEntity getPlans(){
+    public ResponseEntity getPlans(){
         if (repository.findAll().isEmpty()){
             return ResponseEntity.status(204).body(repository.findAll());
         }
