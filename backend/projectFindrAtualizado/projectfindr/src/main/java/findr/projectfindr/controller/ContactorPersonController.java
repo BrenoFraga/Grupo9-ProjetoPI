@@ -1,8 +1,11 @@
 package findr.projectfindr.controller;
 
 import findr.projectfindr.model.Contactor;
+import findr.projectfindr.model.LogLogin;
 import findr.projectfindr.model.ProjectModel;
+import findr.projectfindr.model.pkLogLogin;
 import findr.projectfindr.repository.ContactorRepository;
+import findr.projectfindr.repository.LogLoginRepository;
 import findr.projectfindr.repository.ProjectRepository;
 import findr.projectfindr.request.LoginRequest;
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -22,6 +26,9 @@ public class ContactorPersonController {
 
     @Autowired
     private ProjectRepository projects;
+
+    @Autowired
+    private LogLoginRepository logLoginRepositoy;
 
     @PostMapping
     @Operation(summary = "Cadastra novos contratantes",description =
@@ -96,6 +103,10 @@ public class ContactorPersonController {
     public ResponseEntity setLoginCompany(@RequestBody LoginRequest login) {
         Contactor contactorAtual = bd.showByEmailAndPass(login.getEmail(), login.getPassword());
         if (contactorAtual != null){
+            pkLogLogin pk = new pkLogLogin(null,contactorAtual);
+            Date dataLog = new Date();
+            LogLogin log = new LogLogin(pk,dataLog);
+            logLoginRepositoy.save(log);
             return ResponseEntity.status(200).build();
         }else{
         return ResponseEntity.status(204).build();

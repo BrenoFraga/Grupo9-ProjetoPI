@@ -1,9 +1,10 @@
 package findr.projectfindr.controller;
 
-import findr.projectfindr.model.Contactor;
-import findr.projectfindr.model.SpecialtyModel;
-import findr.projectfindr.model.UserFreelancer;
+import findr.projectfindr.datastructure.hashtable.HashTable;
+import findr.projectfindr.datastructure.listaLigada.ListaLigada;
+import findr.projectfindr.model.*;
 import findr.projectfindr.repository.FreelancerRepository;
+import findr.projectfindr.repository.LogLoginRepository;
 import findr.projectfindr.repository.SpecialtyRepository;
 import findr.projectfindr.request.LoginRequest;
 import io.swagger.v3.oas.annotations.Operation;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -24,6 +26,9 @@ public class FreelancerController {
     private FreelancerRepository bd;
     @Autowired
     private SpecialtyRepository specialty;
+
+    @Autowired
+    private LogLoginRepository logLoginRepositoy;
 
     @PostMapping
     @Operation(summary = "Cadastra novos freelancers",description =
@@ -105,6 +110,10 @@ public class FreelancerController {
     public ResponseEntity setLoginFreelancer(@RequestBody LoginRequest login) {
         UserFreelancer freelancerAtual = bd.findByEmailAndPassword(login.getEmail(), login.getPassword());
         if (freelancerAtual != null){
+            pkLogLogin pk = new pkLogLogin(freelancerAtual,null);
+            Date dataLog = new Date();
+            LogLogin log = new LogLogin(pk,dataLog);
+            logLoginRepositoy.save(log);
             return ResponseEntity.status(200).build();
         }else{
             return ResponseEntity.status(404).build();
@@ -154,6 +163,47 @@ public class FreelancerController {
             return ResponseEntity.status(404).build();
         }
         return ResponseEntity.status(200).body(foto);
+    }
+
+    @GetMapping("/busca/{nomeFreelancer}")
+    public ResponseEntity getFreelancerBusca(@PathVariable String nomeFreelancer){
+
+        String nome = "Freelancer não encontrado";
+        List<UserFreelancer> freelancers = bd.findAll();
+        String primeiraLetra = "";
+        String primeiraLetraBusca = "";
+        HashTable hashTable = new HashTable(27);
+        UserFreelancer f = bd.findByIdUserFreelancer(1);
+
+        char[] arr =nomeFreelancer.toCharArray();
+        primeiraLetraBusca = String.valueOf(arr[0]);
+
+        for (UserFreelancer s : freelancers) {
+            if (s == null || s.getName().length() == 0)
+                return null;
+            else {
+                char[] charArr = s.getName().toCharArray();
+                primeiraLetra = String.valueOf(charArr[0]);
+                hashTable.insere(primeiraLetra.toUpperCase(), s.getName());
+            }
+        }
+
+        if(hashTable.busca(primeiraLetraBusca,nomeFreelancer)){
+            for (UserFreelancer freelancer : freelancers) {
+                if (freelancer.getName().equals(nomeFreelancer)) {
+                    UserFreelancer g = freelancer;
+                    f = g;
+
+
+                }
+            }
+        }
+
+        if(f != null){
+            return ResponseEntity.status(204).body(nome);
+        }else {
+            return ResponseEntity.status(200).body(f);
+        }
     }
 }
 

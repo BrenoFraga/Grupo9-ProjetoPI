@@ -117,6 +117,7 @@ public class LikeController {
                                                @PathVariable long fkContactor,
                                                @PathVariable long fkProject,
                                                @PathVariable Boolean like){
+
         Contactor c = contactorRepository.findByIdContactor(fkContactor);
         UserFreelancer f = freelancerRepository.findByIdUserFreelancer(fkFreelancer);
         ProjectModel p = projectRepository.findByIdProjectContactor(fkProject);
@@ -124,13 +125,14 @@ public class LikeController {
         pkLikeProject pkf = new pkLikeProject(f,c,p);
         LikeProject lp = new LikeProject(dataLike,like,pkf);
         List<LikeProject> listLp = likeProjectRepository.findAll();
+
         try {
-            Boolean temLike = false;
-            for(int i = 0; i < listLp.size();i++){
-                if(lp == listLp.get(i)){
+            boolean temLike = false;
+            for (LikeProject likeProject : listLp) {
+                if (lp == likeProject) {
                     temLike = true;
                     break;
-                }else{
+                } else {
                     temLike = false;
                 }
             }
@@ -140,7 +142,9 @@ public class LikeController {
         }catch (Exception e){
             return ResponseEntity.status(406).build();
         }
+
         MatchGetControlProject m = new MatchGetControlProject(likeFreelancerRepository.findAll(),lp);
+
         if(m.getMatch() == null) {
             return ResponseEntity.status(201).body(0);
         }else{
