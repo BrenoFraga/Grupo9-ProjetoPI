@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -42,8 +43,8 @@ public class DashboardController {
     @Autowired
     private SpecialtyRepository specialtyRepository;
 
-//    @Autowired
-//   private ModelMapper mapper;
+    @Autowired
+   private ModelMapper mapper;
 
     //matchcontactor
     @GetMapping("/count-match")
@@ -106,47 +107,47 @@ public class DashboardController {
     }
 
     //allRequiredLanguages
-//    @GetMapping("/languages")
-//    public ResponseEntity<List<LanguagesProjectRequest>> languages() {
-//        List<ProjectModel> list = projectRepository.findAll();
-//        if (projectRepository.findAll().isEmpty()) {
-//            return ResponseEntity.status(204).build();
-//        } else {
-//            List<LanguagesProjectRequest> requests = new ArrayList<>();
-//            for (ProjectModel projectModel : list) {
-//                requests.add(mapper.map(projectModel, LanguagesProjectRequest.class));
-//            }
-//            return ResponseEntity.status(200).body(requests);
-//        }
-//    }
+    @GetMapping("/languages")
+    public ResponseEntity<List<LanguagesProjectRequest>> languages() {
+        List<ProjectModel> list = projectRepository.findAll();
+        if (projectRepository.findAll().isEmpty()) {
+            return ResponseEntity.status(204).build();
+        } else {
+            List<LanguagesProjectRequest> requests = new ArrayList<>();
+            for (ProjectModel projectModel : list) {
+                requests.add(mapper.map(projectModel, LanguagesProjectRequest.class));
+            }
+            return ResponseEntity.status(200).body(requests);
+        }
+    }
 
     //alltechnologyUsed
-//    @GetMapping("/languages")
-//    public ResponseEntity technologys() {
-//        List<SpecialtyModel> list = specialtyRepository.findAll();
-//        if (specialtyRepository.findAll().isEmpty()) {
-//            return ResponseEntity.status(204).body(0);
-//        } else {
-//            List<TechnologyUsedRequest> requests = new ArrayList<>();
-//            for (SpecialtyModel specialtyModel : list) {
-//                requests.add(mapper.map(specialtyModel, TechnologyUsedRequest.class));
-//            }
-//            return ResponseEntity.status(200).body(requests);
-//        }
-//    }
+    @RequestMapping(value = {"/technology"}, method = RequestMethod.GET)
+    public ResponseEntity technologys() {
+        List<SpecialtyModel> list = specialtyRepository.findAll();
+        if (specialtyRepository.findAll().isEmpty()) {
+            return ResponseEntity.status(204).body(0);
+        } else {
+            List<TechnologyUsedRequest> requests = new ArrayList<>();
+            for (SpecialtyModel specialtyModel : list) {
+                requests.add(mapper.map(specialtyModel, TechnologyUsedRequest.class));
+            }
+            return ResponseEntity.status(200).body(requests);
+        }
+    }
 
     //allRequiredArea
-//    @GetMapping("/requiredAreas")
-//    public ResponseEntity requiredAreas() {
-//        List<ProjectModel> list = projectRepository.findAll();
-//        if (projectRepository.findAll().isEmpty()) {
-//            return ResponseEntity.status(204).body(0);
-//        } else {
-//            List<RequiredAreaRequest> requests = new ArrayList<>();
-//            for (ProjectModel projectModel : list) {
-//                requests.add(mapper.map(projectModel, RequiredAreaRequest.class));
-//            }
-//            return ResponseEntity.status(200).body(requests);
-//        }
-//    }
+    @GetMapping("/requiredAreas")
+    public ResponseEntity requiredAreas() {
+        List<ProjectModel> list = projectRepository.findAll();
+        if (projectRepository.findAll().isEmpty()) {
+            return ResponseEntity.status(204).body(0);
+        } else {
+            List<RequiredAreaRequest> requests = new ArrayList<>();
+            for (ProjectModel projectModel : list) {
+                requests.add(mapper.map(projectModel, RequiredAreaRequest.class));
+            }
+            return ResponseEntity.status(200).body(requests);
+        }
+    }
 }
