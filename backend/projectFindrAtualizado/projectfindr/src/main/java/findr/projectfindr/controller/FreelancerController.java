@@ -165,46 +165,46 @@ public class FreelancerController {
         return ResponseEntity.status(200).body(foto);
     }
 
-    @GetMapping("/busca/{nomeFreelancer}")
-    public ResponseEntity getFreelancerBusca(@PathVariable String nomeFreelancer){
-
-        String nome = "Freelancer não encontrado";
-        List<UserFreelancer> freelancers = bd.findAll();
-        String primeiraLetra = "";
-        String primeiraLetraBusca = "";
-        HashTable hashTable = new HashTable(27);
-        UserFreelancer f = bd.findByIdUserFreelancer(1);
-
-        char[] arr =nomeFreelancer.toCharArray();
-        primeiraLetraBusca = String.valueOf(arr[0]);
-
-        for (UserFreelancer s : freelancers) {
-            if (s == null || s.getName().length() == 0)
-                return null;
-            else {
-                char[] charArr = s.getName().toCharArray();
-                primeiraLetra = String.valueOf(charArr[0]);
-                hashTable.insere(primeiraLetra.toUpperCase(), s.getName());
-            }
-        }
-
-        if(hashTable.busca(primeiraLetraBusca,nomeFreelancer)){
-            for (UserFreelancer freelancer : freelancers) {
-                if (freelancer.getName().equals(nomeFreelancer)) {
-                    UserFreelancer g = freelancer;
-                    f = g;
-
-
-                }
-            }
-        }
-
-        if(f != null){
-            return ResponseEntity.status(204).body(nome);
-        }else {
-            return ResponseEntity.status(200).body(f);
-        }
-    }
+//    @GetMapping("/busca/{nomeFreelancer}")
+//    public ResponseEntity getFreelancerBusca(@PathVariable String nomeFreelancer){
+//
+//        String nome = "Freelancer não encontrado";
+//        List<UserFreelancer> freelancers = bd.findAll();
+//        String primeiraLetra = "";
+//        String primeiraLetraBusca = "";
+//        HashTable hashTable = new HashTable(27);
+//        UserFreelancer f = bd.findByIdUserFreelancer(1);
+//
+//        char[] arr =nomeFreelancer.toCharArray();
+//        primeiraLetraBusca = String.valueOf(arr[0]);
+//
+//        for (UserFreelancer s : freelancers) {
+//            if (s == null || s.getName().length() == 0)
+//                return null;
+//            else {
+//                char[] charArr = s.getName().toCharArray();
+//                primeiraLetra = String.valueOf(charArr[0]);
+//                hashTable.insere(primeiraLetra.toUpperCase(), s.getName());
+//            }
+//        }
+//
+//        if(hashTable.busca(primeiraLetraBusca,nomeFreelancer)){
+//            for (UserFreelancer freelancer : freelancers) {
+//                if (freelancer.getName().equals(nomeFreelancer)) {
+//                    UserFreelancer g = freelancer;
+//                    f = g;
+//
+//
+//                }
+//            }
+//        }
+//
+//        if(f != null){
+//            return ResponseEntity.status(204).body(nome);
+//        }else {
+//            return ResponseEntity.status(200).body(f);
+//        }
+//    }
 }
 
 
