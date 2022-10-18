@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  spring_boot_com_mysql:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    image: app
+    ports:
+      - '8080:8080'
+    environment:
+      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -Xmx1G -Xms128m -XX:MaxMetaspaceSize=128m
+      - PROFILE=dev
+    links:
+      - db
+  db:
+    image: mysql:5.7
+    container_name: FindrDB
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_DATABASE=findr
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=findr123
+    volumes:
+      - ./docker/volume_mysql:/var/lib/mysql
