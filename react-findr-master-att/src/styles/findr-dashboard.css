@@ -1,0 +1,306 @@
+.card-info{
+    width: 96%;
+    height: 180px;
+    margin-left: 2%;
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-menu{
+    min-height: 100vh;
+    position: fixed;
+}
+
+
+.first-card-match{
+    background-color: white;
+    width: 20%;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+}
+
+.CircularProgressbar{
+    height: 80px;
+    margin-top: 10px;
+}
+
+.CircularProgressbar .CircularProgressbar-path{
+    stroke: #4B1ECB !important;
+}
+
+.CircularProgressbar .CircularProgressbar-text{
+    fill: #4B1ECB !important;
+}
+
+.p-progressbar .p-progressbar-value{
+    background: #4B1ECB;
+}
+
+.title-card{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    color: #4B1ECB;
+}
+
+.info-card{
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+    font-weight: 500;
+    color: #4B1ECB;
+}
+
+.chart-doughnut{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.second-card-users{
+    background-color: white;
+    width: 20%;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+}
+
+.infos-atual-meta{
+    margin-top: 10px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.split{
+    background-color: #4B1ECB;
+    color: #4B1ECB;
+    width: 3%;
+    height: 60px;
+}
+
+.info-data-atual{
+    margin-right: 15px;
+    color: #4B1ECB;
+}
+
+.info-data-atual span{
+    font-size: 30px;
+}
+
+.info-data-meta{
+    margin-left: 15px;
+    color: #4B1ECB;
+}
+
+.info-data-meta span{
+    font-size: 30px;
+}
+
+.third-card-projects{
+    background-color: white;
+    width: 20%;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+}
+
+.fourth-card-likes{
+    background-color: white;
+    width: 20%;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+}
+
+.grafics-analytics{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20%;
+}
+
+.grafics{
+    width: 96%;
+    height: 650px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2%;
+    margin-left: 2%;
+}
+
+.info-grafics{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.title-grafics-doughnut-chart{
+    height: 300px;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.title-grafics-doughnut-chart span{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.description-languages{
+    height: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
+}
+
+.description-languages-all{
+    width: 18%;
+    height: 20px;
+    display: flex;
+}
+
+.languages-color{
+    height: 10px;
+    width: 30%;
+    margin-top: 7px;
+}
+
+.languages{
+    margin-left: 5px;
+    font-size: 15px;
+}
+
+
+.grafics-doughnut-chart{
+    height: 300px;
+    width: 95%;
+    display: flex;
+}
+
+.doughnut-contratante{
+    margin-top: 20px;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.title-color{
+    width: 30%;
+    height: 14px;
+}
+
+.doughnut-contratante-data{
+    display: flex;
+    width: 80%;
+}
+
+.title-doughnut-data{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title-doughnut{
+    display: flex;
+    width: 100%;
+    height: 25px;
+}
+
+.title-doughnut span{
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+.p-chart{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.doughnut-contratante p{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.doughnut-freelancer{
+    margin-top: 20px;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.doughnut-freelancer-data{
+    display: flex;
+    width: 80%;
+}
+
+
+.doughnut-freelancer p{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.grafics-line-chart{
+    background-color: white;
+    margin-top: 10px;
+    height: 300px;
+    width: 95%;
+}
+
+.list-required-area{
+    background-color: white;
+    height: 610px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    color: #4B1ECB;
+}
+
+.list-required-area p{
+    margin-left: 5%;
+    margin-top: 5%;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.top-required-area{
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-required-area span{
+    margin-left: 8%;
+    margin-bottom: 3%;
+}
+
+.container-dashboard{
+    width: 98vw;
+    min-height: 100vh;
+    display: flex;
+}
+
+.g{
+    color: #4c1ecb44;
+}

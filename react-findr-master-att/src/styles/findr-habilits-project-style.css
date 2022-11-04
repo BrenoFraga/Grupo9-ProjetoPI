@@ -1,0 +1,277 @@
+.container{
+    background-color: white;
+    width: 94%;
+    height: 585px;
+    margin-left: 3%;
+    margin-top: 2%;
+    border-radius: 75px;
+    display: flex;
+}
+
+form{
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.content {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+}
+
+.habilits-description{
+    width: 70%;
+    margin-top: 3%;
+}
+
+.habilits-description h2{
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    color: #4B1EC8;
+}
+
+.combobox-habilits{
+    width: 60%;
+    margin-left: 25%;
+    margin-top: 3%;
+}
+
+
+.combobox-habilits select{
+    width: 87%;
+    margin-top: 1%;
+    height: 30px;
+    display: flex;
+    border-color: #4B1EC8;
+    border-radius: 5px;
+    outline: 0;
+    color: #4B1EC8;
+}
+
+.info-user{
+    background-color: #4B1EC8;
+    width: 40%;
+    height: 585px;
+    border-radius: 0px 75px 75px 0px;
+}
+
+.level-habilits{
+    width: 60%;
+    margin-left: 25%;
+}
+
+.title{
+    font-size: 12px;
+    color: #4B1EC8;
+    font-weight: bold;
+    margin-top: 2%;
+}
+
+.level-habilits p{
+    color: #4B1EC8;
+}
+
+.button-registration-habilit{
+    display: flex;
+    width: 87%;
+}
+
+.button-registration-habilit button{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(137, 43, 226);
+    border-radius: 5px;
+    outline: 0;
+    border: 2px solid #4B1EC8;
+    color: #EDEDED;
+    width: 50%;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.types-levels{
+    width: 87%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.level-beginner{
+    display: flex;
+    flex-direction: column;
+}
+
+.level-beginner input{
+    accent-color: #4B1EC8;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.level-intermediary{
+    display: flex;
+    flex-direction: column;
+}
+
+.level-intermediary input{
+    accent-color: #4B1EC8;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.level-advanced{
+    display: flex;
+    flex-direction: column;
+}
+
+.level-advanced input{
+    accent-color: #4B1EC8;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.title-project{
+    width: 60%;
+    margin-left: 25%;
+}
+
+.title-project p{
+    font-size: 15px;
+    color: #4B1EC8;
+    font-weight: bold;
+}
+
+.title-project input{
+    border: 2px solid #4B1EC8;
+    border-radius: 7px;
+    width: 87%;
+    outline: 0;
+    padding-left: 5px;
+}
+
+.description-project{
+    width: 60%;
+    margin-left: 25%;
+    margin-top: 2%;
+}
+
+.description-project p{
+    font-size: 15px;
+    color: #4B1EC8;
+    font-weight: bold
+}
+
+.description{
+    margin-top: 1%;
+}
+
+.description textarea{
+    border: 2px solid #4B1EC8;
+    border-radius: 7px;
+    width: 87%;
+    height: 80px;
+    outline: 0;
+    resize: none;
+}
+
+.requiredArea{
+    margin-top: 2%;
+}
+
+.requiredArea input{
+    border: 2px solid #4B1EC8;
+    border-radius: 7px;
+    width: 87%;
+    outline: 0;
+    padding-left: 5px;
+}
+
+.quantifyProfissionals{
+    margin-top: 2%;
+}
+
+.quantifyProfissionals input{
+    border: 2px solid #4B1EC8;
+    border-radius: 7px;
+    width: 87%;
+    outline: 0;
+    padding-left: 5px;
+}
+
+/* .habilits-with-level{
+    background-color: rgba(137, 43, 226, 0.493);
+    width: 87%;
+    height: 120px;
+    border: 2px solid blueviolet;
+    border-radius: 20px;
+    margin-top: 5%;
+} */
+
+/* .habilit-level{
+    margin-left: 2%;
+    margin-top: 2%;
+    font-size: 10px;
+    background-color: blueviolet;
+    border: 2px solid #EDEDED;
+    border-radius: 20px;
+    padding: 5px;
+    color: #EDEDED;
+} */
+
+/* .habiit-content{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+} */
+
+.info-user-contratante{
+    margin-top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    color: #EDEDED;
+}
+
+.info-user-contratante p{
+    color: #EDEDED;
+    width: 70%;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-contratante button{
+    margin-top: 15%;
+    outline: 0;
+    background-color: #4B1EC8;
+    border: 2px solid #EDEDED;
+    color: #EDEDED;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    padding: 0 20px 0 20px;
+    font-size: 20px;
+}
+
+.btn-cadastrar button{
+    margin-top: 20%;
+    color: #4B1EC8;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 15px;
+    background-color: #EDEDED;
+    border-radius: 7px;
+    outline: 0;
+    border: none;
+    text-transform: uppercase;
+    padding: 5px 40px 5px 40px;
+}

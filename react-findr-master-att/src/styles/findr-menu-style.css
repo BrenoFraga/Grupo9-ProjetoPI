@@ -1,0 +1,91 @@
+
+@keyframes loadMenu{
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0%);
+    }
+  }
+
+.container-menu{
+    width: 20%;
+    background-color: white;
+    animation: loadMenu 0.5s;
+    height: 100vh;
+    float: left;
+    box-shadow: 5px 5px 5px #8d8787;
+}
+
+
+.user-return-container{
+    margin-top: 1em;
+    padding-bottom: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.btn-exit{
+    margin-top: 60%;
+}
+
+.btn-profile{
+    margin-top: 10%;
+}
+
+.user-return-container h1{
+    font-weight: normal;
+    font-size: 30px;
+}
+
+.user-return-container h1:hover{
+    color: purple;
+    transition: 0.25s;
+}
+
+.user-return-container img{
+    width: 7em;
+    height: 7em;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-size: initial;
+}
+
+
+.p-menu.p-component.menu-findr{
+    font-size: 20px;
+    border: none;
+    width: 100%;
+}
+
+
+.p-menu .p-menuitem-link:not(.p-disabled):hover{
+    background-color: #4b1ec880;
+    box-shadow: 6px 5px 10px 0px #9cacb4;
+}
+
+.pi:before{
+    color: #495057 !important;
+}
+
+.p-menu .p-menuitem-link:not(.p-disabled):hover .p-menuitem-text{
+    color: white;
+}
+
+.p-menu .p-menuitem-link:not(.p-disabled):hover .p-menuitem-icon{
+    color: white !important;
+}
+
+.p-menu .p-menuitem-link .p-menuitem-icon{
+    margin-right: 1.5em;
+}
+
+.icon-return i{
+    height: 100%;
+}
+
+#profile-menu{
+    margin-top: 50%;
+}

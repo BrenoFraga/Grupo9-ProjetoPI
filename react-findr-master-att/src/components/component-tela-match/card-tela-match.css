@@ -1,0 +1,76 @@
+.match-information{
+    width: 510px;
+    height: 550px;
+    background-color: white;
+    background-color: white;
+    border-radius: 30px;
+}
+
+.imagea-usuario{
+    background-image: url("../../imgs/match-img-1.png");
+    width: 80%;
+    height: 290px;
+    margin: -45px 0px 0px -102px;
+}
+
+.img-user-logado{
+    width: 15%;
+    background-image: url("https://ofuroquerobanho.com.br/wp-content/uploads/2018/04/projeto-icon.png");
+    background-size: 75px;
+    height: 70px;
+    margin-top: -215px;
+    margin-left: 20px;
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
+}
+
+.name-user{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-top: -88px;
+}
+
+.name-user p{
+    font-size: 15px;
+}
+
+.tecnolgics-info{
+    width: 80%;
+    height: 55px;
+    display: inline-flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.tecnolgics-info h3{
+    width: 100%;
+}
+
+.imagem-tecno{
+    background-image: url("../../imgs/React-icon.svg.png");
+    width: 18%;
+    height: 50px;
+    background-size: 50px 50px;
+    display: flex;
+}
+
+.bars-levels{
+    width: 40%;
+    height: 30px;
+    background-color: green;
+    border-radius: 15px;
+    margin-top: 3%;
+}
+
+.imagem-two{
+    background-image: url("../../imgs/img-match-2.png");
+    width: 31%;
+    height: 206px;
+    border-radius: 30px;
+    margin: 0px 0px 0px 350px;
+    margin-top: 50px;
+}

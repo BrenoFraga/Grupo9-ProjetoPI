@@ -1,0 +1,202 @@
+
+@keyframes loadMenu{
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0%);
+    }
+  }
+
+  @keyframes likeAnimation{
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(200%);
+    }
+  }
+
+  @keyframes rejectAnimation{
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-200%);
+    }
+  }
+  
+  
+
+body{
+    animation: loadMenu 1s right;
+}
+
+.css-46bh2p-MuiCardContent-root {
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.MuiCard-root{
+    animation: loadMenu 1s right;
+}
+.user-paragraph{
+    font-size: 30px;
+    text-align: start;
+}
+
+.header{
+    height: 10vh;
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-evenly;
+    font-size: 30px;
+    padding-right: 5%;
+}
+
+
+.avatar-user{
+    background-image: url('https://i.imgur.com/wqp4IsT.jpeg');
+    height: 20vh;
+    width: 20vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-bottom: 0;
+}
+
+
+#favorite-button-icon{
+    font-size: 50px;
+    transition: 0.7s;
+}
+
+#favorite-button-icon:hover{
+    color:red;
+    font-size: 120px;
+    transition: 0.7s;
+}
+
+#not-interested-icon{
+    font-size: 50px;
+    transition: 0.7s;
+}
+
+#not-interested-icon:hover{
+    color: darkblue;
+    font-size:120px;
+    transition: 0.7s;
+}
+
+.MuiCardHeader-title.css-et1ao3-MuiTypography-root{
+    font-size: 30px;
+    padding-left: 50%;
+    text-align: end;
+    color: black;
+}
+
+.MuiCardHeader-subheader.css-83ijpv-MuiTypography-root{
+    color: darkgrey;
+    text-align: end;
+    font-size: 20px;
+}
+.MuiCardMedia-img:hover{
+    opacity: 1;
+  }
+
+  #teste-column{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    justify-items: center;
+    padding: 0;
+  }
+
+
+  .run-reject-animation {
+    animation: rejectAnimation 0.5s; 
+  }
+
+  .run-like-animation {
+    animation: likeAnimation 0.6s; 
+  }
+
+  #main-ability, #secondary-ability, #tertiary-ability{
+    font-weight: normal;
+  }
+
+  #main-ability{
+    color: darkgreen;
+  }
+
+  #secondary-ability{
+    color: darkgoldenrod;
+  }
+
+  #tertiary-ability{
+    color: darkred;
+  }
+
+  #card-actions{
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-evenly;
+    padding: 0;
+  }
+
+  #final-availability-title{
+    text-align: center;
+    width: 100%;
+    color: grey;
+    font-weight: lighter;
+    font-size: large;
+  }
+
+
+  #footer{
+    height: 20vh;
+    width: 100%;
+    padding: 0%;
+    margin: 0%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  #footer-image{
+    width: 30%;
+    height: 100%;
+    padding-left: 14vh;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .language-card{
+    padding: 0;
+  }
+
+  .language-card img{
+    max-width: fit-content;
+  }
+
+  .css-ok7t6y-MuiCardMedia-root {
+    object-fit: contain;
+}
+
+#full-card{
+  margin-left: 10em;
+  overflow-y: scroll;
+  max-height: 100vh;
+}
+
+  /*parent {
+
+    }
+    
+    .div1 { grid-area: 1 / 1 / 2 / 2; }
+    .div2 { grid-area: 1 / 2 / 2 / 3; }
+    .div3 { grid-area: 2 / 1 / 3 / 2; }
+    .div4 { grid-area: 2 / 2 / 3 / 3; }
+    .div5 { grid-area: 3 / 1 / 4 / 2; }
+    .div6 { grid-area: 3 / 2 / 4 / 3; } */

@@ -1,0 +1,23 @@
+.container{
+    width: 80%;
+}
+
+.color-primary-findr{
+    --cor-bg-primary : #3333CC;
+}
+
+.color-secundary-findr{
+    --cor-bg-secundary : #4B1EC8;
+}
+
+.color-tertiary-findr{
+    --cor-bg-tertiary : #4B0082;
+}
+
+.color-clearer{
+    --cor-bg-clearer : #EDEDED;
+}
+
+.color-darker{
+    --cor-bg-darker : #232323;
+}

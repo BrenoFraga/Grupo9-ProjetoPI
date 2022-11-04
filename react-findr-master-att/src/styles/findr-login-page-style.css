@@ -1,0 +1,145 @@
+.logo{
+    width: 10em;
+    height: 10em;
+}
+
+
+.container-login-user{
+    float: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-right: 1em;
+    margin-top: -7em;
+
+}
+
+.saudacao-usuario{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+#input_id ,#input_senha{
+    border-radius: 15px;
+    height: 50px;
+    border:1px solid black; 
+}
+
+#btn-click-login{
+    border:1px solid black;
+    border-radius: 15px;
+    height: 40px;   
+    color: white;
+    margin-top: 2%;
+}
+
+.saudacao-usuario .p-inputtext.p-component{
+    width: 80%;
+    height: 5em;
+    border-radius: 10px;
+    margin-top: 0.5em;
+    box-shadow: 0 4px 2px -2px #3f3d56;
+}
+
+.password-options{
+    text-decoration: black;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 1rem;
+}
+
+.also-login{
+    /* background-color: blue; */
+    display: flex;
+    justify-content: center;
+    font-size: x-large;
+    color: dimgray;
+    font-weight: 400;
+}
+
+.login-options{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 2em;
+}
+
+.pi:before{
+    font-size: 2em;
+    font-size: 1.5em;
+    color: beige;
+    margin-bottom: 3em;
+}
+
+.pi-facebook:before{
+    background-color: blue;
+    padding: 0.5em;
+    border-radius: 50%;
+}
+
+.pi-twitter:before{
+    background-color: #1da1f2;
+    padding: 0.5em;
+    border-radius: 50%;
+}
+
+.pi-google:before{
+    background-color: #ea4335;
+    padding: 0.5em;
+    border-radius: 50%;
+}
+
+.a-href-password{
+    text-emphasis: none;
+    text-decoration: none;
+    color: black;
+}
+
+.text-greetings{
+    font-weight: 300;
+}
+
+.button-login{
+    margin-top: 1em;
+}
+
+.container-img-login{
+    display: flex;
+    justify-content: flex-start;
+    width: 30em;
+}
+
+.container-login-user img{
+    width: 40em;
+    height: 40em;
+}
+
+#btn-click-login{
+    background-color: purple;
+}
+
+
+.type-login{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.type-login input{
+    accent-color: blueviolet;
+    cursor: pointer;
+}
+
+.type-freelancer{
+    width: 50%;
+    display: flex;
+}
+
+.type-contratante{
+    width: 50%;
+    display: flex;
+}

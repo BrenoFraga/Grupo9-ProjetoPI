@@ -1,0 +1,257 @@
+.content-habilit{
+    background-color: white;
+    width: 94%;
+    height: 585px;
+    margin-left: 3%;
+    margin-top: 2%;
+    border-radius: 75px;
+    display: flex;
+}
+
+form{
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.container-habilit{
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+}
+
+.habilits-freelancer{
+    width: 70%;
+    margin-top: 3%;
+}
+
+.habilits-freelancer h2{
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    color: blueviolet;
+}
+
+.habilits-freelancer-select{
+    margin-top: 5%;
+    width: 60%;
+    margin-left: 25%;
+}
+
+.habilits-freelancer-select select{
+    width: 87%;
+    margin-top: 1%;
+    height: 30px;
+    display: flex;
+    border-color: blueviolet;
+    border-radius: 5px;
+    outline: 0;
+    color: blueviolet;
+    overflow: auto;
+    
+}
+
+.level-habilits-freelancer{
+    width: 60%;
+    margin-left: 25%;
+    margin-top: 5%;
+}
+
+.title-free{
+    font-size: 15px;
+    color: #4B1ECB;
+    font-weight: bold;
+    margin-top: 2%;
+}
+
+.level-habilits-freelancer p{
+    color: #4B1ECB;
+}
+
+.type-levels-free{
+    width: 87%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.level-beginner-free{
+    display: flex;
+    flex-direction: column;
+}
+
+.level-beginner-free input{
+    accent-color: #4B1ECB;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.level-intermediary-free{
+    display: flex;
+    flex-direction: column;
+}
+
+.level-intermediary-free input{
+    accent-color: #4B1ECB;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.level-advanced-free{
+    display: flex;
+    flex-direction: column;
+}
+
+.level-advanced-free input{
+    accent-color: #4B1ECB;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.button-registration-habilit-free{
+    display: flex;
+    width: 87%;
+    margin-top: 2%;
+}
+
+.button-registration-habilit-free button{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(137, 43, 226);
+    border-radius: 5px;
+    outline: 0;
+    border: 2px solid #4B1ECB;
+    color: #EDEDED;
+    width: 50%;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.habilits-with-level-free{
+    background-color: rgba(137, 43, 226, 0.493);
+    width: 87%;
+    height: 120px;
+    border: 2px solid #4B1ECB;
+    border-radius: 20px;
+    margin-top: 5%;
+}
+
+.habilit-level-free{
+    margin-left: 2%;
+    margin-top: 2%;
+    font-size: 10px;
+    background-color: #4B1ECB;
+    border: 2px solid #EDEDED;
+    border-radius: 20px;
+    padding: 5px;
+    color: #EDEDED;
+}
+
+.habiit-content-free{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.description-project-free{
+    width: 100%;
+    margin-top: 2%;
+}
+
+.description-project-free p{
+    font-size: 15px;
+    color: #4B1ECB;
+    font-weight: bold
+}
+
+.description-free{
+    margin-top: 1%;
+}
+
+.description-free textarea{
+    border: 2px solid #4B1ECB;
+    border-radius: 7px;
+    width: 87%;
+    height: 120px;
+    outline: 0;
+    resize: none;
+}
+
+.info-user-freelancer{
+    background-color: #4B1ECB;
+    width: 40%;
+    height: 585px;
+    border-radius: 0px 75px 75px 0px;
+}
+
+.info-user-freelancer-content{
+    margin-top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    color: #EDEDED;
+}
+
+.info-user-freelancer-content p{
+    color: #EDEDED;
+    width: 70%;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-freelancer button{
+    margin-top: 15%;
+    outline: 0;
+    background-color: #4B1ECB;
+    border: 2px solid #EDEDED;
+    color: #EDEDED;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    padding: 0 30px 0 30px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.btn-cadastrar-free button{
+    margin-top: 20%;
+    color: #4B1ECB;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 15px;
+    background-color: #EDEDED;
+    border-radius: 7px;
+    outline: 0;
+    border: none;
+    text-transform: uppercase;
+    padding: 5px 40px 5px 40px;
+    cursor: pointer;
+}
+
+.ocupation-area{
+    margin-top: 2%;
+}
+
+.ocupation-area p{
+    font-size: 15px;
+    color: #4B1ECB;
+    font-weight: bold;
+    margin-top: 2%;
+}
+
+.ocupation-area input{
+    border: 2px solid #4B1ECB;
+    border-radius: 7px;
+    width: 87%;
+    outline: 0;
+    padding-left: 5px;
+}

@@ -1,0 +1,109 @@
+.ajuste-tela{
+    height: 100vh;
+    background-color: darkgrey;
+}
+
+.container-content-form{
+    display: flex;
+    margin-left: 5%;
+    width: 90%;
+    height: 98vh;
+    border-radius: 10px;
+}
+
+
+.container-content-form img{
+    width: 33%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.container-inputs{
+    display: inline-flex;
+    justify-content: space-evenly;
+    width: 70%;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 4px;
+}
+
+.container-inputs input{
+    width: 19em;
+    height: 2.5em;
+    background-color: #EDF2F5;
+}
+
+.text-input{
+    text-align: center;
+    padding-left: 2vw;
+    margin-bottom: 94vh;
+    position: absolute;
+}
+
+.individual-input-cadastro p{
+    font-size: 10px;
+    margin-top: 30px;
+}
+
+.text-acceptance{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    width: 54vw;
+    text-align: center;
+}
+.text-acceptance input{
+    display: block;
+
+}
+.text-acceptance button{
+    width: 60%;
+}
+
+.login-here{
+    display: inline-flex;
+}
+
+.login-here a{
+    margin-left: 0.5em;
+}
+
+#checkbox-accept{
+    width: 1em;
+    height: 1em;
+    margin-top: 0.5em;
+    margin-right: 1em;
+}
+#signInButton{
+    background-color: #6C63FF;
+    color: white;
+    font-size: 13px;
+    width: 30%;
+}
+.i-acceptance{
+    display: inline-flex;
+}
+
+.form-inputs{
+    display: grid;
+    grid-template-columns: repeat(2, 20em);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    padding-top: 2em;
+    justify-content: center;
+}
+
+
+.individual-input-cadastro input{
+    border-radius: 15px;
+    border:1px solid black;
+}
+
+#signInButton{
+    border-radius: 8px;
+    box-shadow: none;
+    border: 1px solid black;
+    height: 4em;
+}

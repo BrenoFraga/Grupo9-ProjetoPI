@@ -1,0 +1,21 @@
+.faq-component-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-left: 1em;
+    width: 33%;
+    height: 30vh;
+}
+
+.faq-component-container h1{
+    font-weight: normal;
+    font-size: xx-large;
+}
+
+.faq-component-container a{
+    font-weight: 300;
+    font-size: smaller;
+    text-decoration: dashed;
+    color: gray;
+}
+

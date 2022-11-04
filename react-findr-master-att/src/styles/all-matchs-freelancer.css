@@ -1,0 +1,57 @@
+.container--all{
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    
+}
+
+.container-all-content{
+    width: 80vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 20%;
+    background: #dae4e9;
+}
+
+.container-title{
+   width: 30%;
+   height: 5%; 
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+}
+
+.container-title h1{
+    font-size: 40px;
+    font-weight: bold;
+    color: purple;
+}
+
+.container-card{
+    width: 80%;
+   height: 90%;  
+   display: flex;
+   justify-content: space-around;
+   flex-wrap: wrap;
+   overflow: auto;
+   
+}
+
+.container-card::-webkit-scrollbar{
+    width: 12px;
+    background-color: rgb(200,200,200);
+    border: 5px solid #dae4e9;
+}
+
+.container-card::-webkit-scrollbar-thumb{
+    background-color: rgb(112, 79, 150);
+    border-radius: 50px;
+    border: 2px solid  #dae4e9;
+}

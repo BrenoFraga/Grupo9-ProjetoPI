@@ -1,0 +1,192 @@
+.card{
+    width: 550px;
+    height: 300px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px #8d8787;
+    display: flex;
+}
+
+.container-image{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.container-freelancer-content{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.container-exit{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.image-content{
+    width: 90%;
+    height: 50%;
+    border-radius: 50%;
+    background-color: aliceblue;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-image{
+    width: 100%;
+    height: 100%;
+    position:relative;
+	border-radius: 50%;
+}
+.container-level-tec{
+    width: 90%;
+    height: 30%;
+    background-color: #4B1EC8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    
+}
+
+.container-level-tec h5{
+    color: white;
+}
+.container-hab-change{
+    width: 95%;
+    height: 25%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    
+}
+
+.level-hability{
+    width: 90%;
+    height: 100%;
+    border-radius: 5px 0px 0px 5px;
+    background-color: green;
+
+}
+
+.container-name-freelancer{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-email-freelancer{
+    width: 100%;
+    height: 13%;
+    display: flex;
+    align-items: center;
+}
+.icon-email{
+    height: 100%;
+    width: 13%;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    
+}
+.icon-email img {  
+        width: 100%;
+        height: 100%;
+        position:relative;   
+            
+}
+.string-email{
+    margin-left: 20px;
+}
+
+.icon-loc{
+    height: 100%;
+    width: 13%;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    
+}
+
+.icon-loc img{
+    width: 100%;
+        height: 100%;
+        position:relative;
+}
+
+.container-cidade-freelancer h3{
+    margin-left: 20px;
+}
+
+.container-cidade-freelancer{
+    width: 100%;
+    height: 13%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-nome-habilidade-freelancer{
+    width: 100%;
+    height: 13%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-hab{
+    height: 100%;
+    width: 13%;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+}
+
+.icon-hab img {
+    width: 100%;
+    height: 100%;
+    position:relative;
+}
+
+.container-nome-habilidade-freelancer h3{
+    margin-left: 20px;
+}
+
+
+
+.container-data-match-freelancer{
+    width: 100%;
+    height: 13%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.container-icon-close{
+    width: 80%;
+    height: 40px;
+    
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+}
+
+.container-icon-close img {
+    width: 100%;
+    height: 100%;
+    position:relative;
+}
