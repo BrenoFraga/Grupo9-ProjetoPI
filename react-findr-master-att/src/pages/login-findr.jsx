@@ -96,8 +96,7 @@ function FindrLogin() {
                     <button id="btn-click-login" onClick={() => autenticar()}>Fazer Login</button>
                     
                     <div className="password-options">
-                        <a href="#" className="a-href-password">Esqueceu a senha?</a>
-                        <a href="#" className="a-href-password">Recuperar Senha</a>
+                        <a href="#" className="a-href-password">Esqueci a senha</a>
                     </div>
                     <p className="also-login">Também faça Login com:</p>
                     <div className="login-options">

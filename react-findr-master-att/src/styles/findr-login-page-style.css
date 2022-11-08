@@ -11,7 +11,7 @@
     justify-content: space-between;
     align-items: flex-end;
     padding-right: 1em;
-    margin-top: -7em;
+    margin-top: -12%;
 
 }
 
@@ -26,7 +26,9 @@
 #input_id ,#input_senha{
     border-radius: 15px;
     height: 50px;
-    border:1px solid black; 
+    border:1px solid #9e9e9e; 
+    padding-left: 10px;
+    outline: 0;
 }
 
 #btn-click-login{
@@ -35,6 +37,10 @@
     height: 40px;   
     color: white;
     margin-top: 2%;
+    background-color: #6C63FF;
+    border: 1px solid;
+    cursor: pointer;
+    width: 100%;
 }
 
 .saudacao-usuario .p-inputtext.p-component{
@@ -49,7 +55,9 @@
     text-decoration: black;
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: end;
+    font-weight: 500;
+    font-size: 15px;
     padding-top: 1rem;
 }
 
@@ -57,9 +65,10 @@
     /* background-color: blue; */
     display: flex;
     justify-content: center;
-    font-size: x-large;
+    font-size: 20px;
     color: dimgray;
     font-weight: 400;
+    margin-top: 15px;
 }
 
 .login-options{
@@ -114,12 +123,8 @@
 }
 
 .container-login-user img{
-    width: 40em;
+    width: 50em;
     height: 40em;
-}
-
-#btn-click-login{
-    background-color: purple;
 }
 
 
@@ -130,7 +135,7 @@
 }
 
 .type-login input{
-    accent-color: blueviolet;
+    accent-color: #6C63FF;
     cursor: pointer;
 }
 
@@ -142,4 +147,12 @@
 .type-contratante{
     width: 50%;
     display: flex;
+}
+
+.type-freelancer p{
+    margin-top: 2px;
+}
+
+.type-contratante p{
+    margin-top: 2px;
 }

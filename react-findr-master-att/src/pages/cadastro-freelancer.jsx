@@ -142,7 +142,7 @@ function CadastroFreelancer() {
                             <button type='submit' id="signInButton">Cadastrar</button>
                         </div>
                         <div class="login-here">
-                            Já tem conta? Faça login <a href="#">aqui</a>
+                            Já tem conta? Faça login <a href="/login">aqui</a>
                         </div>
                     </div>
                 </div>
