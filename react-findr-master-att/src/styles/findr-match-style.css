@@ -16,11 +16,12 @@
     display: flex;
 }
 
-button {
+/* button {
     height: 100px;
     width: 100px;
     border-radius: 50px;
-}
+} */
+
 .button-align{
     margin: 50px;
     display: flex;

@@ -29,6 +29,7 @@
     width: 400px;
     margin: 20px;
     justify-content: center;
+    margin-left: 370px;
     margin-bottom: 0;
     flex-direction: column;
     box-shadow: 1px 1px 1px 1px #23232323;
@@ -87,8 +88,8 @@
     background-color: white;
     border-radius: 30px;
     height: 285px;
-    width: 600px;
-    margin: 20px;
+    width: 550px;
+    margin: 20px 60px 10px 20px;
     margin-bottom: 0;
     overflow: auto;
     box-shadow: 1px 1px 1px 1px #23232323;

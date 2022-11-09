@@ -1,13 +1,14 @@
 .card-perfil{
     display: flex;
     margin-top: 10px;
-    text-align: center;
     height: 300px;
-    justify-content: center;
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
-    box-shadow: 1px 1px 1px 1px #23232323;
+    margin-left: auto;
+    margin-right: 20%;
 }
+
+
 .card-perfil-info{
     display: flex;
     width:380px;
@@ -32,13 +33,14 @@
     display: flex;
     background-image: none;
     align-items: flex-start;
-    
 }
 
 .enfeite1 img{
     height: 150px;
     width: 120px;
     border-radius: 10px;
+    margin-top: 0px;
+    margin-left: 0px;
 }
 
 .enfeite2{
@@ -51,6 +53,8 @@
     height: 150px;
     width: 120px;
     border-radius: 10px;
+    margin-right: -5px;
+    margin-bottom: -7px;
 }
 
 .img-freelancer-perfil{

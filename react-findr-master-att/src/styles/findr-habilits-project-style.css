@@ -1,8 +1,8 @@
 .container{
     background-color: white;
-    width: 94%;
+    width: 75%;
     height: 585px;
-    margin-left: 3%;
+    margin-left: 22%;
     margin-top: 2%;
     border-radius: 75px;
     display: flex;
@@ -257,8 +257,10 @@ form{
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
-    padding: 0 20px 0 20px;
+    padding: 0 20px;
     font-size: 20px;
+    width: 40%;
+    height: 35px;
 }
 
 .btn-cadastrar button{
@@ -273,5 +275,21 @@ form{
     outline: 0;
     border: none;
     text-transform: uppercase;
-    padding: 5px 40px 5px 40px;
+    padding: 5px 40px;
 }
+
+
+/*margin-top: 20%;
+color: #4B1EC8;
+display: flex;
+margin-left: auto;
+margin-right: auto;
+font-size: 15px;
+background-color: #EDEDED;
+border-radius: 7px;
+outline: 0;
+border: none;
+text-transform: uppercase;
+padding: 5px 40px 5px 40px;
+width: 50%;
+height: 30px;*/

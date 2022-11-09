@@ -1,8 +1,8 @@
 .content-habilit{
     background-color: white;
-    width: 94%;
+    width: 75%;
     height: 585px;
-    margin-left: 3%;
+    margin-left: 22%;
     margin-top: 2%;
     border-radius: 75px;
     display: flex;
@@ -28,7 +28,7 @@ form{
     display: flex;
     align-content: center;
     justify-content: space-around;
-    color: blueviolet;
+    color: #4B1ECB;
 }
 
 .habilits-freelancer-select{
@@ -42,10 +42,10 @@ form{
     margin-top: 1%;
     height: 30px;
     display: flex;
-    border-color: blueviolet;
+    border-color: #4B1ECB;
     border-radius: 5px;
     outline: 0;
-    color: blueviolet;
+    color: #4B1ECB;
     overflow: auto;
     
 }

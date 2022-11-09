@@ -21,7 +21,6 @@ function Rotas(){
                 <Route path="/suporte" element={<Suporte />} />
                 <Route path="/cadastro-freelancer" element={<CadastroFreelancer />} />
                 <Route path="/cadastro-contratante" element={<CadastroContratante />} />
-                <Route path="/main" element={<FindrMatch />} />
                 <Route path="/perfil" element={<Perfil />} />
                 <Route path="/habilits/project" element={<HabilitsProject />} />
                 <Route path="/habilits/habilit" element={<HabilitsHabilit />} />
