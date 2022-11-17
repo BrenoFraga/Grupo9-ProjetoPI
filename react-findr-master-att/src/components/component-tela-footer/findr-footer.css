@@ -1,0 +1,33 @@
+.footer-findr{
+    background-color: white;
+    color: #222;
+    height: 50px;
+    position: fixed;
+    left: 0;
+    display: flex;
+    bottom: 0;
+    width: 100%;
+}
+
+.imgFindr{
+    display: flex;
+    justify-content: end;
+    width: 90%;
+}
+
+.imgFindr span{
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+.imgFindr img{
+    width: 40px;
+    height: 40px;
+    margin-top: 5px;
+}
+
+.footer-findr p{
+    margin-top: 20px;
+    font-size: 12px;
+}
+

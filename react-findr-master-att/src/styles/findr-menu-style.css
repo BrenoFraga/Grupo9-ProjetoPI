@@ -10,11 +10,12 @@
 
 .container-menu{
     width: 20%;
+    z-index: 1;
     background-color: white;
     animation: loadMenu 0.5s;
     height: 100vh;
     float: left;
-    box-shadow: 5px 5px 5px #8d8787;
+    /* box-shadow: 5px 5px 5px #8d8787; */
 }
 
 

@@ -3,6 +3,7 @@ import '../styles/findr-menu-style.css'
 import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme
 import "primereact/resources/primereact.min.css";                  //core css
 import "primeicons/primeicons.css";  
+import Footer from "../components/component-tela-footer/findr-footer"
 
 function FindrMenu() {
     let items = [
@@ -23,7 +24,7 @@ function FindrMenu() {
         </div>
         <Menu model={items} className="menu-findr"/>
         </div>
-        
+        <Footer />
         </>
     )
 

@@ -20,7 +20,7 @@ function FindrMenuAdmin() {
         <>
         <div class="container-menu">
         <div class="user-return-container">
-            <img src=   {imgFindr} alt="" />
+            <img src={imgFindr} alt="" />
            <h1>{sessionStorage.nomesuario}</h1>
         </div>
         <Menu model={items} className="menu-findr"/>
