@@ -136,11 +136,12 @@ function CadastroFreelancer() {
                                         <input type="checkbox" id="checkbox-accept" /> Eu aceito os termos de uso
                                     </div>
                                 </div>
+                                <div class="btn-cadastrar-contratante">
+                                    <button type='submit' id="signInButton">Cadastrar</button>
+                                </div>
                             </form>
                         </div>
-                        <div class="btn-cadastrar-contratante">
-                            <button type='submit' id="signInButton">Cadastrar</button>
-                        </div>
+
                         <div class="login-here">
                             Já tem conta? Faça login <a href="/login">aqui</a>
                         </div>
