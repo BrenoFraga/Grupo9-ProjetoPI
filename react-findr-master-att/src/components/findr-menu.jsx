@@ -8,9 +8,21 @@ import Footer from "../components/component-tela-footer/findr-footer"
 function FindrMenu() {
     let items = [
         {label: 'Perfil', icon: 'pi pi-fw pi-user', url: '/perfil'},
-        {label: 'Dashboards', icon: 'pi pi-fw pi-chart-line',  url: ''},
+        {label: 'Dashboards', icon: 'pi pi-fw pi-chart-line',  command:()=>{
+            if(sessionStorage.idUsuario != null){
+                window.location.href = '/dashboard-freelancer'
+            }else{
+                window.location.href = '/dashboard-contratante'
+            }
+        }},
         {label: 'Conexões', icon: 'pi pi-fw pi-sitemap',  url: ''},
-        {label: 'Matchs', icon: 'pi pi-fw pi-users',  url: '/match'},
+        {label: 'Matchs', icon: 'pi pi-fw pi-users', command:()=>{
+            if(sessionStorage.idUsuario != null){
+                window.location.href = '/match'
+            }else{
+                window.location.href = '/match-contactor'
+            }
+        } },
         {label: 'Projetos', icon: 'pi pi-fw pi-id-card',  url: ''},
         {label: 'Sair', icon: 'pi pi-fw pi-sign-out',  url: 'http://52.202.44.244:80'}
     ]

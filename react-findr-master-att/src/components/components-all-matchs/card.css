@@ -57,7 +57,7 @@
     align-items: center;
     border-radius: 10px;
     flex-wrap: wrap;
-    
+
 }
 
 .container-level-tec h5{
@@ -92,6 +92,7 @@
     height: 13%;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 .icon-email{
     height: 100%;
@@ -99,13 +100,13 @@
     display: flex;
     align-items: center;
     justify-content: center;  
-    
+
 }
 .icon-email img {  
         width: 100%;
         height: 100%;
         position:relative;   
-            
+
 }
 .string-email{
     margin-left: 20px;
@@ -117,7 +118,7 @@
     display: flex;
     align-items: center;
     justify-content: center;  
-    
+
 }
 
 .icon-loc img{
@@ -178,7 +179,7 @@
 .container-icon-close{
     width: 80%;
     height: 40px;
-    
+
     margin-top: 20px;
     display: flex;
     align-items: center;

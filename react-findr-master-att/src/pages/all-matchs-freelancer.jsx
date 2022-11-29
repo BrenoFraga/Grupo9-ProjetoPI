@@ -2,8 +2,34 @@ import FindrMenuAdmin from "../components/findr-menu-admin";
 import '../styles/all-matchs-freelancer.css'
 import * as React from 'react';
 import {CardMatch} from  '../components/components-all-matchs/card'
+import axios from "axios";
+import { ThirtyFpsSelect } from "@mui/icons-material";
 
-function AllMatchFreelancer(){
+class AllMatchFreelancer extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.state = {
+            items : []
+        }
+    }
+
+    componentDidMount(){
+        axios.get('http://localhost:5000/matchsContactor')
+        .then(response =>{
+            console.log(response.data)
+            if(response == null){
+                this.state.matchs = null
+            }else{
+                this.setState({items : response.data})
+            }
+
+        }).catch(error =>{
+            console.error(error.response)
+        })
+
+    }
+    render(){
     return (
        <div className="container-all">
         <FindrMenuAdmin />
@@ -12,16 +38,24 @@ function AllMatchFreelancer(){
                 <h1>Seus Matchs</h1>
             </div>
             <div className="container-card">
-               <CardMatch/> 
-               <CardMatch/> 
-               <CardMatch/> 
-               <CardMatch/> 
-               <CardMatch/> 
-               
+                {this.state.items.map((item) => <CardMatch
+                    name = {item.name}
+                    email = {item.email}
+                    hability = {item.hability}
+                    level = {item.level}
+                    dataMatch = {item.dataMatch}
+                    city = {item.city}
+                    country = {item.country}
+
+
+                />)
+
+                }
             </div>
         </div>
        </div>
     )
+    }
 }
 
-export default AllMatchFreelancer
+export default AllMatchFreelancer;

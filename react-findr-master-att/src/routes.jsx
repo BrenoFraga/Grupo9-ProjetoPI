@@ -12,6 +12,8 @@ import Match from "./pages/match";
 import Dashboard from "./pages/dashboard";
 import AllMatchFreelancer from "./pages/all-matchs-freelancer";
 import ProjectsContactor from "./pages/projects-contactor";
+import DashboardFreelancer from "./pages/dashboard-freelancer"
+import DashboardContratante from "./pages/dashboard-contratante";
 
 function Rotas(){
     return(
@@ -29,6 +31,8 @@ function Rotas(){
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/all-matchs-freelancer" element={<AllMatchFreelancer/>}/>
                 <Route path="/projects-contactor" element = {<ProjectsContactor/>}/>
+                <Route path="/dashboard-freelancer" element={<DashboardFreelancer/>}/>
+                <Route path="/dashboard-contratante" element={<DashboardContratante/>}/>
             </Routes>
         </BrowserRouter>
     );

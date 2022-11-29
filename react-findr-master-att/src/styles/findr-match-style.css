@@ -16,12 +16,6 @@
     display: flex;
 }
 
-/* button {
-    height: 100px;
-    width: 100px;
-    border-radius: 50px;
-} */
-
 .button-align{
     margin: 50px;
     display: flex;
@@ -34,6 +28,9 @@
     box-shadow: 0 6px #999;
     cursor: pointer;
     outline: none;
+    width: 130px;
+    height: 130px;
+    border-radius: 100px;
 }
 
 .button-refused{
@@ -42,6 +39,9 @@
     box-shadow: 0 6px #999;
     cursor: pointer;
     outline: none;  
+    width: 130px;
+    height: 130px;
+    border-radius: 100px;
 }
 
 .button-accept:hover {background-color: rgb(0, 155, 0)}

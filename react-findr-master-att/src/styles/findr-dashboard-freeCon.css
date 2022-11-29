@@ -1,0 +1,204 @@
+.container-dashboard-freeCon{
+    width: 98vw;
+    min-height: 100vh;
+    display: flex;
+}
+
+.grafics-analytics-freeCon{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20%;
+}
+
+.card-info-freeCon{
+    width: 85%;
+    height: 180px;
+    margin-left: 10%;
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-match-freeCon{
+    background-color: white;
+    width: 30%;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+.title-card-freeCon-match{
+    margin-top: 5%;
+    font-size: 16px;
+}
+
+.info-card-freeCon-match{
+    font-size: 96px;
+}
+
+.card-empresas-freeCon{
+    background-color: white;
+    width: 30%;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+.title-card-freeCon-empresa{
+    margin-top: 5%;
+    font-size: 16px;
+}
+
+.info-card-freeCon-empresa{
+    font-size: 40px;
+    margin-top: 20%;
+}
+
+.card-local-freeCon{
+    background-color: white;
+    width: 30%;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+.title-card-freeCon-local{
+    margin-top: 5%;
+    width: 100%;
+    font-size: 16px;
+}
+
+.info-card-freeCon-local{
+    font-size: 40px;
+    margin-top: 15%;
+}
+
+.grafics-line-freeCon{
+    width: 85%;
+    height: 450px;
+    margin-top: 5%;
+    margin-left: 10%;
+    border-radius: 15px 15px 0px 0px;
+    background-color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.color-high{
+    background-color: #4B1EC8;
+    width: 100%;
+    height: 10px;
+    border-radius: 15px 15px 0px 0px;
+}
+
+.title-grafic-line{
+    font-size: 38px;
+    margin-left: 5%;
+    font-weight: 300;
+}
+
+.paragro-grafic-info{
+    font-size: 12px;
+    margin-left: 6%;
+}
+
+.color-mid{
+    background-color: #4B1EC8;
+    margin-top: 3%;
+    width: 100%;
+    height: 1px;
+}
+
+.filters{
+    margin-left: 5%;
+    margin-top: 3%;
+    display: flex;
+}
+
+.color-division{
+    width: 0.2%;
+    height: 45px;
+    background-color: #4B1EC8;
+    margin-left: 5%;
+}
+
+.empresa{
+    width: 15%;
+    height: 30px;
+    padding-left: 5px;
+    border-radius: 20px;
+    border-color: #4B1EC8;
+    margin-top: 7px;
+    outline: 0;
+}
+
+.localidade{
+    width: 15%;
+    height: 30px;
+    padding-left: 5px;
+    border-radius: 20px;
+    border-color: #4B1EC8;
+    margin-left: 5%;
+    margin-top: 7px;
+    outline: 0;
+}
+
+.filter-all{
+    width: 15%;
+    height: 30px;
+    padding-left: 5px;
+    border-radius: 20px;
+    border-color: #4B1EC8;
+    margin-left: 5%;
+    margin-top: 7px;
+    outline: 0;
+}
+
+.grafic-line-viu{
+    background-color: #CCCCFF;
+    width: 100%;
+    height: 95%;
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.grafic-line-color{
+    width: 90%;
+    border-radius: 20px 20px 0px 0px;
+    height: 100%;
+    background-color: white;
+}
+
+.title-vizu-grafic{
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+}
+
+.number-vizu{
+    font-size: 32px;
+}
+
+.info-vizu{
+    font-size: 16px;
+}
+
+.chart-line-vizu{
+    z-index: -1;
+}
+
+
+
+
+
+
