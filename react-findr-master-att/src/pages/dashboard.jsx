@@ -10,20 +10,14 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import  'react-circular-progressbar/dist/styles.css' ;
 import { QrCodeScannerOutlined } from "@mui/icons-material";
 import { red } from "@material-ui/core/colors";
+import axios from "axios";
 
 
 function Dashboard(){
 
-    const [countMatchs, setCountMatchs] = useState();
-    const [metaCountMatchs, setMetaCountMatchs] = useState();
-
+    
     const[countContactor, setCountContactor] = useState();
     const[countFreelancer, setCountFreelancer] = useState();
-
-    const[countProjects, setCoutnProjects] = useState();
-
-    const[countLikesContactor, setCountLikesContactor] = useState();
-    const[countLikesFreelancer, setCountLikesFreelancer] = useState();
 
 
     const[technologyFreelancer, setTechnologyFreelancer] = useState([]);
@@ -38,45 +32,29 @@ function Dashboard(){
         tecUsada: 0
     })
 
+    
     useEffect(() => {
-        api.get(`/dashboard/count-match`).then(res => {
-            setCountMatchs(res.data)
-        }).catch(erro => {
-            // console.log(erro)
-        })
-    }, [])
-
-    useEffect(() => {
-        api.get(`dashboard/count-contactor`).then(res =>{
-            setCountContactor(res.data)
-        }).catch(erro => {
-            // console.log(erro)
+        axios.get('http://localhost:8080/contactor/total-contactor')
+        .then(response =>{
+            console.log(response.data)
+            if(response == null){
+                this.state.matchs = null
+            }else{
+                this.setState({items : response.data})
+            }
+    
+        }).catch(error =>{
+            console.error(error.response)
         })
     }, [])
     
     useEffect(() => {
-        api.get(`dashboard/count-freelancer`).then(res => {
+        axios.get(`http://localhost:8080/freelancer/total-freelancer`).then(res => {
             setCountFreelancer(res.data)
+            console.log(res.data)
         })
     }, [])
         
-    useEffect(() => {
-        api.get(`dashboard/count-projects`).then(res => {
-            setCoutnProjects(res.data)
-        })
-    }, [])
-
-    useEffect(() => {
-        api.get(`dashboard/count-likes-freelancer`).then(res => {
-            setCountLikesFreelancer(res.data)
-        })
-    }, [])
-
-    useEffect(() => {
-        api.get(`dashboard/count-likes-contactor`).then(res => {
-            setCountLikesContactor(res.data)
-        })
-    }, [])
 
 
     const [linguagem1, setLinguagem1] = useState("");
@@ -89,11 +67,7 @@ function Dashboard(){
     const [linguagem8, setLinguagem8] = useState("");
     const [linguagem9, setLinguagem9] = useState("");
     const [linguagem10, setLinguagem10] = useState("");
-    const [linguagem11, setLinguagem11] = useState("");
-    const [linguagem12, setLinguagem12] = useState("");
-    const [linguagem13, setLinguagem13] = useState("");
-    const [linguagem14, setLinguagem14] = useState("");
-    const [linguagem15, setLinguagem15] = useState("");
+
 
     useEffect(() => {
         api.get(`/project/required/languages`).then((res) =>{
@@ -107,11 +81,8 @@ function Dashboard(){
             setLinguagem8(res.data[7].requiredLanguages)
             setLinguagem9(res.data[8].requiredLanguages)
             setLinguagem10(res.data[9].requiredLanguages)
-            setLinguagem11(res.data[10].requiredLanguages)
-            setLinguagem12(res.data[11].requiredLanguages)
-            setLinguagem13(res.data[12].requiredLanguages)
-            setLinguagem14(res.data[13].requiredLanguages)
-            setLinguagem15(res.data[14].requiredLanguages)
+            
+            
 
             setTecnologiaProject(res.data)
             setData({
@@ -194,11 +165,7 @@ function Dashboard(){
     var metaUsuario = 400
     var countUsuarios = countContactor + countFreelancer;
     var progressBarUsuarios = countUsuarios / metaUsuario * 100;
-    var countLikes = countLikesContactor + countLikesFreelancer;
-
-    var progressCircleMatchs = countMatchs / meta * 100;
-    var progressCircleProject = countProjects / meta * 100;
-    var progressCircleLikes = countLikes / meta * 100;
+    
 
 
     const [chartData, setData] = useState({
@@ -274,11 +241,11 @@ function Dashboard(){
     };
 
     const [lineStylesData] = useState({
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: ['janeiro','fevereiro','marco','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'],
         datasets: [
             {
                 label: 'Usuário/mês',
-                data: [12, 51, 62, 33, 21, 62, 45],
+                data: [12, 51, 62, 33, 21, 62, 45,80,13,50,45,70],
                 fill: true,
                 borderColor: '#4B1ECB',
                 tension: .4,
@@ -303,16 +270,12 @@ function Dashboard(){
              <FindrMenuAdmin />
              <div class="grafics-analytics">
                 <div class="card-info">
-                    <div class="first-card-match">
-                        <span class="title-card">Matchs</span>
-                        <span class="info-card">{countMatchs}</span>
-                        <CircularProgressbar value={progressCircleMatchs.toFixed(1)} text={`${progressCircleMatchs.toFixed(1)}%`} />
-                    </div>
+            
                     <div class="second-card-users">
                         <span class="title-card">Usuários</span>
                         <div class="infos-atual-meta">
                             <div class="info-data-atual">
-                                <span>{countUsuarios}</span>
+                                <span>200</span>
                                 <p>Atual</p>
                             </div>
                             <div class="split">|</div>
@@ -321,17 +284,18 @@ function Dashboard(){
                                 <p>Meta</p>
                             </div>   
                         </div>
-                        <ProgressBar value={progressBarUsuarios.toFixed(1)} style={{width: '80%', marginLeft: 'auto', marginRight: 'auto', marginTop: '20px'  }}/>
+                        <ProgressBar value={50} style={{width: '80%', marginLeft: 'auto', marginRight: 'auto', marginTop: '20px'  }}/>
                     </div>
                     <div class="third-card-projects">
-                        <span class="title-card">Projetos</span>
-                        <span class="info-card">{countProjects}</span>
-                        <CircularProgressbar value={progressCircleProject.toFixed(1)} text={`${progressCircleProject.toFixed(1)}%`} />
+                        <span class="title-card">Contratantes</span>
+                        <span class="info-card">{100}</span>
+                        <span class="info-card">{30}</span>
+                        <CircularProgressbar  style={{marginBottom : "30px"}} value={30} text={`${50}%`} />
                     </div>
                     <div class="fourth-card-likes">
-                        <span class="title-card">Likes</span>
-                        <span class="info-card">{countLikes}</span>
-                        <CircularProgressbar value={progressCircleLikes.toFixed(1)} text={`${progressCircleLikes.toFixed(1)}%`} />
+                        <span class="title-card">Freelancers</span>
+                        <span class="info-card">{100}</span>
+                        <CircularProgressbar  value={50} text={`${50}%`} />
                     </div>
                 </div>
                 <div class="grafics">
@@ -405,7 +369,7 @@ function Dashboard(){
                         </div>
                     </div>
                     <div class="list-required-area">
-                        <p>Linguagens mais requisitadas:</p>
+                        <p>TOP 10 -Linguagens mais requisitadas:</p>
                         <div class="top-required-area">
                             <span>1. {linguagem1}</span>
                             <span>2. {linguagem2}</span>
@@ -417,14 +381,24 @@ function Dashboard(){
                             <span>8. {linguagem8}</span>
                             <span>9. {linguagem9}</span>
                             <span>10. {linguagem10}</span>
-                            <span>11. {linguagem11}</span>
-                            <span>12. {linguagem12}</span>
-                            <span>13. {linguagem13}</span>
-                            <span>14. {linguagem14}</span>
-                            <span>15. {linguagem15}</span>
+                            
                         </div>
                     </div>
 
+                </div>
+                
+                <div className="container-analytcs">
+                <h1>Analytcs</h1>
+                    <iframe
+                    id="frameEspecificacoes"
+                    src="http://34.200.19.241:9000/model.html"
+                    width="100%" 
+                    height="100%"
+                    style={{border: "none",
+                        overflow: "hidden"}}
+                    >
+
+                    </iframe>
                 </div>
              </div>
 
