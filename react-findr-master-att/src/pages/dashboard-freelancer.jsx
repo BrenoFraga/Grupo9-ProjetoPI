@@ -10,7 +10,40 @@ function DashboardFreelancer() {
 
     const [countMatchs, setCountMatchs] = useState();
     const [countlike, setCountLike] = useState();
-    const [cidade, setCidade] = useState()
+    const [likesDadosFree, setLikesDadosFree] = useState([]);
+    const [dateFree, setDateFree] = useState([]);
+    const [stateMatch, setStateMatch] = useState("");
+
+
+    useEffect(() => {
+        api.get('/like/data-like-freelancer/' + sessionStorage.idUsuario).then(resp => {
+            console.log("resp", resp)
+            var listaData = []
+            var listLikesDados = []
+            resp.data.map(
+                (item) => {
+                    listaData.push(item.data);
+                    listLikesDados.push(item.fk)
+                }
+            )
+            console.log("listaData", listaData)
+            console.log("listLikesDados", listLikesDados)
+            setDateFree(listaData)
+            setLikesDadosFree(listLikesDados)
+            setLineStylesDataFree({
+                labels: dateFree,
+                datasets: [
+                    {
+                        label: 'Likes Dados',
+                        data: likesDadosFree,
+                        fill: false,
+                        borderColor: '#4B1ECB',
+                        tension: .4,
+                    }
+                ]
+            })
+        })
+    }, [])
 
     useEffect(() => {
         api.get('/match/freelancer/' + sessionStorage.idUsuario).then(res => {
@@ -30,29 +63,15 @@ function DashboardFreelancer() {
 
     useEffect(() => {
         api.get('/freelancer/state/' + sessionStorage.idUsuario).then(res => {
-            
+            setStateMatch(res.data[0].toUpperCase())
         }).catch(erro => {
             console.log(erro)
         })    
     }, [])
 
 
-    useEffect(() => {
-        api.get('/like/get/like-freelancer/recebidos/' + sessionStorage.idUsuario ).then(res => {
-            console.log("likeRecebidoFreelancer", res)
-        }).catch(erro => {
-            console.log(erro)
-        })
-    }, [])
 
-    useEffect(() => {
-        api.get('/like/get/like-freelancer/enviados/' + sessionStorage.idUsuario ).then(res => {
-            console.log("likeEnviadoFreelancer", res)
-        }).catch(erro => {
-            console.log(erro)
-        })
-    }, [])
-
+    
 
     let basicOptions = {
         maintainAspectRatio: false,
@@ -84,21 +103,14 @@ function DashboardFreelancer() {
         }
     };
 
-    const [lineStylesData] = useState({
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    const [lineStylesDataFree, setLineStylesDataFree] = useState({
+        labels: [],
         datasets: [
             {
-                label: 'Like Dado',
-                data: [65, 59, 80, 81, 56, 55, 40],
+                label: 'Likes Dados',
+                data: [],
                 fill: false,
                 borderColor: '#4B1ECB',
-                tension: .4,
-            },
-            {
-                label: 'Like Recebido',
-                data: [12, 51, 62, 33, 21, 62, 45],
-                fill: false,
-                borderColor: '#FFA726',
                 tension: .4,
             }
         ]
@@ -119,15 +131,15 @@ function DashboardFreelancer() {
                     </div>
                     <div className="card-local-freeCon">
                         <span className="title-card-freeCon-local">Localidade das empresas que <br></br> mais deram matchs</span>
-                        <span className="info-card-freeCon-local">{cidade}</span>
+                        <span className="info-card-freeCon-local">{stateMatch}</span>
                     </div>
                 </div>
                 <div class="grafics-line-freeCon">
                     <div class="color-high"></div>
                     <div class="title-grafic-line">Like do seu perfil</div>
-                    <span class="paragro-grafic-info">Quem deu like no seu perfil no últimos 90 dias</span>
-                    <div className="color-mid"></div>
-                    <div class="filters">
+                    <span class="paragro-grafic-info">Quem deu like no seu perfil nos últimos dias</span>
+                    {/* <div className="color-mid"></div> */}
+                    {/* <div class="filters">
                         <select class="empresa">
                             <option value="">Empresa</option>
                         </select>
@@ -138,14 +150,14 @@ function DashboardFreelancer() {
                         <select class="filter-all">
                             <option value="">Todos os filtros</option>
                         </select>
-                    </div>
+                    </div> */}
                     <div className="color-mid"></div>
                     <div class="grafic-line-viu">
                         <div class="grafic-line-color">
-                            <div class="title-vizu-grafic">
-                                <span class="info-vizu">Likes dados X Likes Recebidos</span>
-                            </div>
-                            <Chart class="chart-line-vizu" type="line" data={lineStylesData} options={basicOptions} style={{ height: '290px', width: '95%'}}/>
+                            {/* <div class="title-vizu-grafic">
+                                <span class="info-vizu">Likes dados</span>
+                            </div> */}
+                            <Chart class="chart-line-vizu" type="line" data={lineStylesDataFree} options={basicOptions} style={{ height: '290px', width: '95%'}}/>
                         </div>
                     </div>
                 </div>
