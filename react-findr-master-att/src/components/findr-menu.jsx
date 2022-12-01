@@ -4,6 +4,8 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme
 import "primereact/resources/primereact.min.css";                  //core css
 import "primeicons/primeicons.css";  
 import Footer from "../components/component-tela-footer/findr-footer"
+import api from "../api";
+import React, { useState } from 'react';
 
 function FindrMenu() {
     let items = [
@@ -31,7 +33,7 @@ function FindrMenu() {
         <>
         <div class="container-menu">
         <div class="user-return-container">
-            <img src="https://i.pinimg.com/originals/12/5e/00/125e00eedea84514eaed380991657c44.jpg" alt="" />
+            <img src={"http://34.200.19.241:8082/freelancer/getImages/" + sessionStorage.idUsuario}  alt="" />
            <h1>{sessionStorage.nomesuario}</h1>
         </div>
         <Menu model={items} className="menu-findr"/>
